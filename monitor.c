@@ -17,7 +17,7 @@ main (){
 /* Escrever no ficheiro E no monitor */
 int escreve_monitor_ficheiro(char texto[]){
         FILE *fp;
-        fp = fopen("ficheiro_teste.txt","a+") //Abre o ficheiro no modo de read/write para escrever no fim
+        fp = fopen("ficheiro_teste.txt","a+"); //Abre o ficheiro no modo de read/write para escrever no fim
         if(fp == NULL){ //Caso o ficheiro nao exista ou nao seja aberto
                 printf("Erro ao abrir o ficheiro");
                 return -1; //Indicaçao do erro
