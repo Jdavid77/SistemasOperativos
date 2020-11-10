@@ -1,5 +1,10 @@
 #include "bibliotecas.h"
 
+
+int main(){
+
+}
+
 int escreve_ficheiro(char texto2[]){
         FILE *fp;
         fp = fopen("ficheiro_simulador.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
