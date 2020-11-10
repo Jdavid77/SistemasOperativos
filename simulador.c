@@ -13,7 +13,7 @@ int escreve_ficheiro(char texto2[]){
                 return -1; //Indicaçao do erro
         }
         else{
-                fprintf(fp,texto2); //Escreve o text no ficheiro
+                fprintf(fp,texto2); //Escreve o texto no ficheiro
                 fclose(fp); //fecha o ficheiro
                 if(fclose(fp) == EOF){ //Quando ocorre um erro a fechar o ficheiro fclose retorna EOF
                         printf("Erro ao fechar o ficheiro");
