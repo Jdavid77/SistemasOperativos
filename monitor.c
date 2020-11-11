@@ -1,5 +1,5 @@
 #include "bibliotecas.h"
-int main (){
+main (void){
     
 }
 
