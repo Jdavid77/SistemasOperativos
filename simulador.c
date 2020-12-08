@@ -33,7 +33,7 @@ void leConfigura(){
                                                 }
                                         }
                                 }              
-                        char *token = strtok(linha, "=");//reparte a linha pelo um "="    
+                        char *token = strtok(linha, "=");//utilizar um token "=" para dividir as frases, do numero que queremos guardar 
                         valores_configura[j]=atoi(token);//passa o valor para o array       
                         j++;
                         } //adicionar os casos erro (verifica configura.txt)                
@@ -63,4 +63,4 @@ int escreve_ficheiro(char texto2[]){
         }
 }
 
-// utilizar um token "=" para dividir as frases do numero que queremos guardar
+
