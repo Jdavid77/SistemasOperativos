@@ -1,2 +1,4 @@
-hellohello
-hello
+tempomediochegada = 50
+inicsim = 400
+fimsim = 500
+probdesistência = 10

@@ -1,0 +1,8 @@
+2   = numero de centros de teste
+2   = numero de pessoas a ser testadas
+3   = numero medio de teste por pessoa
+30  = tempo maximo de internamento 
+20  = tempo medio de internamento das pessoas
+14  = tempo medio de isolamento
+30  = tempo maximo de isolamento
+20  = idade media de casos positivos
