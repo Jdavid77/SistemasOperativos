@@ -1,5 +1,22 @@
 #include "bibliotecas_estruturas.h"
 
+//configurações
+int num_centrosTeste;
+int num_pessoas_a_ser_testadas;
+int num_medio_testes_por_pessoa;
+int idade_media_casos_positivos;
+int num_pessoas_risco;
+int num_pessoas_normal;
+int num_pessoas_simulacao; 
+
+
+//Probalidades
+int prob_desistiu_Risco;
+int prob_desistiu_Normal;
+int prob_criancas_efetados;
+int prob_adultos_efetados;
+int prob_idosos_efetados;
+
 
 main(void){
 
@@ -47,7 +64,7 @@ void leConfigura(){
                 }
                 fclose(ficheiro_configura); //fecha o ficheiro 
         }
-       
+        num_centrosTeste = valores_configura [0];
 }
 
 int escreve_ficheiro(char texto2[]){

@@ -23,6 +23,7 @@ struct pessoa
     int tempoDeInternamento;
     bool desistiuFila;
     bool isolamento;
+
 };
 
 struct centroDeTeste
@@ -31,6 +32,11 @@ struct centroDeTeste
     int capacidadeMaxima;
     int capacidaMaximaInternamento;
     int capacidaMaximaPessoasTestadas;
+    float tempoMaximoInternamento;
+    float tempoMedioInternamento;
+    float tempoMaximoIsolamento;
+    float tempoMedioIsolamento;
+    float tempoMaximoIsolamento;
 };
 
 struct fila
