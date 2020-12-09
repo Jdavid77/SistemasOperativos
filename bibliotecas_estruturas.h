@@ -10,6 +10,7 @@
 #include <pthread.h>
 
 #define TamLinha 1024       //tamanho maximo do buffer
+#define UNIXSTR_PATH  "/home/joaomartins/Desktop/SistemasOperativos"
 
 struct pessoa  
 {
