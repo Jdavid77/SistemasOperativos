@@ -16,27 +16,25 @@ struct pessoa
     int id;
     int idade; 
     int prioridade;
-    int lugarFila;
     bool resultadoTeste;
     float tempoEntradaInternamento;
     float tempoSaidaInternamento;
-    int tempoDeInternamento;
+    float tempoDeInternamento;
     bool desistiuFila;
     bool isolamento;
+    int centroTeste;
 
 };
 
 struct centroDeTeste
 {
     int id;
-    int capacidadeMaxima;
-    int capacidaMaximaInternamento;
-    int capacidaMaximaPessoasTestadas;
+    int capacidadeMaxima; //total de pessoas fila + internados
+    int capacidaMaximaInternamento; //total de pessoas internadas
     float tempoMaximoInternamento;
     float tempoMedioInternamento;
     float tempoMaximoIsolamento;
     float tempoMedioIsolamento;
-    float tempoMaximoIsolamento;
 };
 
 struct fila
@@ -46,6 +44,6 @@ struct fila
     int capacidadeMaximaFila;
     int casosRisco;
     int casosNormais;
-    int desistenciaRisco;
-    int desistenciaNormal;
+    int numDesistenciasRisco;
+    int numDesistenciasNormal;
 };
