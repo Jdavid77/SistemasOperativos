@@ -150,4 +150,52 @@ int escreve_ficheiro(char texto2[]){
         }
 }
 
+//Cria Pessoa
+struct pessoa criaPessoa()
+{       
+        struct pessoa paciente;
+        paciente.id = rand() % 1000;
+        paciente.centroTeste = (rand() % 1 ) + 1;
+        paciente.idade = (rand() % 100) + 1;
+        paciente.desistiuFila = false;
+        paciente.isolamento = false;
+        paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
+        paciente.resultadoTeste = false;
+        //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
+        //paciente.tempoEntradaInternamento;
+        //paciente.tempoSaidaInternamento
+        //criar probabilidades para tratar dos booleanos
+};
+
+//cria fila
+struct fila criaFila()
+{
+        struct fila f;
+        f.capacidadeMaximaFila = 40;
+        f.casosNormais = rand() % 20;
+        if(f.capacidadeMaximaFila - f.casosNormais >= 20){
+                f.casosRisco = rand() % 21;
+        }
+        f.numDesistenciasNormal = 0;
+        f.numDesistenciasRisco = 0; //vai incrementando durante a simulação à medida que vao saindo
+        //f.tempoMedioEspera criar funcao para tratar dos tempos de espera
+}
+
+//Cria Centro de Teste
+struct centroDeTeste criaCentroDeTeste()
+{
+        struct centroDeTeste centro;
+        centro.capacidadeMaxima = 100;
+        centro.id = (rand() % 1)+1;
+        centro.capacidaMaximaInternamento = 60;
+        //centro.tempoMedioInternamento tem de ser calculada a media (pelo tempo de entrada e saida do paciente)
+        centro.tempoMaximoInternamento = 40;
+        centro.tempoMaximoIsolamento = 30;
+        //centro.tempoMedioIsolamento é calculado    
+};
+
+
+
+
+
 
