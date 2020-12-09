@@ -26,7 +26,7 @@ void leConfigura(){
         int erro = 0;
         #define MAXSIZE 512
         char linha[MAXSIZE];
-        int valores_configura [8];
+        int valores_configura [12];
         while (erro==0)
         {
                 FILE *ficheiro_configura;
@@ -53,7 +53,66 @@ void leConfigura(){
                         char *token = strtok(linha, "=");//utilizar um token "=" para dividir as frases, do numero que queremos guardar 
                         valores_configura[j]=atoi(token);//passa o valor para o array       
                         j++;
-                        } //adicionar os casos erro (verifica configura.txt)                
+                        } //adicionar os casos erro (verifica configura.txt)  
+                        if(valores_configura[0] < 2){
+                                printf("Introduziu um valor incorreto na linha 1, o minimo de centros de teste é 2");
+                                erro = 1;
+                        }
+                        else if (valores_configura[1] > 10)
+                        {
+                                printf("Introduziu um valor incorreto na linha 2, o maximo de pessoas que podem estar a ser testadas é 10");
+                                erro = 1;
+                        }
+                        else if (valores_configura[2] < 0)
+                        {
+                                printf("Introduziu um valor negativo na linha 3, o numero medio de testes por pessoa tem que ser maior que 0");
+                                erro = 1;
+                        }
+                        else if (valores_configura[3] < 0)
+                        {
+                                printf("Introduziu um valor negativo na linha 4, a idade media para casos positivos tem que ser maior que 0");
+                                erro = 1;
+                        }
+                        else if (valores_configura[4] < 0)
+                        {
+                                printf("Introduziu um valor negativo na linha 5, o numero de pessoas de risco na fila tem que ser >= 0");
+                                erro = 1;
+                        }
+                        else if (valores_configura[5] < 0)
+                        {
+                                printf("Introduziu um valor negativo na linha 6, o numero de pessoas normais na fila tem que ser >= 0");
+                                erro = 1;
+                        }
+                        else if (valores_configura[6] <= 0)//maximo por defenir
+                        {
+                                printf("Introduziu um valor invalido na linha 7, por favor volte a tentar");
+                                erro = 1;
+                        }
+                        else if (valores_configura[7] < 0 || valores_configura[7] > 100)
+                        {
+                                printf("Introduziu um valor incorreto na linha 8, a probablidade tem que variar entre 0 e 100");
+                                erro = 1;
+                        }
+                        else if (valores_configura[8] < 0 || valores_configura[8] > 100)
+                        {
+                                printf("Introduziu um valor incorreto na linha 9, a probablidade tem que variar entre 0 e 100");
+                                erro = 1;
+                        }
+                        else if (valores_configura[9] < 1 || valores_configura[9] > 100)
+                        {
+                                printf("Introduziu um valor incorreto na linha 10, a probablidade tem que variar entre 1 e 100");
+                                erro = 1;
+                        }
+                        else if (valores_configura[10] < 1 || valores_configura[10] > 100)
+                        {
+                                printf("Introduziu um valor incorreto na linha 11, a probablidade tem que variar entre 1 e 100");
+                                erro = 1;
+                        }
+                        else if (valores_configura[11] < 1 || valores_configura[11] > 100)
+                        {
+                                printf("Introduziu um valor incorreto na linha 12, a probablidade tem que variar entre 1 e 100");
+                                erro = 1;
+                        } 
                 }
                 if (erro==1){
                         int opcao = 0;
@@ -65,6 +124,17 @@ void leConfigura(){
                 fclose(ficheiro_configura); //fecha o ficheiro 
         }
         num_centrosTeste = valores_configura [0];
+        num_pessoas_a_ser_testadas = valores_configura [1];
+        num_medio_testes_por_pessoa = valores_configura [2];
+        idade_media_casos_positivos = valores_configura [3];
+        num_pessoas_risco = valores_configura [4];
+        num_pessoas_normal = valores_configura [5];
+        num_pessoas_simulacao = valores_configura [6];
+        prob_desistiu_Risco = valores_configura [7];
+        prob_desistiu_Normal = valores_configura [8];
+        prob_criancas_efetados = valores_configura [9];
+        prob_adultos_efetados = valores_configura [10];
+        prob_idosos_efetados = valores_configura [11];
 }
 
 int escreve_ficheiro(char texto2[]){
