@@ -18,6 +18,7 @@ struct pessoa
     int idade; 
     int prioridade;
     bool resultadoTeste;
+    int posicaoFila;
     float tempoEntradaInternamento;
     float tempoSaidaInternamento;
     float tempoDeInternamento;
@@ -43,8 +44,7 @@ struct fila
     int idCentro;
     float tempoMedioEspera;
     int capacidadeMaximaFila;
-    int casosRisco;
-    int casosNormais;
+    int tamanhoAtual; //tamanho atual da fila
     int numDesistenciasRisco;
     int numDesistenciasNormal;
 };

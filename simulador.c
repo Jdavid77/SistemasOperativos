@@ -17,6 +17,13 @@ int prob_criancas_efetados;
 int prob_adultos_efetados;
 int prob_idosos_efetados;
 
+//variaveis globais
+char texto[500];
+lugarFila = 0;
+
+//trincos
+pthread_mutex_init(&criarPessoa,NULL);
+
 
 main(void){
 
@@ -153,6 +160,7 @@ int escreve_ficheiro(char texto2[]){
 //Cria Pessoa
 struct pessoa criaPessoa()
 {       
+        pthread_mutex_lock(&criarPessoa); //tranca o trinco no inicio da funçao de criar pessoa pois so podemos criar 1 pessoa de cada vez
         struct pessoa paciente;
         paciente.id = rand() % 1000;
         paciente.centroTeste = (rand() % 1 ) + 1;
@@ -161,24 +169,64 @@ struct pessoa criaPessoa()
         paciente.isolamento = false;
         paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         paciente.resultadoTeste = false;
+        pthread_mutext_unlock(&criarPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
+        sprintf(texto,"Chegou o utilizador %i", paciente.id);
+        escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
         //paciente.tempoEntradaInternamento;
         //paciente.tempoSaidaInternamento
         //criar probabilidades para tratar dos booleanos
-};
+
+}
+//atende uma pessoa
+void AtendimentoNormal(pessoa *paciente)
+{
+        /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
+        escrevendo o paciente ID faz o teste */
+        sprintf(texto, "O paciente %i foi atendido", paciente->id);
+        escreve_ficheiro(texto);
+        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+        escreve_ficheiro(texto); 
+}
 
 //cria fila
-struct fila criaFila()
+/*struct fila criaFila(pessoa *paciente)
 {
+        bool atendidaJa; //variavel para verificar se o paciente deve ser atendido ja ou nao
         struct fila f;
-        f.capacidadeMaximaFila = 40;
-        f.casosNormais = rand() % 20;
-        if(f.capacidadeMaximaFila - f.casosNormais >= 20){
-                f.casosRisco = rand() % 21;
+        //f.capacidadeMaximaFila = 40;
+        f.tamanhoAtual = f.tamanhoAtual + 1;
+        paciente->posicaoAtual = (lugarFila++);
+        if(paciente->prioridade == 1){ //se o paciente tiver prioridade(for caso de risco) é logo atenddido
+                //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
+                //escrevendo o paciente ID faz o teste
+                sprintf(texto, "O paciente %i foi atendido com prioridade", paciente->id);
+                escreve_ficheiro(texto);
+                sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+                escreve_ficheiro(texto);
+                f.tamanhoAtual--; //tira uma pessoa da fila
+        }
+        else
+        {
+                if(paciente->posicaoAtual == 1)
+                {
+                    AtendimentoNormal(&paciente);
+                    f.tamanhoAtual--;    
+                }
+        }
+        if(atendidaJa == true) //o que acontece quando a pessoa é logo atendida?
+        {
+                
+
         }
         f.numDesistenciasNormal = 0;
         f.numDesistenciasRisco = 0; //vai incrementando durante a simulação à medida que vao saindo
         //f.tempoMedioEspera criar funcao para tratar dos tempos de espera
+}*/
+
+void pessoaEsperando(pessoa *person)
+{
+
 }
 
 //Cria Centro de Teste
@@ -194,6 +242,16 @@ struct centroDeTeste criaCentroDeTeste()
         //centro.tempoMedioIsolamento é calculado    
 };
 
+void fazTeste(pessoa *paciente)
+{
+
+}
+void Pessoa(void *ptr)
+{
+        struct pessoa person = criaPessoa();
+        fila(&person);                                                                                                                       
+
+}
 //Socket
 int criarSocket(){
     //Variaveis
