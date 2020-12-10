@@ -70,16 +70,6 @@ void criaServidor () {
     if (novoSocket < 0) {                                        //Verifica o erro na aceitacao da ligacao
         printf ( "Erro na aceitacao \n" );
     }
-    
-    //Criacao de um novo processo
-    int pid;
-    if ((pid = fork()) < 0 ) {
-        printf ( "Erro ao criar o processo filho \n" );         //Erro na criacao do processo filho
-    }else if (pid == 0) {                                       //Processo filho irá tratar das sucessivas leituras e fecha o socket do processo pai
-        close(sockfd);
-        LeituraSucessiva(novoSocket);
-    }
-    close(novoSocket);                                          //Fecha o socket filho
 }
 
 /*                      Main                         */
