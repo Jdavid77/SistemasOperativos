@@ -1,5 +1,6 @@
 #include "bibliotecas_estruturas.h"
 
+int fimSimulacao = 0;
 /* Escrever no ficheiro E no monitor */
 int escreve_monitor_ficheiro(char texto[]){
                 FILE *fp;
@@ -30,9 +31,76 @@ int le(){
                 fclose(apontador); // fecha o ficheiro
         }
 
-       } 
-int main ( int argc , char const * argv[] ) {
-        //escreve_monitor_ficheiro("hello");
-        le();
+}
+
+
+//Cria o servidor 
+void criaServidor () {
+    //sockfd -> criacao para a primeira comunicacao
+    //novoSocket -> criacao para a segunda comunicacao
+    //tamPaciente-> guarda o tamanho do endereco do paciente
+    //tamanhoServidor -> guarda o tamanho do servidor
+    int sockfd, novoSocket, tamPaciente, tamanhoServidor;
+    struct sockaddr_un end_cli , serv_addr;             
+	
+    //Verifica a criacao do socket
+    if ((sockfd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0 ){
+        printf ( "Erro ao criar o Socket \n");
+    }
+    
+    //Incializa os valores do buffer a zero
+    bzero((char*) & serv_addr , sizeof(serv_addr));   
+    serv_addr.sun_family = AF_UNIX;                       
+    strcpy(serv_addr.sun_path, UNIXSTR_PATH);
+    tamanhoServidor = strlen(serv_addr.sun_path) + sizeof(serv_addr.sun_family);    
+    unlink(UNIXSTR_PATH);
+
+    //Liga o socket a um endereco
+    if( bind( sockfd, (struct sockaddr *) & serv_addr, tamanhoServidor) < 0 ){
+        printf("Erro a ligar o socket a um endereco\n");
+    }
+
+    //Espera a conexao com o simulador
+    printf("Esperando pelo simulador: \n");
+    listen( sockfd , 1 );
+
+    //Criacao de um novo scoket
+    tamPaciente = sizeof(end_cli);
+    novoSocket = accept (sockfd, (struct sockaddr * ) &end_cli, &tamPaciente);
+    if (novoSocket < 0) {                                        //Verifica o erro na aceitacao da ligacao
+        printf ( "Erro na aceitacao \n" );
+    }
+    
+    //Criacao de um novo processo
+    int pid;
+    if ((pid = fork()) < 0 ) {
+        printf ( "Erro ao criar o processo filho \n" );         //Erro na criacao do processo filho
+    }else if (pid == 0) {                                       //Processo filho irá tratar das sucessivas leituras e fecha o socket do processo pai
+        close(sockfd);
+        LeituraSucessiva(novoSocket);
+    }
+    close(novoSocket);                                          //Fecha o socket filho
+}
+
+/*                      Main                         */
+/*###################################################*/
+int main(int argc, char const * argv[]){
+    printf ( "########### Bem vindo ########### \n" );              //Menu
+    printf ( "1: Comecar simulacao          \n" );              //Menu
+    printf ( "2: Limpar ficheiros da simulacao \n" );              //Menu
+    printf ( "################################# \n" );              //Menu
+    int selecao = 0;   ;                                                //Variavel que guarda o valor introduzido pelo utilizador
+    int acaba = 0;
+    while (!acaba) { 
+        if(fimSimulacao == 1) {                                 //Se a selecao for 1
+            acaba = 1;
+        }else{
+            while(selecao != 1) {
+                printf ( "Introduza uma opção: \n" );               //Pede ao utilizador para introduzir uma opcao
+                scanf ( "%d" , &selecao );                          //Le valor introduzido pelo utilizador
+            }
+            criaServidor();                                         //Cria o servidor   
+        }
+    }
     return 0;
 }

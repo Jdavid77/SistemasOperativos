@@ -17,11 +17,6 @@ int prob_criancas_efetados;
 int prob_adultos_efetados;
 int prob_idosos_efetados;
 
-
-main(void){
-
-}
-
 void leConfigura(){
         int erro = 0;
         #define MAXSIZE 512
@@ -193,7 +188,6 @@ struct centroDeTeste criaCentroDeTeste()
         centro.tempoMaximoIsolamento = 30;
         //centro.tempoMedioIsolamento é calculado    
 };
-
 //Socket
 int criarSocket(){
     //Variaveis
@@ -225,7 +219,6 @@ int criarSocket(){
     printf("Simulador pronto.\n"); 
     return sockfd;
 }
-
 
 
 
