@@ -8,6 +8,7 @@
 #include <time.h>            //biblioteca para trabalhar com  o tempo
 #include <stdbool.h>        //Para trabalhar com boleanos
 #include <pthread.h>
+#include <semaphore.h>
 
 #define TamLinha 1024       //tamanho maximo do buffer
 #define UNIXSTR_PATH  "/home/joaomartins/Desktop/SistemasOperativos"

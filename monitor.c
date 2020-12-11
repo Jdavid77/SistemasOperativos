@@ -33,6 +33,32 @@ int le(){
 
 }
 
+//mostra a informacao no monitor
+void mostraInformacao(){
+    char textoMonitor[TamLinha];
+
+    //centro de Teste
+    escreve_monitor_ficheiro("--------Centro de Teste--------\n");
+
+        //Casos em estudo
+        //numero de casos positivos
+        //quantas pessoas já desistiram
+        //quantidade de internados
+        //tempos médios 
+        //probabilidades
+        
+
+}
+
+
+void LerMensagemSimulador(int sockfd){
+    char buffer[TamLinha]; //cria um buffer com tamanho 1024
+    read(sockfd,buffer,TamLinha); //le a mensagem do socket e guarda
+}
+
+
+
+
 
 //Cria o servidor 
 void criaServidor () {

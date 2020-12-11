@@ -1,5 +1,6 @@
 #include "bibliotecas_estruturas.h"
 
+
 //configurações
 int num_centrosTeste;
 int num_pessoas_a_ser_testadas;
@@ -20,21 +21,31 @@ int prob_idosos_efetados;
 //variaveis globais
 char texto[500];
 lugarFila = 0;
-int horasIsolamento = [72,120,48];
+int horasIsolamento[] = {72,120,48};
 int casosPositivos = 0; //pessoas que ja testaram positivo
 int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
 int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
+
 //trincos
-pthread_mutex_init(&criarPessoa,NULL);
+pthread_mutex_t trincoCriaPessoa;
+//pthread_mutex_init(&criarPessoa,NULL);
 
 //semaforos
-semt_t fila; //semaforo da fila do centro 1
+sem_t fila; //semaforo da fila do centro 1
 sem_t trincoAtendimento; //tranca o atendimento do centro1
 sem_t internadosCentros; //numero de internados num centro
+sem_t enviamensagem;
+
+//Sockets
+int sockfd = 0;
 
 
 int main(int argc, char const *argv[])
 {
+        if (pthread_mutex_init(&trincoCriaPessoa, NULL) != 0){
+                printf("A inicialização do trinco falhou!");
+                return 1;
+        }
         sem_init(&fila, 0, 40); //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&trincoAtendimento, 1, 2); //podemos atender ate duas pessoas de cada vez
         sem_init(&internadosCentros, 1, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
@@ -45,7 +56,7 @@ int main(int argc, char const *argv[])
         return 1;
 }
 //atende uma pessoa de risco (sao prints)
-void AtendimentoPrioridade(pessoa *paciente)
+void AtendimentoPrioridade(struct pessoa *paciente)
 {
         //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
         //escrevendo o paciente ID faz o teste
@@ -55,7 +66,7 @@ void AtendimentoPrioridade(pessoa *paciente)
         escreve_ficheiro(texto);
 }
 //atende uma pessoa normal (sao prints)
-void AtendimentoNormal(pessoa *paciente)
+void AtendimentoNormal(struct pessoa *paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
@@ -65,7 +76,7 @@ void AtendimentoNormal(pessoa *paciente)
         escreve_ficheiro(texto); 
 }
 
-void TestaPessoa(pessoa *paciente, centroDeTeste *centro)
+void TestaPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
 {
         //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
         //da o resultado do teste da pessoa sendo que é um random
@@ -101,7 +112,7 @@ void TestaPessoa(pessoa *paciente, centroDeTeste *centro)
         }
 }
 
-void trataPessoa(pessoa *paciente, centroDeTeste *centro)
+void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
 {
         //usar semaforos para tratar da fila(uma fila é um semaforo)
         //dentro desta funçao verificamos se o paciente tem prioridade, caso tenha entao este é logo atendido
@@ -109,7 +120,7 @@ void trataPessoa(pessoa *paciente, centroDeTeste *centro)
         //smp que atendemos um paciente damos o output que este foi atendido/fez o teste (atençao de usar trincos aqi pois so podemos atender 1 pessoa de cada vez por centro)
         //apos ser atendido temos que chamar uma funçao que trata do resultado do teste
         int desistiu = rand() % 1; //a pessoa desistiu da fila?
-        if(paciente->desistiu == false) //se o paciente nao desistiu da fila
+        if(paciente->desistiuFila == false) //se o paciente nao desistiu da fila
         {
                 if(paciente->centroTeste == centro->id) //caso a pessoa esteja neste centro de teste
                 {
@@ -273,7 +284,7 @@ int escreve_ficheiro(char texto2[])
 //Cria Pessoa
 struct pessoa criaPessoa()
 {       
-        pthread_mutex_lock(&criarPessoa); //tranca o trinco no inicio da funçao de criar pessoa pois so podemos criar 1 pessoa de cada vez
+        //pthread_mutex_lock(&criarPessoa); //tranca o trinco no inicio da funçao de criar pessoa pois so podemos criar 1 pessoa de cada vez
         int desistiu = rand() % 1;
         struct pessoa paciente;
         paciente.id = rand() % 1000;
@@ -290,7 +301,7 @@ struct pessoa criaPessoa()
         paciente.isolamento = false;
         paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         paciente.resultadoTeste = false;
-        pthread_mutext_unlock(&criarPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
+        //pthread_mutext_unlock(&criarPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
         sprintf(texto,"Chegou o utilizador %i", paciente.id);
         escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
@@ -348,11 +359,16 @@ struct centroDeTeste criaCentroDeTeste()
         //centro.tempoMedioIsolamento é calculado    
 };
 
+
+//Tarefa Pessoa
 void *Pessoa(void *ptr)
 {
+        pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez 
         struct pessoa person = criaPessoa();
         //fila(&person);    
-        sem_wait(&fila);                                                                                                                   
+        sem_wait(&fila);
+        pthread_mutex_unlock(&trincoCriaPessoa); 
+        return NULL;                                                                                                              
 
 }
 
@@ -362,8 +378,9 @@ int criarSocket(){
     struct sockaddr_un end_serv;
     int tamanhoServidor;
 
-    //Cria o socket
-    int sockfd = socket(AF_UNIX, SOCK_STREAM, 0);                                          
+    //#############Cria o socket##################
+    int sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+
     if(sockfd < 0) {                                                                         
         printf("Erro: socket nao foi criado \n");
     }
@@ -388,6 +405,13 @@ int criarSocket(){
     return sockfd;
 }
 
+//envia mensagens entre servidor e cliente
+void EnviarMensagens(char * t, int sockfd){
+        char mensagem[TamLinha];
+        //copiar para dentro do buffer a mensagem
+        strcpy(mensagem,t); //recebe o array e mensagem
+        write(sockfd,mensagem,strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
+}
 
 
 
