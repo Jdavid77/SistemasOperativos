@@ -20,16 +20,128 @@ int prob_idosos_efetados;
 //variaveis globais
 char texto[500];
 lugarFila = 0;
-
+int horasIsolamento = [72,120,48];
+int casosPositivos = 0; //pessoas que ja testaram positivo
+int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
+int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
 //trincos
 pthread_mutex_init(&criarPessoa,NULL);
 
+//semaforos
+semt_t fila; //semaforo da fila do centro 1
+sem_t trincoAtendimento; //tranca o atendimento do centro1
+sem_t internadosCentros; //numero de internados num centro
 
-main(void){
 
+int main(int argc, char const *argv[])
+{
+        sem_init(&fila, 0, 40); //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&trincoAtendimento, 1, 2); //podemos atender ate duas pessoas de cada vez
+        sem_init(&internadosCentros, 1, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
+        //procurar a explicaçao disto
+        sockfd = criarSocket();
+        simulacao(sockfd);
+        close(sockfd);
+        return 1;
+}
+//atende uma pessoa de risco (sao prints)
+void AtendimentoPrioridade(pessoa *paciente)
+{
+        //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
+        //escrevendo o paciente ID faz o teste
+        sprintf(texto, "O paciente %i foi atendido com prioridade", paciente->id);
+        escreve_ficheiro(texto);
+        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+        escreve_ficheiro(texto);
+}
+//atende uma pessoa normal (sao prints)
+void AtendimentoNormal(pessoa *paciente)
+{
+        /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
+        escrevendo o paciente ID faz o teste */
+        sprintf(texto, "O paciente %i foi atendido", paciente->id);
+        escreve_ficheiro(texto);
+        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+        escreve_ficheiro(texto); 
 }
 
-void leConfigura(){
+void TestaPessoa(pessoa *paciente, centroDeTeste *centro)
+{
+        //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
+        //da o resultado do teste da pessoa sendo que é um random
+        int resTeste = rand() % 1;
+        int isolamento = rand() % 1;
+        if(resTeste == 0) //o teste deu negativo
+        {
+                if(isolamento == 1) //se a pessoa  precisar de isolamento (esteve em contacto com infetados)
+                {
+                        paciente->isolamento = true;
+                        //vai ser preciso depois usar isto para o tempo medio de isolamento e tals
+                        //escolhe randomly entre se precisa de 72h,48h ou 120h de isolamento
+                        int tempoIsolamento = horasIsolamento[rand() % 2];
+                        sprintf(texto,"O utilizador %i testou negativo e devera fazer %i horas de isolamento", paciente->id, tempoIsolamento);
+                        escreve_ficheiro(texto);
+                        casosEmEstudo--;
+                }
+                else //caso a pessoa nao precise de isolamento
+                {
+                        sprint(texto,"O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
+                        escreve_ficheiro(texto);
+                        casosEmEstudo--;
+                }
+        }
+        else //caso teste positivo
+        {
+                casosPositivos++;
+                paciente->resultadoTeste = true;
+                sprinf(texto,"O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
+                escreve_ficheiro(texto);
+                sem_wait(&internadosCentros);
+                casosEmEstudo--;
+        }
+}
+
+void trataPessoa(pessoa *paciente, centroDeTeste *centro)
+{
+        //usar semaforos para tratar da fila(uma fila é um semaforo)
+        //dentro desta funçao verificamos se o paciente tem prioridade, caso tenha entao este é logo atendido
+        //caso nao tenha prioridade atendemos um paciente na fila (libertamos um espaço do semaforo)
+        //smp que atendemos um paciente damos o output que este foi atendido/fez o teste (atençao de usar trincos aqi pois so podemos atender 1 pessoa de cada vez por centro)
+        //apos ser atendido temos que chamar uma funçao que trata do resultado do teste
+        int desistiu = rand() % 1; //a pessoa desistiu da fila?
+        if(paciente->desistiu == false) //se o paciente nao desistiu da fila
+        {
+                if(paciente->centroTeste == centro->id) //caso a pessoa esteja neste centro de teste
+                {
+                        if(paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
+                        {
+                                sem_wait(&trincoAtendimento); 
+                                casosEmEstudo++;
+                                AtendimentoPrioridade(&paciente);
+                                sem_post(&trincoAtendimento);
+                                sem_post(&fila);
+                        }
+                        else //caso nao seja paciente de risco (nao tem prioridade)
+                        {
+                                casosEmEstudo++;
+                                sem_wait(&trincoAtendimento);
+                                AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
+                                sem_post(&trincoAtendimento);
+                                sem_post(&fila);
+                        }
+                }
+        }
+        else //remove alguem da fila caso o paciente tenha desistido
+        {
+                desistenciasTotais++;
+                sprint(texto,"O utilizador %i desistiu da fila", paciente->id);
+                escreve_ficheiro(texto);
+                sem_post(&fila);
+        }        
+}
+
+void leConfigura() //é preciso colocar o valores_configura como global?Iremos necessitar desses dados para outras funçoes?
+{
         int erro = 0;
         #define MAXSIZE 512
         char linha[MAXSIZE];
@@ -144,7 +256,8 @@ void leConfigura(){
         prob_idosos_efetados = valores_configura [11];
 }
 
-int escreve_ficheiro(char texto2[]){
+int escreve_ficheiro(char texto2[])
+{
         FILE *fp;
         fp = fopen("ficheiro_simulador.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
         if(fp == NULL){ 
@@ -161,11 +274,19 @@ int escreve_ficheiro(char texto2[]){
 struct pessoa criaPessoa()
 {       
         pthread_mutex_lock(&criarPessoa); //tranca o trinco no inicio da funçao de criar pessoa pois so podemos criar 1 pessoa de cada vez
+        int desistiu = rand() % 1;
         struct pessoa paciente;
         paciente.id = rand() % 1000;
         paciente.centroTeste = (rand() % 1 ) + 1;
         paciente.idade = (rand() % 100) + 1;
-        paciente.desistiuFila = false;
+        if(desistiu == 0)
+        {
+                paciente.desistiuFila = false;
+        }
+        else if (desistiu == 1)
+        {
+                paciente.desistiuFila = true;
+        }
         paciente.isolamento = false;
         paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         paciente.resultadoTeste = false;
@@ -176,18 +297,8 @@ struct pessoa criaPessoa()
         //paciente.tempoEntradaInternamento;
         //paciente.tempoSaidaInternamento
         //criar probabilidades para tratar dos booleanos
+}
 
-}
-//atende uma pessoa
-void AtendimentoNormal(pessoa *paciente)
-{
-        /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
-        escrevendo o paciente ID faz o teste */
-        sprintf(texto, "O paciente %i foi atendido", paciente->id);
-        escreve_ficheiro(texto);
-        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
-        escreve_ficheiro(texto); 
-}
 
 //cria fila
 /*struct fila criaFila(pessoa *paciente)
@@ -224,11 +335,6 @@ void AtendimentoNormal(pessoa *paciente)
         //f.tempoMedioEspera criar funcao para tratar dos tempos de espera
 }*/
 
-void pessoaEsperando(pessoa *person)
-{
-
-}
-
 //Cria Centro de Teste
 struct centroDeTeste criaCentroDeTeste()
 {
@@ -242,16 +348,14 @@ struct centroDeTeste criaCentroDeTeste()
         //centro.tempoMedioIsolamento é calculado    
 };
 
-void fazTeste(pessoa *paciente)
-{
-
-}
-void Pessoa(void *ptr)
+void *Pessoa(void *ptr)
 {
         struct pessoa person = criaPessoa();
-        fila(&person);                                                                                                                       
+        //fila(&person);    
+        sem_wait(&fila);                                                                                                                   
 
 }
+
 //Socket
 int criarSocket(){
     //Variaveis

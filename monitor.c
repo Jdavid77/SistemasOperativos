@@ -94,3 +94,5 @@ int main(int argc, char const * argv[]){
     }
     return 0;
 }
+
+/*Adicionar funçoes que imprima a informaçao de tempo medio de estepera;pessoas na fila;pessoas que ja desistiram etc*/
