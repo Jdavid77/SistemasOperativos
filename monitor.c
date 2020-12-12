@@ -54,6 +54,7 @@ void mostraInformacao(){
 void LerMensagemSimulador(int sockfd){
     char buffer[TamLinha]; //cria um buffer com tamanho 1024
     read(sockfd,buffer,TamLinha); //le a mensagem do socket e guarda
+    printf(buffer);
 }
 
 
@@ -64,9 +65,9 @@ void LerMensagemSimulador(int sockfd){
 void criaServidor () {
     //sockfd -> criacao para a primeira comunicacao
     //novoSocket -> criacao para a segunda comunicacao
-    //tamPaciente-> guarda o tamanho do endereco do paciente
+    //tamCLiente-> guarda o tamanho do endereco do cliente
     //tamanhoServidor -> guarda o tamanho do servidor
-    int sockfd, novoSocket, tamPaciente, tamanhoServidor;
+    int sockfd, novoSocket, tamCliente, tamanhoServidor;
     struct sockaddr_un end_cli , serv_addr;             
 	
     //Verifica a criacao do socket
@@ -82,7 +83,7 @@ void criaServidor () {
     unlink(UNIXSTR_PATH);
 
     //Liga o socket a um endereco
-    if( bind( sockfd, (struct sockaddr *) & serv_addr, tamanhoServidor) < 0 ){
+    if( bind(sockfd, (struct sockaddr *) & serv_addr, tamanhoServidor) < 0){
         printf("Erro a ligar o socket a um endereco\n");
     }
 
@@ -91,33 +92,34 @@ void criaServidor () {
     listen( sockfd , 1 );
 
     //Criacao de um novo scoket
-    tamPaciente = sizeof(end_cli);
-    novoSocket = accept (sockfd, (struct sockaddr * ) &end_cli, &tamPaciente);
+    tamCliente= sizeof(end_cli);
+    novoSocket = accept (sockfd, (struct sockaddr *) &end_cli, &tamCliente);
     if (novoSocket < 0) {                                        //Verifica o erro na aceitacao da ligacao
-        printf ( "Erro na aceitacao \n" );
+        printf ("Erro na aceitacao \n");
     }
+
+    //Criação do processo filho
+    int pid;
+    if ((pid = fork()) != 0) {
+        printf ("Erro na criação do processo filho! \n");         //Erro na criacao do processo filho
+    }else if (pid == 0) {                                       //Processo filho irá tratar das sucessivas leituras e fecha o socket do processo pai
+        close(sockfd);
+        LerMensagemSimulador(novoSocket);                       //lê e imprime a mensagem do simulador 
+    }
+
+    close(novoSocket);
 }
 
 /*                      Main                         */
 /*###################################################*/
 int main(int argc, char const * argv[]){
     printf ( "########### Bem vindo ########### \n" );              //Menu
-    printf ( "1: Comecar simulacao          \n" );              //Menu
-    printf ( "2: Limpar ficheiros da simulacao \n" );              //Menu
+    printf ( "       Comecar simulacao          \n" );                  //Menu
     printf ( "################################# \n" );              //Menu
-    int selecao = 0;   ;                                                //Variavel que guarda o valor introduzido pelo utilizador
-    int acaba = 0;
-    while (!acaba) { 
-        if(fimSimulacao == 1) {                                 //Se a selecao for 1
-            acaba = 1;
-        }else{
-            while(selecao != 1) {
-                printf ( "Introduza uma opção: \n" );               //Pede ao utilizador para introduzir uma opcao
-                scanf ( "%d" , &selecao );                          //Le valor introduzido pelo utilizador
-            }
-            criaServidor();                                         //Cria o servidor   
-        }
-    }
+
+    criaServidor();                                         //Cria o servidor   
+
+    
     return 0;
 }
 

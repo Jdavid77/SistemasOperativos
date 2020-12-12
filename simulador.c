@@ -20,7 +20,7 @@ int prob_idosos_efetados;
 
 //variaveis globais
 char texto[500];
-lugarFila = 0;
+int lugarFila = 0;
 int horasIsolamento[] = {72,120,48};
 int casosPositivos = 0; //pessoas que ja testaram positivo
 int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
@@ -41,7 +41,8 @@ int sockfd = 0;
 
 
 int main(int argc, char const *argv[])
-{
+{       
+        /*
         if (pthread_mutex_init(&trincoCriaPessoa, NULL) != 0){
                 printf("A inicialização do trinco falhou!");
                 return 1;
@@ -49,14 +50,17 @@ int main(int argc, char const *argv[])
         sem_init(&fila, 0, 40); //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&trincoAtendimento, 1, 2); //podemos atender ate duas pessoas de cada vez
         sem_init(&internadosCentros, 1, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
-        //procurar a explicaçao disto
+        */
+
         sockfd = criarSocket();
-        simulacao(sockfd);
+        char mensagemSocket [] = {"MENSAGEM"};
+        EnviarMensagens(mensagemSocket,sockfd);
         close(sockfd);
         return 1;
 }
+
 //atende uma pessoa de risco (sao prints)
-void AtendimentoPrioridade(struct pessoa *paciente)
+void AtendimentoPrioridade(struct pessoa * paciente)
 {
         //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
         //escrevendo o paciente ID faz o teste
@@ -66,7 +70,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         escreve_ficheiro(texto);
 }
 //atende uma pessoa normal (sao prints)
-void AtendimentoNormal(struct pessoa *paciente)
+void AtendimentoNormal(struct pessoa * paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
@@ -96,7 +100,7 @@ void TestaPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
                 }
                 else //caso a pessoa nao precise de isolamento
                 {
-                        sprint(texto,"O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
+                        sprintf(texto,"O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
                         escreve_ficheiro(texto);
                         casosEmEstudo--;
                 }
@@ -105,9 +109,9 @@ void TestaPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
         {
                 casosPositivos++;
                 paciente->resultadoTeste = true;
-                sprinf(texto,"O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
+                sprintf(texto,"O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
                 escreve_ficheiro(texto);
-                sem_wait(&internadosCentros);
+                //sem_wait(&internadosCentros);
                 casosEmEstudo--;
         }
 }
@@ -126,28 +130,28 @@ void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
                 {
                         if(paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                         {
-                                sem_wait(&trincoAtendimento); 
+                                //sem_wait(&trincoAtendimento); 
                                 casosEmEstudo++;
                                 AtendimentoPrioridade(&paciente);
-                                sem_post(&trincoAtendimento);
-                                sem_post(&fila);
+                                //sem_post(&trincoAtendimento);
+                                //sem_post(&fila);
                         }
                         else //caso nao seja paciente de risco (nao tem prioridade)
                         {
                                 casosEmEstudo++;
-                                sem_wait(&trincoAtendimento);
+                                //sem_wait(&trincoAtendimento);
                                 AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
-                                sem_post(&trincoAtendimento);
-                                sem_post(&fila);
+                                //sem_post(&trincoAtendimento);
+                                //sem_post(&fila);
                         }
                 }
         }
         else //remove alguem da fila caso o paciente tenha desistido
         {
                 desistenciasTotais++;
-                sprint(texto,"O utilizador %i desistiu da fila", paciente->id);
+                sprintf(texto,"O utilizador %i desistiu da fila", paciente->id);
                 escreve_ficheiro(texto);
-                sem_post(&fila);
+                //sem_post(&fila);
         }        
 }
 
@@ -366,7 +370,7 @@ void *Pessoa(void *ptr)
         pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez 
         struct pessoa person = criaPessoa();
         //fila(&person);    
-        sem_wait(&fila);
+        //sem_wait(&fila);
         pthread_mutex_unlock(&trincoCriaPessoa); 
         return NULL;                                                                                                              
 
