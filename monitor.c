@@ -100,7 +100,7 @@ void criaServidor () {
 
     //Criação do processo filho
     int pid;
-    if ((pid = fork()) != 0) {
+    if ((pid = fork()) < 0) {
         printf ("Erro na criação do processo filho! \n");         //Erro na criacao do processo filho
     }else if (pid == 0) {                                       //Processo filho irá tratar das sucessivas leituras e fecha o socket do processo pai
         close(sockfd);
@@ -117,8 +117,8 @@ int main(int argc, char const * argv[]){
     printf ( "       Comecar simulacao          \n" );                  //Menu
     printf ( "################################# \n" );              //Menu
 
-    criaServidor();                                         //Cria o servidor   
 
+    criaServidor();  //Cria o servidor  
     
     return 0;
 }

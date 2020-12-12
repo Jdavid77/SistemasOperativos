@@ -53,8 +53,9 @@ int main(int argc, char const *argv[])
         */
 
         sockfd = criarSocket();
-        char mensagemSocket [] = {"MENSAGEM"};
+        char mensagemSocket [] = {"hey it works\n"};
         EnviarMensagens(mensagemSocket,sockfd);
+        escreve_ficheiro(mensagemSocket);
         close(sockfd);
         return 1;
 }
