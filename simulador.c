@@ -289,7 +289,7 @@ int escreve_ficheiro(char texto2[])
 //Cria Pessoa
 struct pessoa criaPessoa()
 {       
-        //pthread_mutex_lock(&criarPessoa); //tranca o trinco no inicio da funçao de criar pessoa pois so podemos criar 1 pessoa de cada vez
+        pthread_mutex_lock(&trincoCriaPessoa); //tranca o trinco 
         int desistiu = rand() % 1;
         struct pessoa paciente;
         paciente.id = rand() % 1000;
@@ -306,18 +306,20 @@ struct pessoa criaPessoa()
         paciente.isolamento = false;
         paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         paciente.resultadoTeste = false;
-        //pthread_mutext_unlock(&criarPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
+        
         sprintf(texto,"Chegou o utilizador %i", paciente.id);
         escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
         //paciente.tempoEntradaInternamento;
         //paciente.tempoSaidaInternamento
         //criar probabilidades para tratar dos booleanos
+
+        pthread_mutext_unlock(&trincoCriaPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
 }
 
 
 //cria fila
-/*struct fila criaFila(pessoa *paciente)
+struct fila criaFila(struct pessoa *paciente)
 {
         bool atendidaJa; //variavel para verificar se o paciente deve ser atendido ja ou nao
         struct fila f;
@@ -349,7 +351,7 @@ struct pessoa criaPessoa()
         f.numDesistenciasNormal = 0;
         f.numDesistenciasRisco = 0; //vai incrementando durante a simulação à medida que vao saindo
         //f.tempoMedioEspera criar funcao para tratar dos tempos de espera
-}*/
+}
 
 //Cria Centro de Teste
 struct centroDeTeste criaCentroDeTeste()
@@ -366,14 +368,15 @@ struct centroDeTeste criaCentroDeTeste()
 
 
 //Tarefa Pessoa
-void *Pessoa(void *ptr)
+void Pessoa(void *ptr)
 {
         pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez 
         struct pessoa person = criaPessoa();
+        //########### necessario colocar a pessoa na fila de espera 
         //fila(&person);    
         //sem_wait(&fila);
         pthread_mutex_unlock(&trincoCriaPessoa); 
-        return NULL;                                                                                                              
+                                                                                                                     
 
 }
 
@@ -412,10 +415,16 @@ int criarSocket(){
 
 //envia mensagens entre servidor e cliente
 void EnviarMensagens(char * t, int sockfd){
+        
+        //###########fecha o trinco###########
+        
         char mensagem[TamLinha];
         //copiar para dentro do buffer a mensagem
         strcpy(mensagem,t); //recebe o array e mensagem
         write(sockfd,mensagem,strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
+
+        //###########abre o trinco ###########
+
 }
 
 

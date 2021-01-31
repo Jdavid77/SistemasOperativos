@@ -4,7 +4,7 @@ int fimSimulacao = 0;
 /* Escrever no ficheiro E no monitor */
 int escreve_monitor_ficheiro(char texto[]){
                 FILE *fp;
-                fp = fopen("ficheiro_teste.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
+                fp = fopen("monitor.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
                 if(fp == NULL){ // Verifica se o ficheiro existe
                         printf("Erro ao abrir o ficheiro");
                 }
@@ -38,7 +38,9 @@ void mostraInformacao(){
     char textoMonitor[TamLinha];
 
     //centro de Teste
-    escreve_monitor_ficheiro("--------Centro de Teste--------\n");
+    escreve_monitor_ficheiro("#####################################\n");
+    escreve_monitor_ficheiro("########## Centro de Teste ##########\n");
+    escreve_monitor_ficheiro("#####################################\n");
 
         //Casos em estudo
         //numero de casos positivos
@@ -50,7 +52,7 @@ void mostraInformacao(){
 
 }
 
-
+//leitura das mensagens
 void LerMensagemSimulador(int sockfd){
     char buffer[TamLinha]; //cria um buffer com tamanho 1024
     read(sockfd,buffer,TamLinha); //le a mensagem do socket e guarda
