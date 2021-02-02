@@ -1,5 +1,6 @@
 #include "bibliotecas_estruturas.h"
 
+
 int fimSimulacao = 0;
 /* Escrever no ficheiro E no monitor */
 int escreve_monitor_ficheiro(char texto[]){
@@ -41,13 +42,15 @@ void mostraInformacao(){
     escreve_monitor_ficheiro("#####################################\n");
     escreve_monitor_ficheiro("########## Centro de Teste ##########\n");
     escreve_monitor_ficheiro("#####################################\n");
-
-        //Casos em estudo
-        //numero de casos positivos
-        //quantas pessoas já desistiram
-        //quantidade de internados
-        //tempos médios 
-        //probabilidades
+    sprintf(textoMonitor,"Número de casos em estudo: %i" ,casosEmEstudo);
+    escreve_monitor_ficheiro(textoMonitor);
+    sprintf(textoMonitor,"Número de casos positivos: %i" ,casosPositivos);
+    escreve_monitor_ficheiro(textoMonitor);
+    sprintf(textoMonitor,"Número de desistências: %i" ,desistenciasTotais);
+    escreve_monitor_ficheiro(textoMonitor);
+    
+    //quantidade de internados
+    //tempos médios 
         
 
 }

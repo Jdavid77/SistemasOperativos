@@ -20,14 +20,7 @@ int prob_idosos_efetados;
 int prob_risco_infetado;
 int prob_ser_de_risco;
 
-//variaveis globais
 char texto[500];
-int lugarFila = 0;
-int horasIsolamento[] = {72,120,48};
-int casosPositivos = 0; //pessoas que ja testaram positivo
-int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
-int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
-int id_pessoa;
 
 //trincos
 pthread_mutex_t trincoCriaPessoa;
@@ -45,7 +38,7 @@ int sockfd = 0;
 
 int main(int argc, char const *argv[])
 {       
-        /*
+        
         if (pthread_mutex_init(&trincoCriaPessoa, NULL) != 0){
                 printf("A inicialização do trinco falhou!");
                 return 1;
@@ -53,12 +46,12 @@ int main(int argc, char const *argv[])
         sem_init(&fila, 0, 40); //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&trincoAtendimento, 1, 2); //podemos atender ate duas pessoas de cada vez
         sem_init(&internadosCentros, 1, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
-        */
+        
 
         sockfd = criarSocket();
-        char mensagemSocket [] = {"hey it works\n"};
-        EnviarMensagens(mensagemSocket,sockfd);
-        escreve_ficheiro(mensagemSocket);
+        //char mensagemSocket [] = {"hey it works\n"};
+        //EnviarMensagens(mensagemSocket,sockfd);
+        //escreve_ficheiro(mensagemSocket);
         close(sockfd);
         return 1;
 }
@@ -108,7 +101,7 @@ void TestaPessoa(struct pessoa *paciente)
                 }
 
         }
-        if(paciente->idade < 60 and paciente->idade >= 18)//caso seja um adulto
+        if(paciente->idade < 60 && paciente->idade >= 18)//caso seja um adulto
         {
                 //verifica atraves da probabilidade se a pessoa esta infetada ou nao
                 if(infetado_adulto > prob_adultos_efetados)
@@ -174,6 +167,7 @@ void TestaPessoa(struct pessoa *paciente)
         }
 }
 
+//pessoa realiza o teste
 void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
 {
         //usar semaforos para tratar da fila(uma fila é um semaforo)
@@ -209,7 +203,8 @@ void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
                 sprintf(texto,"O utilizador %i desistiu da fila", paciente->id);
                 escreve_ficheiro(texto);
                 sem_post(&fila);
-        }        
+        } 
+             
 }
 
 void leConfigura() //é preciso colocar o valores_configura como global?Iremos necessitar desses dados para outras funçoes?
@@ -336,7 +331,7 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
 int escreve_ficheiro(char texto2[])
 {
         FILE *fp;
-        fp = fopen("ficheiro_simulador.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
+        fp = fopen("simulador.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
         if(fp == NULL){ 
                 printf("Erro ao abrir o ficheiro");
         }
@@ -405,6 +400,7 @@ struct pessoa criaPessoa()
 
 
 //cria fila
+/**
 struct fila criaFila(struct pessoa *paciente)
 {
         bool atendidaJa; //variavel para verificar se o paciente deve ser atendido ja ou nao
@@ -437,7 +433,7 @@ struct fila criaFila(struct pessoa *paciente)
         f.numDesistenciasNormal = 0;
         f.numDesistenciasRisco = 0; //vai incrementando durante a simulação à medida que vao saindo
         //f.tempoMedioEspera criar funcao para tratar dos tempos de espera
-}
+}*/
 
 //Cria Centro de Teste
 struct centroDeTeste criaCentroDeTeste()
