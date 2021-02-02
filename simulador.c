@@ -17,6 +17,8 @@ int prob_desistiu_Normal;
 int prob_criancas_efetados;
 int prob_adultos_efetados;
 int prob_idosos_efetados;
+int prob_risco_infetado;
+int prob_ser_de_risco;
 
 //variaveis globais
 char texto[500];
@@ -25,6 +27,7 @@ int horasIsolamento[] = {72,120,48};
 int casosPositivos = 0; //pessoas que ja testaram positivo
 int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
 int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
+int id_pessoa;
 
 //trincos
 pthread_mutex_t trincoCriaPessoa;
@@ -69,6 +72,8 @@ void AtendimentoPrioridade(struct pessoa * paciente)
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
         escreve_ficheiro(texto);
+        usleep(100000);
+        TestaPessoa(&paciente);
 }
 //atende uma pessoa normal (sao prints)
 void AtendimentoNormal(struct pessoa * paciente)
@@ -79,41 +84,93 @@ void AtendimentoNormal(struct pessoa * paciente)
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
         escreve_ficheiro(texto); 
+        usleep(100000);
+        TestaPessoa(&paciente);
 }
 
-void TestaPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
+void TestaPessoa(struct pessoa *paciente)
 {
         //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
         //da o resultado do teste da pessoa sendo que é um random
-        int resTeste = rand() % 1;
-        int isolamento = rand() % 1;
-        if(resTeste == 0) //o teste deu negativo
+        int infetado_crianca = rand() % 101; 
+        int infetado_adulto = rand() % 101;
+        int infetado_idoso = rand() % 101;
+        if(paciente->idade < 18)//caso seja uma criança
         {
-                if(isolamento == 1) //se a pessoa  precisar de isolamento (esteve em contacto com infetados)
+                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                if(infetado_crianca > prob_criancas_efetados)
                 {
-                        paciente->isolamento = true;
-                        //vai ser preciso depois usar isto para o tempo medio de isolamento e tals
-                        //escolhe randomly entre se precisa de 72h,48h ou 120h de isolamento
-                        int tempoIsolamento = horasIsolamento[rand() % 2];
-                        sprintf(texto,"O utilizador %i testou negativo e devera fazer %i horas de isolamento", paciente->id, tempoIsolamento);
-                        escreve_ficheiro(texto);
-                        casosEmEstudo--;
+                        paciente->resultadoTeste = false;
                 }
-                else //caso a pessoa nao precise de isolamento
+                if(infetado_crianca <= prob_criancas_efetados)
                 {
-                        sprintf(texto,"O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
-                        escreve_ficheiro(texto);
-                        casosEmEstudo--;
+                        paciente->resultadoTeste = true;
                 }
+
         }
-        else //caso teste positivo
+        if(paciente->idade < 60 and paciente->idade >= 18)//caso seja um adulto
         {
-                casosPositivos++;
-                paciente->resultadoTeste = true;
-                sprintf(texto,"O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
+                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                if(infetado_adulto > prob_adultos_efetados)
+                {
+                        paciente->resultadoTeste = false;
+                }
+                if(infetado_adulto <= prob_adultos_efetados)
+                {
+                        paciente->resultadoTeste = true;
+                }
+
+        }
+        if(paciente->idade >= 60)//caso seja um idoso
+        {
+                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                if(infetado_idoso > prob_idosos_efetados)
+                {
+                        paciente->resultadoTeste = false;
+                }
+                if(infetado_idoso <= prob_idosos_efetados)
+                {
+                        paciente->resultadoTeste = true;
+                }
+
+        }
+        if(!paciente->resultadoTeste) //o teste deu negativo
+        {
+                paciente->num_testes++;
+                // if(isolamento == 1) //se a pessoa  precisar de isolamento (esteve em contacto com infetados)
+                // {
+                //         paciente->isolamento = true;
+                //         //vai ser preciso depois usar isto para o tempo medio de isolamento e tals
+                //         //escolhe randomly entre se precisa de 72h,48h ou 120h de isolamento
+                //         int tempoIsolamento = horasIsolamento[rand() % 2];
+                //         sprintf(texto,"O utilizador %i testou negativo e devera fazer %i horas de isolamento", paciente->id, tempoIsolamento);
+                //         escreve_ficheiro(texto);
+                //         casosEmEstudo--;
+                // }
+                // else //caso a pessoa nao precise de isolamento
+                // {
+                sprintf(texto,"O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
                 escreve_ficheiro(texto);
-                //sem_wait(&internadosCentros);
                 casosEmEstudo--;
+                // }
+        }
+        if(paciente->resultadoTeste) //caso teste positivo
+        {
+                paciente->num_testes++;
+                casosPositivos++;
+                if(paciente->prioridade == 1)//caso tenha prioridade (for um caso de risco)
+                {
+                        sprintf(texto,"O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
+                        escreve_ficheiro(texto);
+                        sem_wait(&internadosCentros); //ocupa um lugar no internamento
+                        casosEmEstudo--;
+                }
+                if(paciente->prioridade == 0)//caso nao tenha prioridade
+                {
+                        sprintf(texto,"O utilizador %i testou positivo para Covid-19 e vai para isolamento durante 72h", paciente->id);
+                        escreve_ficheiro(texto);
+                        casosEmEstudo--;
+                }
         }
 }
 
@@ -124,26 +181,25 @@ void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
         //caso nao tenha prioridade atendemos um paciente na fila (libertamos um espaço do semaforo)
         //smp que atendemos um paciente damos o output que este foi atendido/fez o teste (atençao de usar trincos aqi pois so podemos atender 1 pessoa de cada vez por centro)
         //apos ser atendido temos que chamar uma funçao que trata do resultado do teste
-        int desistiu = rand() % 1; //a pessoa desistiu da fila?
         if(paciente->desistiuFila == false) //se o paciente nao desistiu da fila
         {
                 if(paciente->centroTeste == centro->id) //caso a pessoa esteja neste centro de teste
                 {
                         if(paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                         {
-                                //sem_wait(&trincoAtendimento); 
+                                sem_wait(&trincoAtendimento); 
                                 casosEmEstudo++;
                                 AtendimentoPrioridade(&paciente);
-                                //sem_post(&trincoAtendimento);
-                                //sem_post(&fila);
+                                sem_post(&trincoAtendimento);
+                                sem_post(&fila);
                         }
                         else //caso nao seja paciente de risco (nao tem prioridade)
                         {
                                 casosEmEstudo++;
-                                //sem_wait(&trincoAtendimento);
+                                sem_wait(&trincoAtendimento);
                                 AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
-                                //sem_post(&trincoAtendimento);
-                                //sem_post(&fila);
+                                sem_post(&trincoAtendimento);
+                                sem_post(&fila);
                         }
                 }
         }
@@ -152,7 +208,7 @@ void trataPessoa(struct pessoa *paciente, struct centroDeTeste *centro)
                 desistenciasTotais++;
                 sprintf(texto,"O utilizador %i desistiu da fila", paciente->id);
                 escreve_ficheiro(texto);
-                //sem_post(&fila);
+                sem_post(&fila);
         }        
 }
 
@@ -198,29 +254,34 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
                                 printf("Introduziu um valor incorreto na linha 2, o maximo de pessoas que podem estar a ser testadas é 10");
                                 erro = 1;
                         }
+                        // else if (valores_configura[2] < 0)
+                        // {
+                        //         printf("Introduziu um valor negativo na linha 3, o numero medio de testes por pessoa tem que ser maior que 0");
+                        //         erro = 1;
+                        // }
                         else if (valores_configura[2] < 0)
                         {
-                                printf("Introduziu um valor negativo na linha 3, o numero medio de testes por pessoa tem que ser maior que 0");
+                                printf("Introduziu um valor negativo na linha 3, a idade media para casos positivos tem que ser maior que 0");
                                 erro = 1;
                         }
                         else if (valores_configura[3] < 0)
                         {
-                                printf("Introduziu um valor negativo na linha 4, a idade media para casos positivos tem que ser maior que 0");
+                                printf("Introduziu um valor negativo na linha 4, o numero de pessoas de risco na fila tem que ser >= 0");
                                 erro = 1;
                         }
                         else if (valores_configura[4] < 0)
                         {
-                                printf("Introduziu um valor negativo na linha 5, o numero de pessoas de risco na fila tem que ser >= 0");
+                                printf("Introduziu um valor negativo na linha 5, o numero de pessoas normais na fila tem que ser >= 0");
                                 erro = 1;
                         }
-                        else if (valores_configura[5] < 0)
+                        else if (valores_configura[5] <= 0)//maximo por defenir
                         {
-                                printf("Introduziu um valor negativo na linha 6, o numero de pessoas normais na fila tem que ser >= 0");
+                                printf("Introduziu um valor invalido na linha 6, por favor volte a tentar");
                                 erro = 1;
                         }
-                        else if (valores_configura[6] <= 0)//maximo por defenir
+                        else if (valores_configura[6] < 0 || valores_configura[6] > 100)
                         {
-                                printf("Introduziu um valor invalido na linha 7, por favor volte a tentar");
+                                printf("Introduziu um valor incorreto na linha 7, a probablidade tem que variar entre 0 e 100");
                                 erro = 1;
                         }
                         else if (valores_configura[7] < 0 || valores_configura[7] > 100)
@@ -228,9 +289,9 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
                                 printf("Introduziu um valor incorreto na linha 8, a probablidade tem que variar entre 0 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[8] < 0 || valores_configura[8] > 100)
+                        else if (valores_configura[8] < 1 || valores_configura[8] > 100)
                         {
-                                printf("Introduziu um valor incorreto na linha 9, a probablidade tem que variar entre 0 e 100");
+                                printf("Introduziu um valor incorreto na linha 9, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
                         }
                         else if (valores_configura[9] < 1 || valores_configura[9] > 100)
@@ -242,7 +303,7 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
                         {
                                 printf("Introduziu um valor incorreto na linha 11, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
-                        }
+                        } 
                         else if (valores_configura[11] < 1 || valores_configura[11] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 12, a probablidade tem que variar entre 1 e 100");
@@ -290,30 +351,55 @@ int escreve_ficheiro(char texto2[])
 struct pessoa criaPessoa()
 {       
         pthread_mutex_lock(&trincoCriaPessoa); //tranca o trinco 
-        int desistiu = rand() % 1;
+        int desistiu = rand() % 101;
         struct pessoa paciente;
-        paciente.id = rand() % 1000;
+        paciente.id = id_pessoa;
+        id_pessoa++;
         paciente.centroTeste = (rand() % 1 ) + 1;
         paciente.idade = (rand() % 100) + 1;
-        if(desistiu == 0)
+        int ser_risco = rand() % 101;
+        if(paciente.prioridade == 0) // caso nao tenha prioridade
         {
-                paciente.desistiuFila = false;
+                if(desistiu > prob_desistiu_Normal)
+                {
+                        paciente.desistiuFila = false;
+                }
+                else if (desistiu <= prob_desistiu_Normal)
+                {
+                        paciente.desistiuFila = true;
+                }
         }
-        else if (desistiu == 1)
+        if(paciente.prioridade == 1)//caso tenha prioridade
         {
-                paciente.desistiuFila = true;
+                if(desistiu > prob_desistiu_Risco)
+                {
+                        paciente.desistiuFila = false;
+                }
+                else if (desistiu <= prob_desistiu_Risco)
+                {
+                        paciente.desistiuFila = true;
+                }
         }
+        //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
+        if(ser_risco > prob_ser_de_risco)
+        {
+                paciente.prioridade = 1;
+        }
+        if(ser_risco <= prob_ser_de_risco)
+        {
+                paciente.prioridade = 0;
+        }
+        paciente.num_testes = 0;
         paciente.isolamento = false;
-        paciente.prioridade = rand() % 1; //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         paciente.resultadoTeste = false;
-        
+        usleep(100000);
         sprintf(texto,"Chegou o utilizador %i", paciente.id);
         escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
         //paciente.tempoEntradaInternamento;
         //paciente.tempoSaidaInternamento
         //criar probabilidades para tratar dos booleanos
-
+        return paciente;
         pthread_mutext_unlock(&trincoCriaPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
 }
 

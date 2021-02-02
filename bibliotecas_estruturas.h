@@ -16,6 +16,7 @@
 struct pessoa  
 {
     int id;
+    int num_testes;
     int idade; 
     int prioridade;
     bool resultadoTeste;

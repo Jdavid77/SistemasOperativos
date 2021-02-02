@@ -9,3 +9,4 @@
 0   = probabilidade de estar efetado sendo crianca
 0   = probabilidade de estar efetado sendo adulto
 0   = probabilidade de estar efetado sendo idoso
+0   = probabilidade de ser uma pessoa de risco
