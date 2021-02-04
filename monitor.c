@@ -52,7 +52,6 @@ void mostraInformacao(){
     //quantidade de internados
     //tempos médios 
         
-
 }
 
 //leitura das mensagens

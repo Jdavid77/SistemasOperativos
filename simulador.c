@@ -204,10 +204,10 @@ void trataPessoa(struct pessoa *paciente)
         }
 }
 
-void leConfigura() //é preciso colocar o valores_configura como global?Iremos necessitar desses dados para outras funçoes?
+void leConfigura() 
 {
         int erro = 1;
-#define MAXSIZE 512
+        #define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
         int valores_configura[12];
@@ -357,6 +357,7 @@ int escreve_ficheiro(char texto2[])
 //Cria Pessoa
 struct pessoa criaPessoa()
 {
+        printf("entrou no cria pessoa");
         sem_wait(&trincoCriaPessoa); //tranca o trinco
         int desistiu = rand() % 101;
         struct pessoa paciente;
@@ -365,6 +366,15 @@ struct pessoa criaPessoa()
         paciente.centroTeste = (rand() % 1);
         paciente.idade = (rand() % 100) + 1;
         int ser_risco = rand() % 101;
+        //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
+        if (ser_risco > prob_ser_de_risco)
+        {
+                paciente.prioridade = 1;
+        }
+        if (ser_risco <= prob_ser_de_risco)
+        {
+                paciente.prioridade = 0;
+        }
         if (paciente.prioridade == 0) // caso nao tenha prioridade
         {
                 if (desistiu > prob_desistiu_Normal)
@@ -387,15 +397,7 @@ struct pessoa criaPessoa()
                         paciente.desistiuFila = true;
                 }
         }
-        //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
-        if (ser_risco > prob_ser_de_risco)
-        {
-                paciente.prioridade = 1;
-        }
-        if (ser_risco <= prob_ser_de_risco)
-        {
-                paciente.prioridade = 0;
-        }
+        
         paciente.num_testes = 0;
         paciente.isolamento = false;
         paciente.resultadoTeste = false;
@@ -463,9 +465,12 @@ struct centroDeTeste criaCentroDeTeste(int idCentro)
 //Tarefa Pessoa
 void Pessoa(void *ptr)
 {
+        printf("entrou na PESSOA");
         //pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez
         sem_wait(&trincoCriaPessoa);
+        printf ("criou o semaforo na PESSOA");
         struct pessoa person = criaPessoa();
+        printf("teste2");
         sem_post(&trincoCriaPessoa);
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
@@ -534,14 +539,21 @@ void simula(int sockfd)
         for (int i = 0; i < num_pessoas_simulacao; i++)
         {
                 pthread_create(&id_tarefa_pessoa[i], NULL, Pessoa, NULL);
+                //sprintf(texto,"pessoa %i" );
+                //escreve_ficheiro(texto);
         }
+        printf("criou tarefa pessoa");
+        
+        
         for (int i = 0; i < num_pessoas_simulacao; i++)
         {
-                pthread_join(&id_tarefa_pessoa[i], NULL);
+                pthread_join(id_tarefa_pessoa[i], NULL);
         }
+
 }
 void inicializa()
 {
+        printf("entrou no inicializa");
         sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&semaAtendimento, 0, 2);        //podemos atender ate duas pessoas de cada vez
         sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)

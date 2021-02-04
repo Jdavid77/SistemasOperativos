@@ -1,69 +1,6 @@
 #####################################
 ########## Centro de Teste ##########
 #####################################
-Número de casos em estudo: 0Número de casos positivos: 0Número de desistências: 0#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
-Número de casos em estudo: 0
-Número de casos positivos: 0
-Número de desistências: 0
-#####################################
-########## Centro de Teste ##########
-#####################################
 Número de casos em estudo: 0
 Número de casos positivos: 0
 Número de desistências: 0
