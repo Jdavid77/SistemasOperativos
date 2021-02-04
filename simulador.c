@@ -8,6 +8,7 @@ int idade_media_casos_positivos;
 int num_pessoas_risco;
 int num_pessoas_normal;
 int num_pessoas_simulacao;
+double temposimulacao;
 
 //Probalidades
 int prob_desistiu_Risco;
@@ -31,6 +32,8 @@ sem_t semainternadosCentros; //numero de internados num centro
 sem_t trincoEnviamensagem;
 sem_t trincoCriaPessoa;
 sem_t trincoTarefaPessoa;
+
+
 
 //Sockets
 int sockfd = 0;
@@ -60,7 +63,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         sem_post(&semaAtendimento);
         sem_post(&semafila);
         //usleep(100000);
-        TestaPessoa(&paciente);
+        TestaPessoa(paciente);
 }
 //atende uma pessoa normal (sao prints)
 void AtendimentoNormal(struct pessoa *paciente)
@@ -85,7 +88,7 @@ void AtendimentoNormal(struct pessoa *paciente)
         sem_post(&semaAtendimento);
         sem_post(&semafila);
         usleep(100000);
-        TestaPessoa(&paciente);
+        TestaPessoa(paciente);
 }
 
 void TestaPessoa(struct pessoa *paciente)
@@ -191,8 +194,8 @@ void trataPessoa(struct pessoa *paciente)
                 {
                         sem_wait(&semaAtendimento);
                         casosEmEstudo++;
-                        //AtendimentoPrioridade(&paciente);
-                        sprintf(texto, "O paciente %i foi atendido com prioridade \n", paciente->id);
+                        AtendimentoPrioridade(paciente);
+                        /*sprintf(texto, "O paciente %i foi atendido com prioridade \n", paciente->id);
                         printf(texto);
                         escreve_ficheiro(texto);
                         sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
@@ -209,11 +212,11 @@ void trataPessoa(struct pessoa *paciente)
                         }
                         sem_post(&semaAtendimento);
                         sem_post(&semafila);
-                        usleep(100000);
+                        usleep(100000);*/
                         //TestaPessoa(&paciente);
                         //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
                         //da o resultado do teste da pessoa sendo que é um random
-                        int infetado_crianca = rand() % 101;
+                        /*int infetado_crianca = rand() % 101;
                         int infetado_adulto = rand() % 101;
                         int infetado_idoso = rand() % 101;
 
@@ -293,14 +296,14 @@ void trataPessoa(struct pessoa *paciente)
                                         escreve_ficheiro(texto);
                                         casosEmEstudo--;
                                 }
-                        }
+                        }*/
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
                 {
                         casosEmEstudo++;
                         sem_wait(&semaAtendimento);
-                        //AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
-                        sprintf(texto, "O paciente %i foi atendido \n", paciente->id);
+                        AtendimentoNormal(paciente); //atende a pessoa e faz o seu teste
+                        /*sprintf(texto, "O paciente %i foi atendido \n", paciente->id);
                         printf(texto);
                         escreve_ficheiro(texto);
                         sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
@@ -316,11 +319,11 @@ void trataPessoa(struct pessoa *paciente)
                         }
                         sem_post(&semaAtendimento);
                         sem_post(&semafila);
-                        usleep(100000);
+                        usleep(100000);*/
                         //TestaPessoa(&paciente);
                         //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
                         //da o resultado do teste da pessoa sendo que é um random
-                        int infetado_crianca = rand() % 101;
+                        /*int infetado_crianca = rand() % 101;
                         int infetado_adulto = rand() % 101;
                         int infetado_idoso = rand() % 101;
 
@@ -400,7 +403,7 @@ void trataPessoa(struct pessoa *paciente)
                                         escreve_ficheiro(texto);
                                         casosEmEstudo--;
                                 }
-                        }
+                        }*/
                 }
                 //}
         }
@@ -420,7 +423,7 @@ void leConfigura()
 #define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
-        int valores_configura[12];
+        int valores_configura[13];
         while (erro == 1)
         {
                 erro = 0;
@@ -521,6 +524,7 @@ void leConfigura()
                                 printf("Introduziu um valor incorreto na linha 12, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
                         }
+                        
                 }
                 if (erro == 1)
                 {
@@ -546,6 +550,7 @@ void leConfigura()
         prob_adultos_efetados = valores_configura[9];
         prob_idosos_efetados = valores_configura[10];
         prob_ser_de_risco = valores_configura[11];
+        temposimulacao = valores_configura[12];
 }
 
 int escreve_ficheiro(char texto2[])
@@ -745,6 +750,8 @@ void EnviarMensagens(char *t, int sockfd)
 
 void simula(int sockfd)
 {
+        
+        
         //srand(time(NULL));
         inicializa();
         //cria as tarefas pessoa
