@@ -42,11 +42,11 @@ void mostraInformacao(){
     escreve_monitor_ficheiro("#####################################\n");
     escreve_monitor_ficheiro("########## Centro de Teste ##########\n");
     escreve_monitor_ficheiro("#####################################\n");
-    sprintf(textoMonitor,"Número de casos em estudo: %i" ,casosEmEstudo);
+    sprintf(textoMonitor,"Número de casos em estudo: %i\n" ,casosEmEstudo);
     escreve_monitor_ficheiro(textoMonitor);
-    sprintf(textoMonitor,"Número de casos positivos: %i" ,casosPositivos);
+    sprintf(textoMonitor,"Número de casos positivos: %i\n" ,casosPositivos);
     escreve_monitor_ficheiro(textoMonitor);
-    sprintf(textoMonitor,"Número de desistências: %i" ,desistenciasTotais);
+    sprintf(textoMonitor,"Número de desistências: %i\n" ,desistenciasTotais);
     escreve_monitor_ficheiro(textoMonitor);
     
     //quantidade de internados
@@ -122,8 +122,21 @@ int main(int argc, char const * argv[]){
     printf ( "       Comecar simulacao          \n" );                  //Menu
     printf ( "################################# \n" );              //Menu
 
+    
+    
 
-    criaServidor();  //Cria o servidor  
+    int opcao = 0; //opcao escolhida pelo utilzador 
+    bool termina = false; 
+    while (!termina) 
+    {
+        //while (opcao !=1)
+        //{
+            //printf("Escolha uma opção: \n");
+            //scanf("%d",&opcao);
+        //}
+        criaServidor();  //Cria o servidor
+        mostraInformacao();  
+    }
     
     return 0;
 }

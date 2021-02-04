@@ -42,16 +42,18 @@ void AtendimentoPrioridade(struct pessoa *paciente)
 {
         //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
         //escrevendo o paciente ID faz o teste
-        
+
         sprintf(texto, "O paciente %i foi atendido com prioridade", paciente->id);
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
         escreve_ficheiro(texto);
 
-        if(paciente->centroTeste == 0) {
+        if (paciente->centroTeste == 0)
+        {
                 pessoasAtendidasCentro0++;
         }
-        if(paciente->centroTeste == 1){
+        if (paciente->centroTeste == 1)
+        {
                 pessoasAtendidasCentro1++;
         }
         sem_post(&semaAtendimento);
@@ -64,15 +66,17 @@ void AtendimentoNormal(struct pessoa *paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
-        
+
         sprintf(texto, "O paciente %i foi atendido", paciente->id);
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
         escreve_ficheiro(texto);
-        if(paciente->centroTeste == 0) {
+        if (paciente->centroTeste == 0)
+        {
                 pessoasAtendidasCentro0++;
         }
-        if(paciente->centroTeste == 1){
+        if (paciente->centroTeste == 1)
+        {
                 pessoasAtendidasCentro1++;
         }
         sem_post(&semaAtendimento);
@@ -88,7 +92,7 @@ void TestaPessoa(struct pessoa *paciente)
         int infetado_crianca = rand() % 101;
         int infetado_adulto = rand() % 101;
         int infetado_idoso = rand() % 101;
-        
+
         if (paciente->idade < 18) //caso seja uma criança
         {
                 //verifica atraves da probabilidade se a pessoa esta infetada ou nao
@@ -181,13 +185,13 @@ void trataPessoa(struct pessoa *paciente)
                 {
                         sem_wait(&semaAtendimento);
                         casosEmEstudo++;
-                        AtendimentoPrioridade(&paciente);     
+                        AtendimentoPrioridade(&paciente);
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
                 {
                         casosEmEstudo++;
                         sem_wait(&semaAtendimento);
-                        AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste       
+                        AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
                 }
                 //}
         }
@@ -202,14 +206,16 @@ void trataPessoa(struct pessoa *paciente)
 
 void leConfigura() //é preciso colocar o valores_configura como global?Iremos necessitar desses dados para outras funçoes?
 {
-        int erro = 0;
-        #define MAXSIZE 512
+        int erro = 1;
+#define MAXSIZE 512
         char linha[MAXSIZE];
+        char configura[] = "server.config";
         int valores_configura[12];
-        while (erro == 0)
+        while (erro == 1)
         {
+                erro = 0;
                 FILE *ficheiro_configura;
-                ficheiro_configura = fopen("server.config", "r"); //Abre o ficheiro no modo de read
+                ficheiro_configura = fopen(configura, "r"); //Abre o ficheiro no modo de read
                 if (ficheiro_configura == NULL)
                 {
                         printf("Erro ao abrir o ficheiro");
@@ -319,7 +325,7 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
         }
         num_centrosTeste = valores_configura[0];
         num_pessoas_a_ser_testadas = valores_configura[1];
-        
+
         idade_media_casos_positivos = valores_configura[2];
         num_pessoas_risco = valores_configura[3];
         num_pessoas_normal = valores_configura[4];
@@ -330,7 +336,6 @@ void leConfigura() //é preciso colocar o valores_configura como global?Iremos n
         prob_adultos_efetados = valores_configura[9];
         prob_idosos_efetados = valores_configura[10];
         prob_ser_de_risco = valores_configura[11];
-
 }
 
 int escreve_ficheiro(char texto2[])
@@ -445,7 +450,7 @@ struct fila criaFila(struct pessoa *paciente)
 struct centroDeTeste criaCentroDeTeste(int idCentro)
 {
         struct centroDeTeste centro;
-        
+
         centro.capacidadeMaxima = 100;
         centro.id = idCentro;
         centro.capacidaMaximaInternamento = 60;
@@ -454,7 +459,6 @@ struct centroDeTeste criaCentroDeTeste(int idCentro)
         centro.tempoMaximoIsolamento = 30;
         //centro.tempoMedioIsolamento é calculado
 };
-
 
 //Tarefa Pessoa
 void Pessoa(void *ptr)
@@ -512,25 +516,41 @@ void EnviarMensagens(char *t, int sockfd)
 {
 
         //###########fecha o trinco###########
-
+        sem_wait(&trincoEnviamensagem);
         char mensagem[TamLinha];
         //copiar para dentro do buffer a mensagem
         strcpy(mensagem, t);                       //recebe o array e mensagem
         write(sockfd, mensagem, strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
 
         //###########abre o trinco ###########
+        sem_post(&trincoEnviamensagem);
 }
 
-void simula(int sockfd){
-        
+void simula(int sockfd)
+{
+        srand(time(NULL));
+        inicializa();
+        //cria as tarefas pessoa
         for (int i = 0; i < num_pessoas_simulacao; i++)
         {
-               pthread_create(i,NULL, Pessoa, NULL); 
+                pthread_create(&id_tarefa_pessoa[i], NULL, Pessoa, NULL);
         }
-        
-        
+        for (int i = 0; i < num_pessoas_simulacao; i++)
+        {
+                pthread_join(&id_tarefa_pessoa[i], NULL);
+        }
 }
-
+void inicializa()
+{
+        sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semaAtendimento, 0, 2);        //podemos atender ate duas pessoas de cada vez
+        sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
+        sem_init(&trincoCriaPessoa, 0, 1);
+        sem_init(&trincoEnviamensagem, 0, 1);
+        leConfigura();
+        criaCentroDeTeste(0);
+        criaCentroDeTeste(1);
+}
 
 int main(int argc, char const *argv[])
 {
@@ -539,18 +559,11 @@ int main(int argc, char const *argv[])
         //printf("A inicialização do trinco falhou!");
         //return 1;
         //}
-        sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
-        sem_init(&semaAtendimento, 0, 2);        //podemos atender ate duas pessoas de cada vez
-        sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
-        //sem_ini(&enviamensagem,)
-        sem_init(&trincoCriaPessoa, 0, 1);
-
+        
+        
         sockfd = criarSocket();
         simula(sockfd);
-        
-        leConfigura();
-        criaCentroDeTeste(0);
-        criaCentroDeTeste(1);
+
         //char mensagemSocket [] = {"hey it works\n"};
         //EnviarMensagens(mensagemSocket,sockfd);
         //escreve_ficheiro(mensagemSocket);
