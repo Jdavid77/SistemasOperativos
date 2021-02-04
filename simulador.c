@@ -30,6 +30,7 @@ sem_t semaAtendimento;       //tranca o atendimento do centro1
 sem_t semainternadosCentros; //numero de internados num centro
 sem_t trincoEnviamensagem;
 sem_t trincoCriaPessoa;
+sem_t trincoTarefaPessoa;
 
 //Sockets
 int sockfd = 0;
@@ -467,11 +468,11 @@ void Pessoa(void *ptr)
 {
         printf("entrou na PESSOA");
         //pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez
-        sem_wait(&trincoCriaPessoa);
+        sem_wait(&trincoTarefaPessoa);
         printf ("criou o semaforo na PESSOA");
         struct pessoa person = criaPessoa();
         printf("teste2");
-        sem_post(&trincoCriaPessoa);
+        sem_post(&trincoTarefaPessoa);
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
         sem_wait(&semafila);
@@ -559,6 +560,7 @@ void inicializa()
         sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
         sem_init(&trincoCriaPessoa, 0, 1);
         sem_init(&trincoEnviamensagem, 0, 1);
+        sem_init(&trincoTarefaPessoa,0,1);
         leConfigura();
         criaCentroDeTeste(0);
         criaCentroDeTeste(1);
