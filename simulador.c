@@ -44,9 +44,9 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
         //escrevendo o paciente ID faz o teste
 
-        sprintf(texto, "O paciente %i foi atendido com prioridade", paciente->id);
+        sprintf(texto, "O paciente %i foi atendido com prioridade \n", paciente->id);
         escreve_ficheiro(texto);
-        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+        sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
         escreve_ficheiro(texto);
 
         if (paciente->centroTeste == 0)
@@ -59,7 +59,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         }
         sem_post(&semaAtendimento);
         sem_post(&semafila);
-        usleep(100000);
+        //usleep(100000);
         TestaPessoa(&paciente);
 }
 //atende uma pessoa normal (sao prints)
@@ -68,9 +68,11 @@ void AtendimentoNormal(struct pessoa *paciente)
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
 
-        sprintf(texto, "O paciente %i foi atendido", paciente->id);
+        sprintf(texto, "O paciente %i foi atendido \n", paciente->id);
+        
         escreve_ficheiro(texto);
-        sprintf(texto, "O paciente %i fez o teste", paciente->id); //o resultado do teste sera posto no centro nao?
+        sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
+        
         escreve_ficheiro(texto);
         if (paciente->centroTeste == 0)
         {
@@ -145,7 +147,8 @@ void TestaPessoa(struct pessoa *paciente)
                 // }
                 // else //caso a pessoa nao precise de isolamento
                 // {
-                sprintf(texto, "O utilizador %i testou negativo e foi encaminhado para casa", paciente->id);
+                sprintf(texto, "O utilizador %i testou negativo e foi encaminhado para casa \n", paciente->id);
+                printf(texto);
                 escreve_ficheiro(texto);
                 casosEmEstudo--;
                 // }
@@ -156,14 +159,16 @@ void TestaPessoa(struct pessoa *paciente)
                 casosPositivos++;
                 if (paciente->prioridade == 1) //caso tenha prioridade (for um caso de risco)
                 {
-                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai ser internado", paciente->id);
+                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai ser internado \n", paciente->id);
+                        printf(texto);
                         escreve_ficheiro(texto);
                         sem_wait(&semainternadosCentros); //ocupa um lugar no internamento
                         casosEmEstudo--;
                 }
                 if (paciente->prioridade == 0) //caso nao tenha prioridade
                 {
-                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai para isolamento durante 72h", paciente->id);
+                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai para isolamento durante 72h \n", paciente->id);
+                        printf(texto);
                         escreve_ficheiro(texto);
                         casosEmEstudo--;
                 }
@@ -186,29 +191,233 @@ void trataPessoa(struct pessoa *paciente)
                 {
                         sem_wait(&semaAtendimento);
                         casosEmEstudo++;
-                        AtendimentoPrioridade(&paciente);
+                        //AtendimentoPrioridade(&paciente);
+                        sprintf(texto, "O paciente %i foi atendido com prioridade \n", paciente->id);
+                        printf(texto);
+                        escreve_ficheiro(texto);
+                        sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
+                        printf(texto);
+                        escreve_ficheiro(texto);
+
+                        if (paciente->centroTeste == 0)
+                        {
+                                pessoasAtendidasCentro0++;
+                        }
+                        if (paciente->centroTeste == 1)
+                        {
+                                pessoasAtendidasCentro1++;
+                        }
+                        sem_post(&semaAtendimento);
+                        sem_post(&semafila);
+                        usleep(100000);
+                        //TestaPessoa(&paciente);
+                        //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
+                        //da o resultado do teste da pessoa sendo que é um random
+                        int infetado_crianca = rand() % 101;
+                        int infetado_adulto = rand() % 101;
+                        int infetado_idoso = rand() % 101;
+
+                        if (paciente->idade < 18) //caso seja uma criança
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_crianca > prob_criancas_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_crianca <= prob_criancas_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (paciente->idade < 60 && paciente->idade >= 18) //caso seja um adulto
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_adulto > prob_adultos_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_adulto <= prob_adultos_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (paciente->idade >= 60) //caso seja um idoso
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_idoso > prob_idosos_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_idoso <= prob_idosos_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (!paciente->resultadoTeste) //o teste deu negativo
+                        {
+                                paciente->num_testes++;
+                                // if(isolamento == 1) //se a pessoa  precisar de isolamento (esteve em contacto com infetados)
+                                // {
+                                //         paciente->isolamento = true;
+                                //         //vai ser preciso depois usar isto para o tempo medio de isolamento e tals
+                                //         //escolhe randomly entre se precisa de 72h,48h ou 120h de isolamento
+                                //         int tempoIsolamento = horasIsolamento[rand() % 2];
+                                //         sprintf(texto,"O utilizador %i testou negativo e devera fazer %i horas de isolamento", paciente->id, tempoIsolamento);
+                                //         escreve_ficheiro(texto);
+                                //         casosEmEstudo--;
+                                // }
+                                // else //caso a pessoa nao precise de isolamento
+                                // {
+                                sprintf(texto, "O utilizador %i testou negativo e foi encaminhado para casa \n", paciente->id);
+                                printf(texto);
+                                escreve_ficheiro(texto);
+                                casosEmEstudo--;
+                                // }
+                        }
+                        if (paciente->resultadoTeste) //caso teste positivo
+                        {
+                                paciente->num_testes++;
+                                casosPositivos++;
+                                if (paciente->prioridade == 1) //caso tenha prioridade (for um caso de risco)
+                                {
+                                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai ser internado \n", paciente->id);
+                                        printf(texto);
+                                        escreve_ficheiro(texto);
+                                        sem_wait(&semainternadosCentros); //ocupa um lugar no internamento
+                                        casosEmEstudo--;
+                                }
+                                if (paciente->prioridade == 0) //caso nao tenha prioridade
+                                {
+                                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai para isolamento durante 72h \n", paciente->id);
+                                        printf(texto);
+                                        escreve_ficheiro(texto);
+                                        casosEmEstudo--;
+                                }
+                        }
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
                 {
                         casosEmEstudo++;
                         sem_wait(&semaAtendimento);
-                        AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
+                        //AtendimentoNormal(&paciente); //atende a pessoa e faz o seu teste
+                        sprintf(texto, "O paciente %i foi atendido \n", paciente->id);
+                        printf(texto);
+                        escreve_ficheiro(texto);
+                        sprintf(texto, "O paciente %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
+                        printf(texto);
+                        escreve_ficheiro(texto);
+                        if (paciente->centroTeste == 0)
+                        {
+                                pessoasAtendidasCentro0++;
+                        }
+                        if (paciente->centroTeste == 1)
+                        {
+                                pessoasAtendidasCentro1++;
+                        }
+                        sem_post(&semaAtendimento);
+                        sem_post(&semafila);
+                        usleep(100000);
+                        //TestaPessoa(&paciente);
+                        //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
+                        //da o resultado do teste da pessoa sendo que é um random
+                        int infetado_crianca = rand() % 101;
+                        int infetado_adulto = rand() % 101;
+                        int infetado_idoso = rand() % 101;
+
+                        if (paciente->idade < 18) //caso seja uma criança
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_crianca > prob_criancas_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_crianca <= prob_criancas_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (paciente->idade < 60 && paciente->idade >= 18) //caso seja um adulto
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_adulto > prob_adultos_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_adulto <= prob_adultos_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (paciente->idade >= 60) //caso seja um idoso
+                        {
+                                //verifica atraves da probabilidade se a pessoa esta infetada ou nao
+                                if (infetado_idoso > prob_idosos_efetados)
+                                {
+                                        paciente->resultadoTeste = false;
+                                }
+                                if (infetado_idoso <= prob_idosos_efetados)
+                                {
+                                        paciente->resultadoTeste = true;
+                                }
+                        }
+                        if (!paciente->resultadoTeste) //o teste deu negativo
+                        {
+                                paciente->num_testes++;
+                                // if(isolamento == 1) //se a pessoa  precisar de isolamento (esteve em contacto com infetados)
+                                // {
+                                //         paciente->isolamento = true;
+                                //         //vai ser preciso depois usar isto para o tempo medio de isolamento e tals
+                                //         //escolhe randomly entre se precisa de 72h,48h ou 120h de isolamento
+                                //         int tempoIsolamento = horasIsolamento[rand() % 2];
+                                //         sprintf(texto,"O utilizador %i testou negativo e devera fazer %i horas de isolamento", paciente->id, tempoIsolamento);
+                                //         escreve_ficheiro(texto);
+                                //         casosEmEstudo--;
+                                // }
+                                // else //caso a pessoa nao precise de isolamento
+                                // {
+                                sprintf(texto, "O utilizador %i testou negativo e foi encaminhado para casa \n", paciente->id);
+                                printf(texto);
+                                escreve_ficheiro(texto);
+                                casosEmEstudo--;
+                                // }
+                        }
+                        if (paciente->resultadoTeste) //caso teste positivo
+                        {
+                                paciente->num_testes++;
+                                casosPositivos++;
+                                if (paciente->prioridade == 1) //caso tenha prioridade (for um caso de risco)
+                                {
+                                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai ser internado \n", paciente->id);
+                                        printf(texto);
+                                        escreve_ficheiro(texto);
+                                        sem_wait(&semainternadosCentros); //ocupa um lugar no internamento
+                                        casosEmEstudo--;
+                                }
+                                if (paciente->prioridade == 0) //caso nao tenha prioridade
+                                {
+                                        sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai para isolamento durante 72h \n", paciente->id);
+                                        printf(texto);
+                                        escreve_ficheiro(texto);
+                                        casosEmEstudo--;
+                                }
+                        }
                 }
                 //}
         }
         else //remove alguem da fila caso o paciente tenha desistido
         {
                 desistenciasTotais++;
-                sprintf(texto, "O utilizador %i desistiu da fila", paciente->id);
+                sprintf(texto, "O utilizador %i desistiu da fila \n", paciente->id);
+                printf(texto);
                 escreve_ficheiro(texto);
                 sem_post(&semafila);
         }
 }
 
-void leConfigura() 
+void leConfigura()
 {
         int erro = 1;
-        #define MAXSIZE 512
+#define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
         int valores_configura[12];
@@ -358,8 +567,9 @@ int escreve_ficheiro(char texto2[])
 //Cria Pessoa
 struct pessoa criaPessoa()
 {
-        printf("entrou no cria pessoa");
+
         sem_wait(&trincoCriaPessoa); //tranca o trinco
+        //printf("entrou no cria pessoa \n");
         int desistiu = rand() % 101;
         struct pessoa paciente;
         paciente.id = id_pessoa;
@@ -398,19 +608,20 @@ struct pessoa criaPessoa()
                         paciente.desistiuFila = true;
                 }
         }
-        
+
         paciente.num_testes = 0;
         paciente.isolamento = false;
         paciente.resultadoTeste = false;
         usleep(100000);
-        sprintf(texto, "Chegou o utilizador %i", paciente.id);
+        sprintf(texto, "Chegou o utilizador %i \n", paciente.id);
+        printf(texto);
         escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
         //paciente.tempoEntradaInternamento;
         //paciente.tempoSaidaInternamento
         //criar probabilidades para tratar dos booleanos
-        return paciente;
         sem_post(&trincoCriaPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
+        return paciente;
 }
 
 //cria fila
@@ -466,12 +677,12 @@ struct centroDeTeste criaCentroDeTeste(int idCentro)
 //Tarefa Pessoa
 void Pessoa(void *ptr)
 {
-        printf("entrou na PESSOA");
+        //printf("entrou na PESSOA");
         //pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez
         sem_wait(&trincoTarefaPessoa);
-        printf ("criou o semaforo na PESSOA");
+        //printf ("criou o semaforo na PESSOA");
         struct pessoa person = criaPessoa();
-        printf("teste2");
+        //printf("teste2 \n");
         sem_post(&trincoTarefaPessoa);
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
@@ -534,7 +745,7 @@ void EnviarMensagens(char *t, int sockfd)
 
 void simula(int sockfd)
 {
-        srand(time(NULL));
+        //srand(time(NULL));
         inicializa();
         //cria as tarefas pessoa
         for (int i = 0; i < num_pessoas_simulacao; i++)
@@ -544,23 +755,21 @@ void simula(int sockfd)
                 //escreve_ficheiro(texto);
         }
         printf("criou tarefa pessoa");
-        
-        
+
         for (int i = 0; i < num_pessoas_simulacao; i++)
         {
                 pthread_join(id_tarefa_pessoa[i], NULL);
         }
-
 }
 void inicializa()
 {
-        printf("entrou no inicializa");
+        //printf("entrou no inicializa");
         sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&semaAtendimento, 0, 2);        //podemos atender ate duas pessoas de cada vez
         sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
         sem_init(&trincoCriaPessoa, 0, 1);
         sem_init(&trincoEnviamensagem, 0, 1);
-        sem_init(&trincoTarefaPessoa,0,1);
+        sem_init(&trincoTarefaPessoa, 0, 1);
         leConfigura();
         criaCentroDeTeste(0);
         criaCentroDeTeste(1);
@@ -573,8 +782,7 @@ int main(int argc, char const *argv[])
         //printf("A inicialização do trinco falhou!");
         //return 1;
         //}
-        
-        
+
         sockfd = criarSocket();
         simula(sockfd);
 
