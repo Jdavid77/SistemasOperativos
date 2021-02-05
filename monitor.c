@@ -52,8 +52,8 @@ void mostraInformacao(){
     //quantidade de internados
     //tempos médios
     //quantidade de atendidos em cada fila
-    //numero de pessoas de risco no centro ##falta fazer##
-    //numero de pessoas normais no centro ##falta fazer##
+    //numero de pessoas de risco no centro ##falta comunicar##
+    //numero de pessoas normais no centro ##falta comunicar##
     
 
         

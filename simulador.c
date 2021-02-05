@@ -29,8 +29,9 @@ char mensagem[100];
 //pthread_mutex_init(&criarPessoa,NULL);
 
 //semaforos
-sem_t semafila;              //semaforo da fila do centro 1
-sem_t semaAtendimento;       //tranca o atendimento do centro1
+sem_t semafila0;              //semaforo da fila do centro 0
+sem_t semafila1;              //semaforo da fila do centro 1
+sem_t semaAtendimento;        //tranca o atendimento do centro1
 sem_t semainternadosCentros0; //numero de internados num centro
 sem_t semainternadosCentros1;
 sem_t trincoEnviamensagem;
@@ -75,7 +76,14 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         }
         casosEmEstudo++;
         sem_post(&trincoAtendimentoPrioritario);
-        sem_post(&semafila);
+        if(paciente->centroTeste == 0)
+        {
+                sem_post(&semafila0);
+        }
+        else
+        {
+                sem_post(&semafila1);
+        }
         sem_wait(&semamaximoCasosEstudo);
         usleep(100000);
         //TestaPessoa(paciente);
@@ -102,7 +110,14 @@ void AtendimentoNormal(struct pessoa *paciente)
 
         casosEmEstudo++;
         sem_post(&semaAtendimento);
-        sem_post(&semafila);
+        if(paciente->centroTeste == 0)
+        {
+                sem_post(&semafila0);
+        }
+        else
+        {
+                sem_post(&semafila1);
+        }
         sem_wait(&semamaximoCasosEstudo);
         usleep(100000);
         //TestaPessoa(paciente);
@@ -169,7 +184,15 @@ void TestaPessoa(struct pessoa *paciente)
                         sprintf(texto, "O utilizador %i testou positivo para Covid-19 e vai ser internado \n", paciente->id);
                         printf(texto);
                         escreve_ficheiro(texto);
-                        sem_wait(&semainternadosCentros); //ocupa um lugar no internamento
+                        if(paciente->centroTeste == 0)
+                        {
+                                sem_wait(&semainternadosCentros0); //ocupa um lugar no internamento
+                        }
+                        else
+                        {
+                                sem_wait(&semainternadosCentros1); //ocupa um lugar no internamento
+                        }
+                        
                         //casosEmEstudo--;
                 }
                 if (paciente->prioridade == 0) //caso nao tenha prioridade
@@ -187,11 +210,10 @@ void TestaPessoa(struct pessoa *paciente)
         if(paciente->num_testes != paciente->testesDesejados)
         {
                 usleep(1000000);
-                sprintf(texto, "o paciente %i vai voltar a fazer outro teste \n",paciente->id);
+                sprintf(texto, "O paciente %i vai voltar a fazer outro teste \n",paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
                 trataPessoa(paciente); 
-
         }
 }
 
@@ -233,6 +255,7 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A pessoa %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
+                        num_pessoas_risco_fila--;
                         usleep(100000);
                         TestaPessoa(paciente);
                 }
@@ -256,6 +279,7 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A pessoa %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
+                        num_pessoas_normais_fila--;
                         usleep(100000);
                         TestaPessoa(paciente);
                 }
@@ -276,7 +300,14 @@ void trataPessoa(struct pessoa *paciente)
                 sprintf(texto, "O utilizador %i desistiu da fila \n", paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
-                sem_post(&semafila);
+                if(paciente->centroTeste == 0)
+                {
+                        sem_post(&semafila0);
+                }
+                else
+                {
+                        sem_post(&semafila1);
+                }
         }
 
         //tempo_final_fila = clock();
@@ -287,7 +318,7 @@ void trataPessoa(struct pessoa *paciente)
 void leConfigura()
 {
         int erro = 1;
-#define MAXSIZE 512
+        #define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
         int valores_configura[13];
@@ -405,7 +436,6 @@ void leConfigura()
         }
         num_centrosTeste = valores_configura[0];
         num_pessoas_a_ser_testadas = valores_configura[1];
-
         idade_media_casos_positivos = valores_configura[2];
         maximo_casos_em_estudo= valores_configura[3];
         num_maximo_internados = valores_configura[4];
@@ -473,7 +503,6 @@ struct pessoa criaPessoa()
         if (paciente.prioridade == 1) //caso tenha prioridade
         {
                 num_pessoas_risco_fila++;
-
                 if (desistiu > prob_desistiu_Risco)
                 {
                         paciente.desistiuFila = false;
@@ -484,14 +513,20 @@ struct pessoa criaPessoa()
                         paciente.desistiuFila = true;                    
                 }
         }
-
         paciente.num_testes = 0;
         paciente.isolamento = false;
         paciente.resultadoTeste = false;
 
-        
         usleep(100000);
         sprintf(texto, "Chegou o utilizador %i \n", paciente.id);
+        if(paciente.centroTeste == 0)
+        {
+                sem_wait(&semafila0);
+        }
+        else
+        {
+                sem_wait(&semafila1);
+        }
         printf(texto);
         escreve_ficheiro(texto);
         //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
@@ -528,7 +563,7 @@ void Pessoa(void *ptr)
         sem_post(&trincoTarefaPessoa);
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
-        sem_wait(&semafila);
+        //sem_wait(&semafila0);
         trataPessoa(&person);
         //pthread_mutex_unlock(&trincoCriaPessoa);
 }
@@ -607,7 +642,8 @@ void inicializa()
 {
         //printf("entrou no inicializa");
         leConfigura();
-        sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semafila0, 0, 40);              //inicializa a fila do centro0 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semafila1, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&semaAtendimento, 0, num_pessoas_a_ser_testadas);        //podemos atender no minimo duas pessoas de cada vez
         sem_init(&semainternadosCentros0, 0, num_maximo_internados); //so podemos ter 60 pesssoas internadas nos centros (total)
         sem_init(&semainternadosCentros1, 0, num_maximo_internados);
