@@ -6687,3 +6687,2594 @@ A pessoa 198 esperou 0.160000
 A pessoa 199 esperou 0.460000
 O utilizador 198 testou negativo e foi encaminhado para casa 
 O utilizador 199 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 0 
+O utilizador 0 desistiu da fila 
+Chegou o utilizador 1 
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 2 
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.360000
+Chegou o utilizador 3 
+O paciente 3 foi atendido com prioridade 
+O paciente 3 fez o teste 
+A pessoa 2 esperou 0.350000
+O utilizador 1 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 4 
+O paciente 4 foi atendido com prioridade 
+O paciente 4 fez o teste 
+A pessoa 3 esperou 0.750000
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 5 
+O utilizador 5 desistiu da fila 
+O utilizador 3 testou negativo e foi encaminhado para casa 
+A pessoa 4 esperou 1.370000
+Chegou o utilizador 6 
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+O utilizador 4 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 7 
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.370000
+Chegou o utilizador 8 
+O paciente 8 foi atendido 
+O paciente 8 fez o teste 
+A pessoa 7 esperou 0.360000
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 9 
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+A pessoa 8 esperou 0.390000
+O utilizador 7 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 10 
+O utilizador 10 desistiu da fila 
+O utilizador 8 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 0.600000
+Chegou o utilizador 11 
+O paciente 11 foi atendido 
+O paciente 11 fez o teste 
+O utilizador 9 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 12 
+O utilizador 12 desistiu da fila 
+A pessoa 11 esperou 0.510000
+O paciente 1 vai voltar a fazer outro teste 
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 13 
+O paciente 13 foi atendido 
+O paciente 13 fez o teste 
+O utilizador 11 testou negativo e foi encaminhado para casa 
+A pessoa 1 esperou 0.720000
+O paciente 2 vai voltar a fazer outro teste 
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+Chegou o utilizador 14 
+O utilizador 14 desistiu da fila 
+A pessoa 13 esperou 0.480000
+O utilizador 1 testou negativo e foi encaminhado para casa 
+A pessoa 2 esperou 1.570000
+Chegou o utilizador 15 
+O paciente 15 foi atendido com prioridade 
+O paciente 15 fez o teste 
+O utilizador 13 testou negativo e foi encaminhado para casa 
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 16 
+O utilizador 16 desistiu da fila 
+A pessoa 15 esperou 0.460000
+Chegou o utilizador 17 
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+O utilizador 15 testou negativo e foi encaminhado para casa 
+O paciente 6 vai voltar a fazer outro teste 
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+Chegou o utilizador 18 
+O paciente 18 foi atendido 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.350000
+A pessoa 6 esperou 0.580000
+O paciente 7 vai voltar a fazer outro teste 
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 18 esperou 0.250000
+Chegou o utilizador 19 
+O paciente 19 foi atendido com prioridade 
+O paciente 19 fez o teste 
+O utilizador 17 testou negativo e foi encaminhado para casa 
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+A pessoa 7 esperou 1.090000
+O utilizador 18 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 20 
+O paciente 20 foi atendido com prioridade 
+O paciente 20 fez o teste 
+A pessoa 19 esperou 0.250000
+O paciente 9 vai voltar a fazer outro teste 
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+O utilizador 7 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 21 
+O paciente 21 foi atendido com prioridade 
+O paciente 21 fez o teste 
+O utilizador 19 testou negativo e foi encaminhado para casa 
+A pessoa 20 esperou 0.510000
+A pessoa 9 esperou 0.790000
+Chegou o utilizador 22 
+O paciente 22 foi atendido com prioridade 
+O paciente 22 fez o teste 
+O utilizador 20 testou negativo e foi encaminhado para casa 
+A pessoa 21 esperou 0.380000
+O utilizador 9 testou positivo para Covid-19 e vai ser internado 
+A pessoa 22 esperou 1.440000
+Chegou o utilizador 23 
+O paciente 23 foi atendido 
+O paciente 23 fez o teste 
+O utilizador 21 testou negativo e foi encaminhado para casa 
+O utilizador 22 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 24 
+O paciente 24 foi atendido com prioridade 
+O paciente 24 fez o teste 
+A pessoa 23 esperou 0.350000
+A pessoa 24 esperou 0.620000
+Chegou o utilizador 25 
+O paciente 25 foi atendido com prioridade 
+O paciente 25 fez o teste 
+O utilizador 23 testou positivo para Covid-19 e vai para isolamento durante 72h 
+O utilizador 24 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 26 
+O paciente 26 foi atendido 
+O paciente 26 fez o teste 
+A pessoa 25 esperou 0.330000
+O paciente 15 vai voltar a fazer outro teste 
+O paciente 15 foi atendido com prioridade 
+O paciente 15 fez o teste 
+Chegou o utilizador 27 
+O paciente 27 foi atendido 
+O paciente 27 fez o teste 
+A pessoa 26 esperou 0.180000
+O utilizador 25 testou negativo e foi encaminhado para casa 
+A pessoa 15 esperou 0.590000
+Chegou o utilizador 28 
+O paciente 28 foi atendido com prioridade 
+O paciente 28 fez o teste 
+A pessoa 27 esperou 0.220000
+O utilizador 26 testou negativo e foi encaminhado para casa 
+O utilizador 15 testou negativo e foi encaminhado para casa 
+O paciente 17 vai voltar a fazer outro teste 
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+Chegou o utilizador 29 
+O paciente 29 foi atendido 
+O paciente 29 fez o teste 
+A pessoa 28 esperou 0.320000
+O utilizador 27 testou negativo e foi encaminhado para casa 
+O paciente 18 vai voltar a fazer outro teste 
+O paciente 18 foi atendido 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.340000
+A pessoa 29 esperou 0.690000
+Chegou o utilizador 30 
+O paciente 30 foi atendido com prioridade 
+O paciente 30 fez o teste 
+O utilizador 28 testou negativo e foi encaminhado para casa 
+A pessoa 18 esperou 0.510000
+O paciente 19 vai voltar a fazer outro teste 
+O paciente 19 foi atendido com prioridade 
+O paciente 19 fez o teste 
+O utilizador 17 testou positivo para Covid-19 e vai ser internado 
+O utilizador 29 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 31 
+O paciente 31 foi atendido com prioridade 
+O paciente 31 fez o teste 
+A pessoa 30 esperou 0.190000
+O utilizador 18 testou negativo e foi encaminhado para casa 
+O paciente 20 vai voltar a fazer outro teste 
+O paciente 20 foi atendido com prioridade 
+O paciente 20 fez o teste 
+A pessoa 19 esperou 0.320000
+Chegou o utilizador 32 
+O paciente 32 foi atendido com prioridade 
+O paciente 32 fez o teste 
+A pessoa 31 esperou 0.170000
+O utilizador 30 testou negativo e foi encaminhado para casa 
+O paciente 21 vai voltar a fazer outro teste 
+O paciente 21 foi atendido com prioridade 
+O paciente 21 fez o teste 
+A pessoa 20 esperou 0.300000
+O utilizador 19 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 33 
+O utilizador 33 desistiu da fila 
+A pessoa 32 esperou 0.450000
+O utilizador 31 testou negativo e foi encaminhado para casa 
+O utilizador 20 testou negativo e foi encaminhado para casa 
+A pessoa 21 esperou 1.710000
+Chegou o utilizador 34 
+O paciente 34 foi atendido com prioridade 
+O paciente 34 fez o teste 
+O utilizador 32 testou positivo para Covid-19 e vai ser internado 
+O utilizador 21 testou negativo e foi encaminhado para casa 
+A pessoa 34 esperou 1.490000
+Chegou o utilizador 35 
+O utilizador 35 desistiu da fila 
+O paciente 24 vai voltar a fazer outro teste 
+O paciente 24 foi atendido com prioridade 
+O paciente 24 fez o teste 
+O utilizador 34 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 36 
+O paciente 36 foi atendido com prioridade 
+O paciente 36 fez o teste 
+A pessoa 24 esperou 0.480000
+Chegou o utilizador 37 
+O paciente 37 foi atendido 
+O paciente 37 fez o teste 
+A pessoa 36 esperou 0.340000
+O utilizador 24 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 38 
+O paciente 38 foi atendido 
+O paciente 38 fez o teste 
+O utilizador 36 testou positivo para Covid-19 e vai ser internado 
+A pessoa 37 esperou 0.550000
+Chegou o utilizador 39 
+O paciente 39 foi atendido 
+O paciente 39 fez o teste 
+A pessoa 38 esperou 0.340000
+O utilizador 37 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 40 
+O paciente 40 foi atendido com prioridade 
+O paciente 40 fez o teste 
+O utilizador 38 testou negativo e foi encaminhado para casa 
+A pessoa 39 esperou 0.560000
+Chegou o utilizador 41 
+O paciente 41 foi atendido com prioridade 
+O paciente 41 fez o teste 
+A pessoa 40 esperou 0.320000
+O utilizador 39 testou negativo e foi encaminhado para casa 
+O paciente 30 vai voltar a fazer outro teste 
+O paciente 30 foi atendido com prioridade 
+O paciente 30 fez o teste 
+Chegou o utilizador 42 
+O paciente 42 foi atendido 
+O paciente 42 fez o teste 
+A pessoa 41 esperou 0.170000
+O utilizador 40 testou positivo para Covid-19 e vai ser internado 
+O paciente 31 vai voltar a fazer outro teste 
+O paciente 31 foi atendido com prioridade 
+O paciente 31 fez o teste 
+A pessoa 30 esperou 0.350000
+Chegou o utilizador 43 
+O paciente 43 foi atendido com prioridade 
+O paciente 43 fez o teste 
+A pessoa 42 esperou 0.180000
+O utilizador 41 testou negativo e foi encaminhado para casa 
+A pessoa 31 esperou 0.630000
+O utilizador 30 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 44 
+O paciente 44 foi atendido 
+O paciente 44 fez o teste 
+A pessoa 43 esperou 0.170000
+O utilizador 42 testou negativo e foi encaminhado para casa 
+O utilizador 31 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 45 
+O utilizador 45 desistiu da fila 
+A pessoa 44 esperou 0.380000
+O utilizador 43 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 46 
+O paciente 46 foi atendido com prioridade 
+O paciente 46 fez o teste 
+O utilizador 44 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 47 
+O utilizador 47 desistiu da fila 
+A pessoa 46 esperou 0.510000
+Chegou o utilizador 48 
+O utilizador 48 desistiu da fila 
+O utilizador 46 testou negativo e foi encaminhado para casa 
+O paciente 37 vai voltar a fazer outro teste 
+O paciente 37 foi atendido 
+O paciente 37 fez o teste 
+Chegou o utilizador 49 
+O paciente 49 foi atendido 
+O paciente 49 fez o teste 
+A pessoa 37 esperou 0.560000
+Chegou o utilizador 50 
+O paciente 50 foi atendido com prioridade 
+O paciente 50 fez o teste 
+A pessoa 49 esperou 0.170000
+O paciente 39 vai voltar a fazer outro teste 
+O paciente 39 foi atendido 
+O paciente 39 fez o teste 
+O utilizador 37 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 51 
+O paciente 51 foi atendido com prioridade 
+O paciente 51 fez o teste 
+A pessoa 50 esperou 0.320000
+O utilizador 49 testou negativo e foi encaminhado para casa 
+O paciente 40 vai voltar a fazer outro teste 
+O paciente 40 foi atendido com prioridade 
+O paciente 40 fez o teste 
+A pessoa 39 esperou 0.320000
+Chegou o utilizador 52 
+O utilizador 52 desistiu da fila 
+O utilizador 50 testou positivo para Covid-19 e vai ser internado 
+A pessoa 51 esperou 0.390000
+A pessoa 40 esperou 0.580000
+O utilizador 39 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 53 
+O paciente 53 foi atendido com prioridade 
+O paciente 53 fez o teste 
+O utilizador 51 testou negativo e foi encaminhado para casa 
+O paciente 42 vai voltar a fazer outro teste 
+O paciente 42 foi atendido 
+O paciente 42 fez o teste 
+O utilizador 40 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 54 
+O paciente 54 foi atendido 
+O paciente 54 fez o teste 
+A pessoa 53 esperou 0.350000
+A pessoa 42 esperou 0.570000
+Chegou o utilizador 55 
+O paciente 55 foi atendido com prioridade 
+O paciente 55 fez o teste 
+O utilizador 53 testou negativo e foi encaminhado para casa 
+A pessoa 54 esperou 0.500000
+O paciente 44 vai voltar a fazer outro teste 
+O paciente 44 foi atendido 
+O paciente 44 fez o teste 
+O utilizador 42 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 56 
+O paciente 56 foi atendido 
+O paciente 56 fez o teste 
+A pessoa 55 esperou 0.190000
+O utilizador 54 testou negativo e foi encaminhado para casa 
+A pessoa 44 esperou 0.730000
+Chegou o utilizador 57 
+O paciente 57 foi atendido com prioridade 
+O paciente 57 fez o teste 
+A pessoa 56 esperou 0.190000
+O utilizador 55 testou positivo para Covid-19 e vai ser internado 
+O utilizador 44 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 58 
+O utilizador 58 desistiu da fila 
+O utilizador 56 testou negativo e foi encaminhado para casa 
+A pessoa 57 esperou 0.490000
+Chegou o utilizador 59 
+O utilizador 59 desistiu da fila 
+O utilizador 57 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 60 
+O paciente 60 foi atendido com prioridade 
+O paciente 60 fez o teste 
+Chegou o utilizador 61 
+O paciente 61 foi atendido com prioridade 
+O paciente 61 fez o teste 
+A pessoa 60 esperou 0.320000
+O paciente 50 vai voltar a fazer outro teste 
+O paciente 50 foi atendido com prioridade 
+O paciente 50 fez o teste 
+Chegou o utilizador 62 
+O utilizador 62 desistiu da fila 
+A pessoa 61 esperou 0.340000
+O utilizador 60 testou positivo para Covid-19 e vai ser internado 
+A pessoa 50 esperou 0.650000
+Chegou o utilizador 63 
+O paciente 63 foi atendido com prioridade 
+O paciente 63 fez o teste 
+O utilizador 61 testou negativo e foi encaminhado para casa 
+O utilizador 50 testou negativo e foi encaminhado para casa 
+A pessoa 63 esperou 1.660000
+Chegou o utilizador 64 
+O paciente 64 foi atendido com prioridade 
+O paciente 64 fez o teste 
+O utilizador 63 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 65 
+O utilizador 65 desistiu da fila 
+A pessoa 64 esperou 0.310000
+Chegou o utilizador 66 
+O paciente 66 foi atendido com prioridade 
+O paciente 66 fez o teste 
+O utilizador 64 testou negativo e foi encaminhado para casa 
+O paciente 55 vai voltar a fazer outro teste 
+O paciente 55 foi atendido com prioridade 
+O paciente 55 fez o teste 
+Chegou o utilizador 67 
+O utilizador 67 desistiu da fila 
+A pessoa 66 esperou 0.310000
+A pessoa 55 esperou 0.600000
+Chegou o utilizador 68 
+O paciente 68 foi atendido com prioridade 
+O paciente 68 fez o teste 
+O utilizador 66 testou positivo para Covid-19 e vai ser internado 
+O utilizador 55 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 69 
+O paciente 69 foi atendido 
+O paciente 69 fez o teste 
+A pessoa 68 esperou 0.280000
+A pessoa 69 esperou 0.510000
+Chegou o utilizador 70 
+O paciente 70 foi atendido 
+O paciente 70 fez o teste 
+O utilizador 68 testou negativo e foi encaminhado para casa 
+O utilizador 69 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 71 
+O utilizador 71 desistiu da fila 
+A pessoa 70 esperou 0.430000
+O paciente 60 vai voltar a fazer outro teste 
+O paciente 60 foi atendido com prioridade 
+O paciente 60 fez o teste 
+Chegou o utilizador 72 
+O paciente 72 foi atendido 
+O paciente 72 fez o teste 
+O utilizador 70 testou negativo e foi encaminhado para casa 
+O paciente 61 vai voltar a fazer outro teste 
+O paciente 61 foi atendido com prioridade 
+O paciente 61 fez o teste 
+A pessoa 60 esperou 0.250000
+Chegou o utilizador 73 
+O paciente 73 foi atendido 
+O paciente 73 fez o teste 
+A pessoa 72 esperou 0.280000
+Chegou o utilizador 74 
+O utilizador 74 desistiu da fila 
+O utilizador 72 testou negativo e foi encaminhado para casa 
+A pessoa 73 esperou 0.540000
+O utilizador 60 testou negativo e foi encaminhado para casa 
+A pessoa 61 esperou 0.790000
+Chegou o utilizador 75 
+O utilizador 75 desistiu da fila 
+O utilizador 73 testou negativo e foi encaminhado para casa 
+O utilizador 61 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 76 
+O paciente 76 foi atendido com prioridade 
+O paciente 76 fez o teste 
+Chegou o utilizador 77 
+O paciente 77 foi atendido com prioridade 
+O paciente 77 fez o teste 
+A pessoa 76 esperou 0.350000
+O paciente 66 vai voltar a fazer outro teste 
+O paciente 66 foi atendido com prioridade 
+O paciente 66 fez o teste 
+Chegou o utilizador 78 
+O utilizador 78 desistiu da fila 
+O utilizador 76 testou negativo e foi encaminhado para casa 
+A pessoa 77 esperou 0.650000
+A pessoa 66 esperou 1.020000
+Chegou o utilizador 79 
+O utilizador 79 desistiu da fila 
+O utilizador 77 testou negativo e foi encaminhado para casa 
+O paciente 68 vai voltar a fazer outro teste 
+O paciente 68 foi atendido com prioridade 
+O paciente 68 fez o teste 
+O utilizador 66 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 80 
+O paciente 80 foi atendido com prioridade 
+O paciente 80 fez o teste 
+A pessoa 68 esperou 0.400000
+Chegou o utilizador 81 
+O utilizador 81 desistiu da fila 
+A pessoa 80 esperou 0.530000
+O paciente 70 vai voltar a fazer outro teste 
+O paciente 70 foi atendido 
+O paciente 70 fez o teste 
+O utilizador 68 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 82 
+O paciente 82 foi atendido com prioridade 
+O paciente 82 fez o teste 
+O utilizador 80 testou negativo e foi encaminhado para casa 
+A pessoa 70 esperou 0.520000
+Chegou o utilizador 83 
+O paciente 83 foi atendido com prioridade 
+O paciente 83 fez o teste 
+A pessoa 82 esperou 0.280000
+O paciente 72 vai voltar a fazer outro teste 
+O paciente 72 foi atendido 
+O paciente 72 fez o teste 
+O utilizador 70 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 84 
+O paciente 84 foi atendido 
+O paciente 84 fez o teste 
+O utilizador 82 testou negativo e foi encaminhado para casa 
+A pessoa 83 esperou 0.360000
+A pessoa 72 esperou 0.600000
+Chegou o utilizador 85 
+O paciente 85 foi atendido com prioridade 
+O paciente 85 fez o teste 
+A pessoa 84 esperou 0.350000
+O utilizador 83 testou negativo e foi encaminhado para casa 
+O utilizador 72 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 86 
+O paciente 86 foi atendido 
+O paciente 86 fez o teste 
+O utilizador 84 testou positivo para Covid-19 e vai para isolamento durante 72h 
+A pessoa 85 esperou 0.620000
+Chegou o utilizador 87 
+O utilizador 87 desistiu da fila 
+A pessoa 86 esperou 0.390000
+O utilizador 85 testou positivo para Covid-19 e vai ser internado 
+O paciente 76 vai voltar a fazer outro teste 
+O paciente 76 foi atendido com prioridade 
+O paciente 76 fez o teste 
+Chegou o utilizador 88 
+O paciente 88 foi atendido 
+O paciente 88 fez o teste 
+O utilizador 86 testou positivo para Covid-19 e vai para isolamento durante 72h 
+A pessoa 76 esperou 0.510000
+O paciente 77 vai voltar a fazer outro teste 
+O paciente 77 foi atendido com prioridade 
+O paciente 77 fez o teste 
+Chegou o utilizador 89 
+O paciente 89 foi atendido com prioridade 
+O paciente 89 fez o teste 
+A pessoa 88 esperou 0.290000
+O utilizador 76 testou positivo para Covid-19 e vai ser internado 
+A pessoa 77 esperou 1.390000
+Chegou o utilizador 90 
+O utilizador 90 desistiu da fila 
+A pessoa 89 esperou 0.410000
+O utilizador 88 testou negativo e foi encaminhado para casa 
+O utilizador 77 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 91 
+O paciente 91 foi atendido com prioridade 
+O paciente 91 fez o teste 
+O utilizador 89 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 92 
+O paciente 92 foi atendido 
+O paciente 92 fez o teste 
+A pessoa 91 esperou 0.320000
+Chegou o utilizador 93 
+O paciente 93 foi atendido 
+O paciente 93 fez o teste 
+O utilizador 91 testou negativo e foi encaminhado para casa 
+A pessoa 92 esperou 0.870000
+O paciente 82 vai voltar a fazer outro teste 
+O paciente 82 foi atendido com prioridade 
+O paciente 82 fez o teste 
+Chegou o utilizador 94 
+O utilizador 94 desistiu da fila 
+O utilizador 92 testou negativo e foi encaminhado para casa 
+A pessoa 93 esperou 0.510000
+A pessoa 82 esperou 0.770000
+Chegou o utilizador 95 
+O paciente 95 foi atendido com prioridade 
+O paciente 95 fez o teste 
+O utilizador 93 testou negativo e foi encaminhado para casa 
+O paciente 84 vai voltar a fazer outro teste 
+O paciente 84 foi atendido 
+O paciente 84 fez o teste 
+O utilizador 82 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 96 
+O paciente 96 foi atendido com prioridade 
+O paciente 96 fez o teste 
+A pessoa 95 esperou 0.340000
+O paciente 85 vai voltar a fazer outro teste 
+O paciente 85 foi atendido com prioridade 
+O paciente 85 fez o teste 
+A pessoa 84 esperou 0.350000
+Chegou o utilizador 97 
+O paciente 97 foi atendido com prioridade 
+O paciente 97 fez o teste 
+A pessoa 96 esperou 0.340000
+O utilizador 95 testou negativo e foi encaminhado para casa 
+A pessoa 85 esperou 0.700000
+O paciente 86 vai voltar a fazer outro teste 
+O paciente 86 foi atendido 
+O paciente 86 fez o teste 
+O utilizador 84 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 98 
+O utilizador 98 desistiu da fila 
+A pessoa 97 esperou 0.360000
+O utilizador 96 testou negativo e foi encaminhado para casa 
+O utilizador 85 testou negativo e foi encaminhado para casa 
+A pessoa 86 esperou 1.540000
+Chegou o utilizador 99 
+O utilizador 99 desistiu da fila 
+O utilizador 97 testou negativo e foi encaminhado para casa 
+O utilizador 86 testou negativo e foi encaminhado para casa 
+O paciente 88 vai voltar a fazer outro teste 
+O paciente 88 foi atendido 
+O paciente 88 fez o teste 
+Chegou o utilizador 100 
+O utilizador 100 desistiu da fila 
+A pessoa 88 esperou 0.470000
+Chegou o utilizador 101 
+O utilizador 101 desistiu da fila 
+O utilizador 88 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 102 
+O paciente 102 foi atendido com prioridade 
+O paciente 102 fez o teste 
+Chegou o utilizador 103 
+O paciente 103 foi atendido com prioridade 
+O paciente 103 fez o teste 
+A pessoa 102 esperou 0.490000
+O paciente 92 vai voltar a fazer outro teste 
+O paciente 92 foi atendido 
+O paciente 92 fez o teste 
+Chegou o utilizador 104 
+O utilizador 104 desistiu da fila 
+O utilizador 102 testou negativo e foi encaminhado para casa 
+A pessoa 103 esperou 0.470000
+A pessoa 92 esperou 0.720000
+Chegou o utilizador 105 
+O paciente 105 foi atendido com prioridade 
+O paciente 105 fez o teste 
+O utilizador 103 testou negativo e foi encaminhado para casa 
+O utilizador 92 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 106 
+O paciente 106 foi atendido 
+O paciente 106 fez o teste 
+A pessoa 105 esperou 0.240000
+Chegou o utilizador 107 
+O paciente 107 foi atendido com prioridade 
+O paciente 107 fez o teste 
+A pessoa 106 esperou 0.240000
+O utilizador 105 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 108 
+O paciente 108 foi atendido 
+O paciente 108 fez o teste 
+O utilizador 106 testou negativo e foi encaminhado para casa 
+A pessoa 107 esperou 0.500000
+Chegou o utilizador 109 
+O paciente 109 foi atendido 
+O paciente 109 fez o teste 
+O utilizador 107 testou positivo para Covid-19 e vai ser internado 
+A pessoa 108 esperou 0.510000
+Chegou o utilizador 110 
+O paciente 110 foi atendido com prioridade 
+O paciente 110 fez o teste 
+A pessoa 109 esperou 0.260000
+O utilizador 108 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 111 
+O utilizador 111 desistiu da fila 
+A pessoa 110 esperou 0.640000
+O utilizador 109 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 112 
+O utilizador 112 desistiu da fila 
+O utilizador 110 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 113 
+O paciente 113 foi atendido 
+O paciente 113 fez o teste 
+O paciente 102 vai voltar a fazer outro teste 
+O paciente 102 foi atendido com prioridade 
+O paciente 102 fez o teste 
+Chegou o utilizador 114 
+O utilizador 114 desistiu da fila 
+A pessoa 113 esperou 0.350000
+A pessoa 102 esperou 0.980000
+Chegou o utilizador 115 
+O paciente 115 foi atendido com prioridade 
+O paciente 115 fez o teste 
+O utilizador 113 testou negativo e foi encaminhado para casa 
+O utilizador 102 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 116 
+O paciente 116 foi atendido 
+O paciente 116 fez o teste 
+A pessoa 115 esperou 0.230000
+O paciente 105 vai voltar a fazer outro teste 
+O paciente 105 foi atendido com prioridade 
+O paciente 105 fez o teste 
+Chegou o utilizador 117 
+O paciente 117 foi atendido com prioridade 
+O paciente 117 fez o teste 
+A pessoa 116 esperou 0.240000
+O utilizador 115 testou negativo e foi encaminhado para casa 
+A pessoa 105 esperou 0.720000
+Chegou o utilizador 118 
+O utilizador 118 desistiu da fila 
+A pessoa 117 esperou 0.420000
+O utilizador 116 testou positivo para Covid-19 e vai para isolamento durante 72h 
+O utilizador 105 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 119 
+O paciente 119 foi atendido com prioridade 
+O paciente 119 fez o teste 
+O utilizador 117 testou negativo e foi encaminhado para casa 
+O paciente 108 vai voltar a fazer outro teste 
+O paciente 108 foi atendido 
+O paciente 108 fez o teste 
+Chegou o utilizador 120 
+O paciente 120 foi atendido 
+O paciente 120 fez o teste 
+A pessoa 119 esperou 0.230000
+A pessoa 108 esperou 0.460000
+Chegou o utilizador 121 
+O paciente 121 foi atendido com prioridade 
+O paciente 121 fez o teste 
+A pessoa 120 esperou 0.230000
+O utilizador 119 testou negativo e foi encaminhado para casa 
+O utilizador 108 testou negativo e foi encaminhado para casa 
+O paciente 110 vai voltar a fazer outro teste 
+O paciente 110 foi atendido com prioridade 
+O paciente 110 fez o teste 
+Chegou o utilizador 122 
+O utilizador 122 desistiu da fila 
+A pessoa 121 esperou 0.350000
+O utilizador 120 testou negativo e foi encaminhado para casa 
+A pessoa 110 esperou 0.680000
+Chegou o utilizador 123 
+O paciente 123 foi atendido com prioridade 
+O paciente 123 fez o teste 
+O utilizador 121 testou negativo e foi encaminhado para casa 
+O utilizador 110 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 124 
+O utilizador 124 desistiu da fila 
+A pessoa 123 esperou 0.350000
+Chegou o utilizador 125 
+O paciente 125 foi atendido com prioridade 
+O paciente 125 fez o teste 
+O utilizador 123 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 126 
+O paciente 126 foi atendido 
+O paciente 126 fez o teste 
+A pessoa 125 esperou 0.230000
+Chegou o utilizador 127 
+O paciente 127 foi atendido com prioridade 
+O paciente 127 fez o teste 
+A pessoa 126 esperou 0.210000
+O utilizador 125 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 128 
+O paciente 128 foi atendido com prioridade 
+O paciente 128 fez o teste 
+A pessoa 127 esperou 0.230000
+O utilizador 126 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 129 
+O utilizador 129 desistiu da fila 
+A pessoa 128 esperou 0.340000
+O utilizador 127 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 130 
+O paciente 130 foi atendido 
+O paciente 130 fez o teste 
+O utilizador 128 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 131 
+O paciente 131 foi atendido com prioridade 
+O paciente 131 fez o teste 
+A pessoa 130 esperou 0.230000
+O paciente 120 vai voltar a fazer outro teste 
+O paciente 120 foi atendido 
+O paciente 120 fez o teste 
+Chegou o utilizador 132 
+O utilizador 132 desistiu da fila 
+A pessoa 131 esperou 0.370000
+O utilizador 130 testou negativo e foi encaminhado para casa 
+O paciente 121 vai voltar a fazer outro teste 
+O paciente 121 foi atendido com prioridade 
+O paciente 121 fez o teste 
+A pessoa 120 esperou 0.200000
+Chegou o utilizador 133 
+O utilizador 133 desistiu da fila 
+O utilizador 131 testou negativo e foi encaminhado para casa 
+O utilizador 120 testou negativo e foi encaminhado para casa 
+A pessoa 121 esperou 1.430000
+Chegou o utilizador 134 
+O paciente 134 foi atendido com prioridade 
+O paciente 134 fez o teste 
+O paciente 123 vai voltar a fazer outro teste 
+O paciente 123 foi atendido com prioridade 
+O paciente 123 fez o teste 
+O utilizador 121 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 135 
+O paciente 135 foi atendido 
+O paciente 135 fez o teste 
+A pessoa 134 esperou 0.250000
+A pessoa 123 esperou 0.540000
+Chegou o utilizador 136 
+O utilizador 136 desistiu da fila 
+A pessoa 135 esperou 0.300000
+O utilizador 134 testou negativo e foi encaminhado para casa 
+O paciente 125 vai voltar a fazer outro teste 
+O paciente 125 foi atendido com prioridade 
+O paciente 125 fez o teste 
+O utilizador 123 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 137 
+O paciente 137 foi atendido com prioridade 
+O paciente 137 fez o teste 
+O utilizador 135 testou negativo e foi encaminhado para casa 
+O paciente 126 vai voltar a fazer outro teste 
+O paciente 126 foi atendido 
+O paciente 126 fez o teste 
+A pessoa 125 esperou 0.190000
+Chegou o utilizador 138 
+O utilizador 138 desistiu da fila 
+A pessoa 137 esperou 0.280000
+A pessoa 126 esperou 0.610000
+O utilizador 125 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 139 
+O paciente 139 foi atendido com prioridade 
+O paciente 139 fez o teste 
+O utilizador 137 testou negativo e foi encaminhado para casa 
+O utilizador 126 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 140 
+O utilizador 140 desistiu da fila 
+A pessoa 139 esperou 0.280000
+Chegou o utilizador 141 
+O paciente 141 foi atendido com prioridade 
+O paciente 141 fez o teste 
+O utilizador 139 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 142 
+O paciente 142 foi atendido 
+O paciente 142 fez o teste 
+A pessoa 141 esperou 0.190000
+Chegou o utilizador 143 
+O paciente 143 foi atendido com prioridade 
+O paciente 143 fez o teste 
+A pessoa 142 esperou 2.140000
+O utilizador 141 testou negativo e foi encaminhado para casa 
+A pessoa 143 esperou 2.930000
+O utilizador 142 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 144 
+O paciente 144 foi atendido com prioridade 
+O paciente 144 fez o teste 
+Chegou o utilizador 145 
+O paciente 145 foi atendido com prioridade 
+O paciente 145 fez o teste 
+O utilizador 143 testou negativo e foi encaminhado para casa 
+A pessoa 144 esperou 0.740000
+O paciente 134 vai voltar a fazer outro teste 
+O paciente 134 foi atendido com prioridade 
+O paciente 134 fez o teste 
+Chegou o utilizador 146 
+O utilizador 146 desistiu da fila 
+A pessoa 145 esperou 0.360000
+O utilizador 144 testou negativo e foi encaminhado para casa 
+O paciente 135 vai voltar a fazer outro teste 
+O paciente 135 foi atendido 
+O paciente 135 fez o teste 
+A pessoa 134 esperou 0.210000
+Chegou o utilizador 147 
+O paciente 147 foi atendido com prioridade 
+O paciente 147 fez o teste 
+O utilizador 145 testou negativo e foi encaminhado para casa 
+O utilizador 134 testou negativo e foi encaminhado para casa 
+A pessoa 135 esperou 1.940000
+Chegou o utilizador 148 
+O paciente 148 foi atendido 
+O paciente 148 fez o teste 
+A pessoa 147 esperou 0.370000
+O paciente 137 vai voltar a fazer outro teste 
+O paciente 137 foi atendido com prioridade 
+O paciente 137 fez o teste 
+O utilizador 135 testou negativo e foi encaminhado para casa 
+A pessoa 148 esperou 1.020000
+Chegou o utilizador 149 
+O utilizador 149 desistiu da fila 
+O utilizador 147 testou positivo para Covid-19 e vai ser internado 
+A pessoa 137 esperou 0.480000
+Chegou o utilizador 150 
+O utilizador 150 desistiu da fila 
+O utilizador 148 testou negativo e foi encaminhado para casa 
+O utilizador 137 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 151 
+O utilizador 151 desistiu da fila 
+Chegou o utilizador 152 
+O paciente 152 foi atendido com prioridade 
+O paciente 152 fez o teste 
+O paciente 141 vai voltar a fazer outro teste 
+O paciente 141 foi atendido com prioridade 
+O paciente 141 fez o teste 
+Chegou o utilizador 153 
+O utilizador 153 desistiu da fila 
+A pessoa 152 esperou 0.420000
+O paciente 142 vai voltar a fazer outro teste 
+O paciente 142 foi atendido 
+O paciente 142 fez o teste 
+A pessoa 141 esperou 0.170000
+Chegou o utilizador 154 
+O paciente 154 foi atendido 
+O paciente 154 fez o teste 
+O utilizador 152 testou negativo e foi encaminhado para casa 
+O utilizador 141 testou negativo e foi encaminhado para casa 
+A pessoa 142 esperou 1.310000
+Chegou o utilizador 155 
+O paciente 155 foi atendido 
+O paciente 155 fez o teste 
+A pessoa 154 esperou 0.190000
+O utilizador 142 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 156 
+O utilizador 156 desistiu da fila 
+A pessoa 155 esperou 0.340000
+O utilizador 154 testou negativo e foi encaminhado para casa 
+O paciente 145 vai voltar a fazer outro teste 
+O paciente 145 foi atendido com prioridade 
+O paciente 145 fez o teste 
+Chegou o utilizador 157 
+O utilizador 157 desistiu da fila 
+O utilizador 155 testou negativo e foi encaminhado para casa 
+A pessoa 145 esperou 0.710000
+Chegou o utilizador 158 
+O utilizador 158 desistiu da fila 
+Chegou o utilizador 0 
+O utilizador 0 desistiu da fila 
+Chegou o utilizador 1 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 2 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.430000
+Chegou o utilizador 3 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 3 foi atendido com prioridade 
+O paciente 3 fez o teste 
+O utilizador 1 testou positivo para Covid-19 e vai ser internado 
+A pessoa 2 esperou 0.500000
+Chegou o utilizador 4 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 4 foi atendido com prioridade 
+O paciente 4 fez o teste 
+A pessoa 3 esperou 0.420000
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 5 
+O utilizador 5 desistiu da fila 
+A pessoa 4 esperou 0.520000
+O utilizador 3 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 6 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+O utilizador 4 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 7 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.430000
+Chegou o utilizador 8 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 8 foi atendido 
+O paciente 8 fez o teste 
+A pessoa 7 esperou 0.430000
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 9 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+O utilizador 7 testou negativo e foi encaminhado para casa 
+A pessoa 8 esperou 0.520000
+Chegou o utilizador 10 
+O utilizador 10 desistiu da fila 
+O utilizador 8 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 0.730000
+Chegou o utilizador 11 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 11 foi atendido 
+O paciente 11 fez o teste 
+O utilizador 9 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 12 
+O utilizador 12 desistiu da fila 
+A pessoa 11 esperou 0.470000
+O paciente 1 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 13 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 13 foi atendido 
+O paciente 13 fez o teste 
+O utilizador 11 testou negativo e foi encaminhado para casa 
+O paciente 2 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.420000
+Chegou o utilizador 14 
+O utilizador 14 desistiu da fila 
+A pessoa 13 esperou 0.500000
+A pessoa 2 esperou 0.750000
+O utilizador 1 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 15 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 15 foi atendido com prioridade 
+O paciente 15 fez o teste 
+O utilizador 13 testou negativo e foi encaminhado para casa 
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 16 
+O utilizador 16 desistiu da fila 
+A pessoa 15 esperou 0.500000
+Chegou o utilizador 17 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+O utilizador 15 testou negativo e foi encaminhado para casa 
+O paciente 6 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+Chegou o utilizador 18 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 18 foi atendido 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.420000
+O paciente 7 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.390000
+Chegou o utilizador 19 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 19 foi atendido com prioridade 
+O paciente 19 fez o teste 
+A pessoa 18 esperou 0.280000
+O utilizador 17 testou negativo e foi encaminhado para casa 
+A pessoa 7 esperou 0.660000
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 20 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 20 foi atendido com prioridade 
+O paciente 20 fez o teste 
+A pessoa 19 esperou 0.430000
+O utilizador 18 testou negativo e foi encaminhado para casa 
+O paciente 9 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+O utilizador 7 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 21 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 21 foi atendido com prioridade 
+O paciente 21 fez o teste 
+A pessoa 20 esperou 0.400000
+O utilizador 19 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 1.010000
+Chegou o utilizador 22 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 22 foi atendido com prioridade 
+O paciente 22 fez o teste 
+A pessoa 21 esperou 0.250000
+O utilizador 20 testou negativo e foi encaminhado para casa 
+O utilizador 9 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 23 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 23 foi atendido 
+O paciente 23 fez o teste 
+A pessoa 22 esperou 0.380000
+O utilizador 21 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 24 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 24 foi atendido com prioridade 
+O paciente 24 fez o teste 
+A pessoa 23 esperou 0.380000
+O utilizador 22 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 25 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 25 foi atendido 
+O paciente 25 fez o teste 
+O utilizador 23 testou positivo para Covid-19 e vai para isolamento durante 72h 
+A pessoa 24 esperou 0.650000
+Chegou o utilizador 26 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 26 foi atendido 
+O paciente 26 fez o teste 
+A pessoa 25 esperou 0.380000
+O utilizador 24 testou negativo e foi encaminhado para casa 
+O paciente 15 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 15 foi atendido com prioridade 
+O paciente 15 fez o teste 
+Chegou o utilizador 27 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 27 foi atendido com prioridade 
+O paciente 27 fez o teste 
+A pessoa 26 esperou 0.270000
+O utilizador 25 testou negativo e foi encaminhado para casa 
+A pessoa 15 esperou 0.610000
+Chegou o utilizador 28 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 28 foi atendido com prioridade 
+O paciente 28 fez o teste 
+A pessoa 27 esperou 0.230000
+O utilizador 26 testou negativo e foi encaminhado para casa 
+O utilizador 15 testou negativo e foi encaminhado para casa 
+O paciente 17 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+Chegou o utilizador 29 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 29 foi atendido 
+O paciente 29 fez o teste 
+A pessoa 28 esperou 0.220000
+O utilizador 27 testou positivo para Covid-19 e vai ser internado 
+O paciente 18 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 18 foi atendido 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.510000
+Chegou o utilizador 30 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 30 foi atendido com prioridade 
+O paciente 30 fez o teste 
+A pessoa 29 esperou 0.230000
+O utilizador 28 testou negativo e foi encaminhado para casa 
+O paciente 19 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 19 foi atendido com prioridade 
+O paciente 19 fez o teste 
+A pessoa 18 esperou 0.390000
+O utilizador 17 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 31 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 31 foi atendido com prioridade 
+O paciente 31 fez o teste 
+A pessoa 30 esperou 0.420000
+O utilizador 29 testou negativo e foi encaminhado para casa 
+O paciente 20 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 20 foi atendido com prioridade 
+O paciente 20 fez o teste 
+A pessoa 19 esperou 0.380000
+O utilizador 18 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 32 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 32 foi atendido com prioridade 
+O paciente 32 fez o teste 
+O utilizador 30 testou negativo e foi encaminhado para casa 
+A pessoa 31 esperou 0.290000
+A pessoa 20 esperou 0.470000
+O utilizador 19 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 33 
+O utilizador 33 desistiu da fila 
+A pessoa 32 esperou 0.220000
+O utilizador 31 testou negativo e foi encaminhado para casa 
+O utilizador 20 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 34 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 34 foi atendido com prioridade 
+O paciente 34 fez o teste 
+O utilizador 32 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 35 
+O utilizador 35 desistiu da fila 
+A pessoa 34 esperou 0.540000
+O paciente 24 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 24 foi atendido com prioridade 
+O paciente 24 fez o teste 
+Chegou o utilizador 36 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 36 foi atendido 
+O paciente 36 fez o teste 
+O utilizador 34 testou positivo para Covid-19 e vai ser internado 
+O paciente 25 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 25 foi atendido 
+O paciente 25 fez o teste 
+A pessoa 24 esperou 0.390000
+Chegou o utilizador 37 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 37 foi atendido com prioridade 
+O paciente 37 fez o teste 
+A pessoa 36 esperou 0.240000
+A pessoa 25 esperou 0.480000
+O utilizador 24 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 38 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 38 foi atendido com prioridade 
+O paciente 38 fez o teste 
+A pessoa 37 esperou 0.400000
+O utilizador 36 testou positivo para Covid-19 e vai para isolamento durante 72h 
+O utilizador 25 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 39 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 39 foi atendido com prioridade 
+O paciente 39 fez o teste 
+O utilizador 37 testou negativo e foi encaminhado para casa 
+A pessoa 38 esperou 0.550000
+Chegou o utilizador 40 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 40 foi atendido com prioridade 
+O paciente 40 fez o teste 
+A pessoa 39 esperou 0.400000
+O utilizador 38 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 41 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 41 foi atendido com prioridade 
+O paciente 41 fez o teste 
+O utilizador 39 testou negativo e foi encaminhado para casa 
+A pessoa 40 esperou 0.630000
+O paciente 30 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 30 foi atendido com prioridade 
+O paciente 30 fez o teste 
+Chegou o utilizador 42 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 42 foi atendido 
+O paciente 42 fez o teste 
+A pessoa 41 esperou 0.210000
+O utilizador 40 testou positivo para Covid-19 e vai ser internado 
+O paciente 31 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 31 foi atendido com prioridade 
+O paciente 31 fez o teste 
+A pessoa 30 esperou 0.390000
+Chegou o utilizador 43 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 43 foi atendido com prioridade 
+O paciente 43 fez o teste 
+A pessoa 42 esperou 0.370000
+O utilizador 41 testou negativo e foi encaminhado para casa 
+A pessoa 31 esperou 0.850000
+O utilizador 30 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 44 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 44 foi atendido 
+O paciente 44 fez o teste 
+O utilizador 42 testou negativo e foi encaminhado para casa 
+A pessoa 43 esperou 0.450000
+O utilizador 31 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 45 
+O utilizador 45 desistiu da fila 
+A pessoa 44 esperou 0.370000
+O utilizador 43 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 46 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 46 foi atendido com prioridade 
+O paciente 46 fez o teste 
+O utilizador 44 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 47 
+O utilizador 47 desistiu da fila 
+A pessoa 46 esperou 0.540000
+O paciente 36 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 36 foi atendido 
+O paciente 36 fez o teste 
+Chegou o utilizador 48 
+O utilizador 48 desistiu da fila 
+O utilizador 46 testou negativo e foi encaminhado para casa 
+A pessoa 36 esperou 0.570000
+Chegou o utilizador 49 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 49 foi atendido 
+O paciente 49 fez o teste 
+O paciente 38 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 38 foi atendido com prioridade 
+O paciente 38 fez o teste 
+O utilizador 36 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 50 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 50 foi atendido com prioridade 
+O paciente 50 fez o teste 
+A pessoa 49 esperou 0.240000
+A pessoa 38 esperou 0.510000
+Chegou o utilizador 51 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 51 foi atendido com prioridade 
+O paciente 51 fez o teste 
+A pessoa 50 esperou 0.390000
+O utilizador 49 testou negativo e foi encaminhado para casa 
+O utilizador 38 testou negativo e foi encaminhado para casa 
+O paciente 40 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 40 foi atendido com prioridade 
+O paciente 40 fez o teste 
+Chegou o utilizador 52 
+O utilizador 52 desistiu da fila 
+O utilizador 50 testou negativo e foi encaminhado para casa 
+A pessoa 51 esperou 0.570000
+A pessoa 40 esperou 0.800000
+Chegou o utilizador 53 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 53 foi atendido 
+O paciente 53 fez o teste 
+O utilizador 51 testou negativo e foi encaminhado para casa 
+O paciente 42 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 42 foi atendido 
+O paciente 42 fez o teste 
+O utilizador 40 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 54 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 54 foi atendido 
+O paciente 54 fez o teste 
+A pessoa 53 esperou 0.360000
+A pessoa 42 esperou 0.730000
+Chegou o utilizador 55 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 55 foi atendido com prioridade 
+O paciente 55 fez o teste 
+O utilizador 53 testou negativo e foi encaminhado para casa 
+A pessoa 54 esperou 0.540000
+O paciente 44 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 44 foi atendido 
+O paciente 44 fez o teste 
+O utilizador 42 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 56 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 56 foi atendido 
+O paciente 56 fez o teste 
+A pessoa 55 esperou 0.230000
+O utilizador 54 testou negativo e foi encaminhado para casa 
+A pessoa 44 esperou 1.290000
+Chegou o utilizador 57 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 57 foi atendido com prioridade 
+O paciente 57 fez o teste 
+A pessoa 56 esperou 0.360000
+O utilizador 55 testou positivo para Covid-19 e vai ser internado 
+O utilizador 44 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 58 
+O utilizador 58 desistiu da fila 
+O utilizador 56 testou negativo e foi encaminhado para casa 
+A pessoa 57 esperou 0.580000
+Chegou o utilizador 59 
+O utilizador 59 desistiu da fila 
+O utilizador 57 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 60 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 60 foi atendido com prioridade 
+O paciente 60 fez o teste 
+Chegou o utilizador 61 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 61 foi atendido com prioridade 
+O paciente 61 fez o teste 
+A pessoa 60 esperou 0.340000
+O paciente 50 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 50 foi atendido com prioridade 
+O paciente 50 fez o teste 
+Chegou o utilizador 62 
+O utilizador 62 desistiu da fila 
+O utilizador 60 testou positivo para Covid-19 e vai ser internado 
+A pessoa 61 esperou 0.560000
+A pessoa 50 esperou 0.790000
+Chegou o utilizador 63 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 63 foi atendido com prioridade 
+O paciente 63 fez o teste 
+O utilizador 61 testou negativo e foi encaminhado para casa 
+O utilizador 50 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 64 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 64 foi atendido com prioridade 
+O paciente 64 fez o teste 
+A pessoa 63 esperou 0.320000
+Chegou o utilizador 65 
+O utilizador 65 desistiu da fila 
+A pessoa 64 esperou 0.450000
+O utilizador 63 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 66 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 66 foi atendido com prioridade 
+O paciente 66 fez o teste 
+O utilizador 64 testou negativo e foi encaminhado para casa 
+O paciente 55 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 55 foi atendido com prioridade 
+O paciente 55 fez o teste 
+A pessoa 66 esperou 0.430000
+Chegou o utilizador 67 
+O utilizador 67 desistiu da fila 
+A pessoa 55 esperou 0.430000
+O utilizador 66 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 68 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 68 foi atendido com prioridade 
+O paciente 68 fez o teste 
+O utilizador 55 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 69 
+O utilizador 69 desistiu da fila 
+A pessoa 68 esperou 0.450000
+Chegou o utilizador 70 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 70 foi atendido 
+O paciente 70 fez o teste 
+O utilizador 68 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 71 
+O utilizador 71 desistiu da fila 
+A pessoa 70 esperou 0.450000
+O paciente 60 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 60 foi atendido com prioridade 
+O paciente 60 fez o teste 
+Chegou o utilizador 72 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 72 foi atendido com prioridade 
+O paciente 72 fez o teste 
+O utilizador 70 testou negativo e foi encaminhado para casa 
+O paciente 61 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 61 foi atendido com prioridade 
+O paciente 61 fez o teste 
+A pessoa 60 esperou 0.340000
+Chegou o utilizador 73 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 73 foi atendido com prioridade 
+O paciente 73 fez o teste 
+A pessoa 72 esperou 0.230000
+A pessoa 61 esperou 0.460000
+O utilizador 60 testou negativo e foi encaminhado para casa 
+A pessoa 73 esperou 1.710000
+Chegou o utilizador 74 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 74 foi atendido 
+O paciente 74 fez o teste 
+O utilizador 72 testou negativo e foi encaminhado para casa 
+O utilizador 61 testou negativo e foi encaminhado para casa 
+O utilizador 73 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 75 
+O utilizador 75 desistiu da fila 
+A pessoa 74 esperou 0.290000
+Chegou o utilizador 76 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 76 foi atendido com prioridade 
+O paciente 76 fez o teste 
+O utilizador 74 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 77 
+O utilizador 77 desistiu da fila 
+A pessoa 76 esperou 0.480000
+O paciente 66 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 66 foi atendido com prioridade 
+O paciente 66 fez o teste 
+Chegou o utilizador 78 
+O utilizador 78 desistiu da fila 
+O utilizador 76 testou negativo e foi encaminhado para casa 
+A pessoa 66 esperou 0.770000
+Chegou o utilizador 79 
+O utilizador 79 desistiu da fila 
+O utilizador 66 testou negativo e foi encaminhado para casa 
+O paciente 68 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 68 foi atendido com prioridade 
+O paciente 68 fez o teste 
+Chegou o utilizador 80 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 80 foi atendido com prioridade 
+O paciente 80 fez o teste 
+A pessoa 68 esperou 0.460000
+Chegou o utilizador 81 
+O utilizador 81 desistiu da fila 
+A pessoa 80 esperou 0.440000
+O paciente 70 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 70 foi atendido 
+O paciente 70 fez o teste 
+O utilizador 68 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 82 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 82 foi atendido com prioridade 
+O paciente 82 fez o teste 
+O utilizador 80 testou negativo e foi encaminhado para casa 
+A pessoa 70 esperou 0.730000
+Chegou o utilizador 83 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 83 foi atendido 
+O paciente 83 fez o teste 
+A pessoa 82 esperou 0.260000
+O utilizador 70 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 84 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 84 foi atendido com prioridade 
+O paciente 84 fez o teste 
+A pessoa 83 esperou 0.320000
+O utilizador 82 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 85 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 85 foi atendido com prioridade 
+O paciente 85 fez o teste 
+O utilizador 83 testou negativo e foi encaminhado para casa 
+A pessoa 84 esperou 0.400000
+O paciente 74 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 74 foi atendido 
+O paciente 74 fez o teste 
+Chegou o utilizador 86 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 86 foi atendido com prioridade 
+O paciente 86 fez o teste 
+A pessoa 85 esperou 0.310000
+O utilizador 84 testou positivo para Covid-19 e vai ser internado 
+A pessoa 74 esperou 0.950000
+Chegou o utilizador 87 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 87 foi atendido 
+O paciente 87 fez o teste 
+A pessoa 86 esperou 0.220000
+O utilizador 85 testou negativo e foi encaminhado para casa 
+O utilizador 74 testou negativo e foi encaminhado para casa 
+O paciente 76 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 76 foi atendido com prioridade 
+O paciente 76 fez o teste 
+Chegou o utilizador 88 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 88 foi atendido com prioridade 
+O paciente 88 fez o teste 
+A pessoa 87 esperou 0.200000
+O utilizador 86 testou positivo para Covid-19 e vai ser internado 
+A pessoa 76 esperou 0.540000
+Chegou o utilizador 89 
+O utilizador 89 desistiu da fila 
+A pessoa 88 esperou 0.280000
+O utilizador 87 testou negativo e foi encaminhado para casa 
+O utilizador 76 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 90 
+O utilizador 90 desistiu da fila 
+O utilizador 88 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 91 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 91 foi atendido com prioridade 
+O paciente 91 fez o teste 
+Chegou o utilizador 92 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 92 foi atendido com prioridade 
+O paciente 92 fez o teste 
+A pessoa 91 esperou 0.310000
+Chegou o utilizador 93 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 93 foi atendido 
+O paciente 93 fez o teste 
+O utilizador 91 testou positivo para Covid-19 e vai ser internado 
+A pessoa 92 esperou 0.570000
+Chegou o utilizador 94 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 94 foi atendido com prioridade 
+O paciente 94 fez o teste 
+A pessoa 93 esperou 0.330000
+O utilizador 92 testou negativo e foi encaminhado para casa 
+O paciente 83 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 83 foi atendido 
+O paciente 83 fez o teste 
+Chegou o utilizador 95 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 95 foi atendido 
+O paciente 95 fez o teste 
+A pessoa 94 esperou 0.260000
+O utilizador 93 testou negativo e foi encaminhado para casa 
+A pessoa 83 esperou 0.730000
+O paciente 84 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 84 foi atendido com prioridade 
+O paciente 84 fez o teste 
+Chegou o utilizador 96 
+O utilizador 96 desistiu da fila 
+A pessoa 95 esperou 0.270000
+O utilizador 94 testou positivo para Covid-19 e vai ser internado 
+O utilizador 83 testou negativo e foi encaminhado para casa 
+A pessoa 84 esperou 1.840000
+Chegou o utilizador 97 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 97 foi atendido com prioridade 
+O paciente 97 fez o teste 
+O utilizador 95 testou negativo e foi encaminhado para casa 
+O paciente 86 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 86 foi atendido com prioridade 
+O paciente 86 fez o teste 
+O utilizador 84 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 98 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 98 foi atendido 
+O paciente 98 fez o teste 
+A pessoa 97 esperou 0.200000
+O paciente 87 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 87 foi atendido 
+O paciente 87 fez o teste 
+A pessoa 86 esperou 0.360000
+A pessoa 98 esperou 1.030000
+Chegou o utilizador 99 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 99 foi atendido 
+O paciente 99 fez o teste 
+O utilizador 97 testou negativo e foi encaminhado para casa 
+O paciente 88 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 88 foi atendido com prioridade 
+O paciente 88 fez o teste 
+A pessoa 87 esperou 0.270000
+O utilizador 86 testou positivo para Covid-19 e vai ser internado 
+O utilizador 98 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 100 
+O utilizador 100 desistiu da fila 
+A pessoa 99 esperou 0.190000
+A pessoa 88 esperou 0.420000
+O utilizador 87 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 101 
+O utilizador 101 desistiu da fila 
+O utilizador 99 testou negativo e foi encaminhado para casa 
+O utilizador 88 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 102 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 102 foi atendido com prioridade 
+O paciente 102 fez o teste 
+Chegou o utilizador 103 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 103 foi atendido com prioridade 
+O paciente 103 fez o teste 
+A pessoa 102 esperou 0.300000
+Chegou o utilizador 104 
+O utilizador 104 desistiu da fila 
+O utilizador 102 testou positivo para Covid-19 e vai ser internado 
+A pessoa 103 esperou 0.550000
+Chegou o utilizador 105 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 105 foi atendido com prioridade 
+O paciente 105 fez o teste 
+O utilizador 103 testou negativo e foi encaminhado para casa 
+O paciente 94 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 94 foi atendido com prioridade 
+O paciente 94 fez o teste 
+Chegou o utilizador 106 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 106 foi atendido 
+O paciente 106 fez o teste 
+A pessoa 105 esperou 0.220000
+O paciente 95 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 95 foi atendido 
+O paciente 95 fez o teste 
+A pessoa 94 esperou 0.330000
+Chegou o utilizador 107 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 107 foi atendido com prioridade 
+O paciente 107 fez o teste 
+A pessoa 106 esperou 0.280000
+O utilizador 105 testou negativo e foi encaminhado para casa 
+A pessoa 95 esperou 0.610000
+O utilizador 94 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 108 
+O utilizador 108 desistiu da fila 
+O utilizador 106 testou negativo e foi encaminhado para casa 
+A pessoa 107 esperou 0.430000
+O utilizador 95 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 109 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 109 foi atendido 
+O paciente 109 fez o teste 
+O utilizador 107 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 110 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 110 foi atendido com prioridade 
+O paciente 110 fez o teste 
+A pessoa 109 esperou 0.320000
+Chegou o utilizador 111 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 111 foi atendido 
+O paciente 111 fez o teste 
+O utilizador 109 testou negativo e foi encaminhado para casa 
+A pessoa 110 esperou 0.530000
+Chegou o utilizador 112 
+O utilizador 112 desistiu da fila 
+A pessoa 111 esperou 0.420000
+O utilizador 110 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 113 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 113 foi atendido 
+O paciente 113 fez o teste 
+O utilizador 111 testou negativo e foi encaminhado para casa 
+O paciente 102 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 102 foi atendido com prioridade 
+O paciente 102 fez o teste 
+Chegou o utilizador 114 
+O utilizador 114 desistiu da fila 
+A pessoa 113 esperou 0.410000
+A pessoa 102 esperou 0.690000
+Chegou o utilizador 115 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 115 foi atendido com prioridade 
+O paciente 115 fez o teste 
+O utilizador 113 testou negativo e foi encaminhado para casa 
+O utilizador 102 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 116 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 116 foi atendido com prioridade 
+O paciente 116 fez o teste 
+A pessoa 115 esperou 0.270000
+O paciente 105 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 105 foi atendido com prioridade 
+O paciente 105 fez o teste 
+Chegou o utilizador 117 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 117 foi atendido com prioridade 
+O paciente 117 fez o teste 
+A pessoa 116 esperou 0.190000
+O utilizador 115 testou negativo e foi encaminhado para casa 
+A pessoa 105 esperou 0.580000
+Chegou o utilizador 118 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 118 foi atendido 
+O paciente 118 fez o teste 
+A pessoa 117 esperou 0.270000
+O utilizador 116 testou positivo para Covid-19 e vai ser internado 
+O paciente 107 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 107 foi atendido com prioridade 
+O paciente 107 fez o teste 
+O utilizador 105 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 119 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 119 foi atendido 
+O paciente 119 fez o teste 
+O utilizador 117 testou negativo e foi encaminhado para casa 
+A pessoa 118 esperou 0.330000
+A pessoa 107 esperou 0.630000
+Chegou o utilizador 120 
+O utilizador 120 desistiu da fila 
+A pessoa 119 esperou 0.270000
+O utilizador 118 testou negativo e foi encaminhado para casa 
+O utilizador 107 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 121 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 121 foi atendido com prioridade 
+O paciente 121 fez o teste 
+O utilizador 119 testou negativo e foi encaminhado para casa 
+O paciente 110 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 110 foi atendido com prioridade 
+O paciente 110 fez o teste 
+Chegou o utilizador 122 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 122 foi atendido com prioridade 
+O paciente 122 fez o teste 
+A pessoa 121 esperou 0.240000
+O paciente 111 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 111 foi atendido 
+O paciente 111 fez o teste 
+A pessoa 110 esperou 0.280000
+Chegou o utilizador 123 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 123 foi atendido com prioridade 
+O paciente 123 fez o teste 
+A pessoa 122 esperou 0.310000
+O utilizador 121 testou negativo e foi encaminhado para casa 
+A pessoa 111 esperou 0.750000
+O utilizador 110 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 124 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 124 foi atendido 
+O paciente 124 fez o teste 
+O utilizador 122 testou positivo para Covid-19 e vai ser internado 
+A pessoa 123 esperou 0.550000
+O utilizador 111 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 125 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 125 foi atendido com prioridade 
+O paciente 125 fez o teste 
+O utilizador 123 testou negativo e foi encaminhado para casa 
+A pessoa 124 esperou 0.390000
+Chegou o utilizador 126 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 126 foi atendido 
+O paciente 126 fez o teste 
+A pessoa 125 esperou 0.300000
+O utilizador 124 testou negativo e foi encaminhado para casa 
+O paciente 115 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 115 foi atendido com prioridade 
+O paciente 115 fez o teste 
+A pessoa 126 esperou 0.350000
+Chegou o utilizador 127 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 127 foi atendido 
+O paciente 127 fez o teste 
+O utilizador 125 testou positivo para Covid-19 e vai ser internado 
+A pessoa 115 esperou 0.640000
+O utilizador 126 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 128 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 128 foi atendido com prioridade 
+O paciente 128 fez o teste 
+A pessoa 127 esperou 0.260000
+O utilizador 115 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 129 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 129 foi atendido com prioridade 
+O paciente 129 fez o teste 
+O utilizador 127 testou negativo e foi encaminhado para casa 
+A pessoa 128 esperou 0.390000
+O paciente 118 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 118 foi atendido 
+O paciente 118 fez o teste 
+Chegou o utilizador 130 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 130 foi atendido 
+O paciente 130 fez o teste 
+A pessoa 129 esperou 0.260000
+O utilizador 128 testou negativo e foi encaminhado para casa 
+A pessoa 118 esperou 0.730000
+Chegou o utilizador 131 
+O utilizador 131 desistiu da fila 
+O utilizador 129 testou negativo e foi encaminhado para casa 
+A pessoa 130 esperou 0.390000
+Chegou o utilizador 0 
+O utilizador 0 desistiu da fila 
+Chegou o utilizador 1 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 2 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.460000
+Chegou o utilizador 3 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 3 foi atendido com prioridade 
+O paciente 3 fez o teste 
+O utilizador 1 testou positivo para Covid-19 e vai ser internado 
+A pessoa 2 esperou 0.510000
+Chegou o utilizador 4 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 4 foi atendido com prioridade 
+O paciente 4 fez o teste 
+A pessoa 3 esperou 0.620000
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 5 
+O utilizador 5 desistiu da fila 
+A pessoa 4 esperou 0.510000
+O utilizador 3 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 6 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+O utilizador 4 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 7 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.610000
+Chegou o utilizador 8 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 8 foi atendido 
+O paciente 8 fez o teste 
+A pessoa 7 esperou 0.420000
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+Chegou o utilizador 9 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+A pessoa 8 esperou 0.410000
+O utilizador 7 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 10 
+O utilizador 10 desistiu da fila 
+O utilizador 8 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 0.790000
+Chegou o utilizador 11 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 11 foi atendido 
+O paciente 11 fez o teste 
+O utilizador 9 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 12 
+O utilizador 12 desistiu da fila 
+A pessoa 11 esperou 0.540000
+O paciente 1 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 13 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 13 foi atendido 
+O paciente 13 fez o teste 
+O utilizador 11 testou negativo e foi encaminhado para casa 
+O paciente 2 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.370000
+A pessoa 13 esperou 0.560000
+Chegou o utilizador 14 
+O utilizador 14 desistiu da fila 
+A pessoa 2 esperou 0.430000
+O utilizador 1 testou negativo e foi encaminhado para casa 
+O utilizador 13 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 15 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 15 foi atendido com prioridade 
+O paciente 15 fez o teste 
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 16 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 16 foi atendido 
+O paciente 16 fez o teste 
+A pessoa 15 esperou 0.510000
+Chegou o utilizador 17 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+O utilizador 15 testou negativo e foi encaminhado para casa 
+A pessoa 16 esperou 0.480000
+O paciente 6 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+Chegou o utilizador 18 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 18 foi atendido 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.430000
+O utilizador 16 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 0 
+O utilizador 0 desistiu da fila 
+Chegou o utilizador 1 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 2 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.410000
+Chegou o utilizador 3 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 3 foi atendido com prioridade 
+O paciente 3 fez o teste 
+O utilizador 1 testou positivo para Covid-19 e vai ser internado 
+A pessoa 2 esperou 0.490000
+Chegou o utilizador 4 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 4 foi atendido com prioridade 
+O paciente 4 fez o teste 
+A pessoa 3 esperou 0.420000
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 5 
+O utilizador 5 desistiu da fila 
+A pessoa 4 esperou 0.540000
+O utilizador 3 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 6 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+O utilizador 4 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 7 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.450000
+A pessoa 7 esperou 0.700000
+Chegou o utilizador 8 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 8 foi atendido 
+O paciente 8 fez o teste 
+O utilizador 6 testou positivo para Covid-19 e vai ser internado 
+O utilizador 7 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 9 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+A pessoa 8 esperou 0.400000
+Chegou o utilizador 10 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 10 foi atendido 
+O paciente 10 fez o teste 
+O utilizador 8 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 0.690000
+Chegou o utilizador 11 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 11 foi atendido 
+O paciente 11 fez o teste 
+A pessoa 10 esperou 0.420000
+O utilizador 9 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 12 
+O utilizador 12 desistiu da fila 
+A pessoa 11 esperou 0.500000
+O utilizador 10 testou negativo e foi encaminhado para casa 
+O paciente 1 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 1 foi atendido com prioridade 
+O paciente 1 fez o teste 
+Chegou o utilizador 13 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 13 foi atendido 
+O paciente 13 fez o teste 
+O utilizador 11 testou negativo e foi encaminhado para casa 
+O paciente 2 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 2 foi atendido 
+O paciente 2 fez o teste 
+A pessoa 1 esperou 0.410000
+Chegou o utilizador 14 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 14 foi atendido com prioridade 
+O paciente 14 fez o teste 
+A pessoa 13 esperou 0.400000
+O utilizador 1 testou negativo e foi encaminhado para casa 
+A pessoa 2 esperou 1.700000
+Chegou o utilizador 15 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 15 foi atendido 
+O paciente 15 fez o teste 
+O utilizador 13 testou negativo e foi encaminhado para casa 
+A pessoa 14 esperou 0.940000
+O utilizador 2 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 16 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 16 foi atendido 
+O paciente 16 fez o teste 
+A pessoa 15 esperou 0.540000
+O utilizador 14 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 17 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+O utilizador 15 testou positivo para Covid-19 e vai para isolamento durante 72h 
+A pessoa 16 esperou 0.640000
+O paciente 6 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 6 foi atendido com prioridade 
+O paciente 6 fez o teste 
+Chegou o utilizador 18 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 18 foi atendido com prioridade 
+O paciente 18 fez o teste 
+A pessoa 17 esperou 0.450000
+O utilizador 16 testou negativo e foi encaminhado para casa 
+O paciente 7 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 7 foi atendido com prioridade 
+O paciente 7 fez o teste 
+A pessoa 6 esperou 0.510000
+Chegou o utilizador 19 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 19 foi atendido 
+O paciente 19 fez o teste 
+O utilizador 17 testou negativo e foi encaminhado para casa 
+A pessoa 18 esperou 0.300000
+A pessoa 7 esperou 0.650000
+O utilizador 6 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 20 
+O utilizador 20 desistiu da fila 
+A pessoa 19 esperou 0.340000
+O utilizador 18 testou negativo e foi encaminhado para casa 
+O utilizador 7 testou negativo e foi encaminhado para casa 
+O paciente 9 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 9 foi atendido com prioridade 
+O paciente 9 fez o teste 
+Chegou o utilizador 21 
+O utilizador 21 desistiu da fila 
+O utilizador 19 testou negativo e foi encaminhado para casa 
+A pessoa 9 esperou 0.560000
+Chegou o utilizador 22 
+O utilizador 22 desistiu da fila 
+O utilizador 9 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 23 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 23 foi atendido com prioridade 
+O paciente 23 fez o teste 
+Chegou o utilizador 24 
+O utilizador 24 desistiu da fila 
+A pessoa 23 esperou 0.500000
+Chegou o utilizador 25 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 25 foi atendido com prioridade 
+O paciente 25 fez o teste 
+O utilizador 23 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 26 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 26 foi atendido 
+O paciente 26 fez o teste 
+A pessoa 25 esperou 0.380000
+Chegou o utilizador 27 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 27 foi atendido com prioridade 
+O paciente 27 fez o teste 
+A pessoa 26 esperou 0.380000
+O utilizador 25 testou negativo e foi encaminhado para casa 
+O paciente 16 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 16 foi atendido 
+O paciente 16 fez o teste 
+Chegou o utilizador 28 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 28 foi atendido 
+O paciente 28 fez o teste 
+A pessoa 27 esperou 0.230000
+O utilizador 26 testou negativo e foi encaminhado para casa 
+O paciente 17 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 17 foi atendido com prioridade 
+O paciente 17 fez o teste 
+A pessoa 16 esperou 0.420000
+Chegou o utilizador 29 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 29 foi atendido com prioridade 
+O paciente 29 fez o teste 
+A pessoa 28 esperou 0.220000
+O utilizador 27 testou negativo e foi encaminhado para casa 
+A pessoa 17 esperou 0.790000
+O utilizador 16 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 30 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 30 foi atendido com prioridade 
+O paciente 30 fez o teste 
+A pessoa 29 esperou 0.410000
+O utilizador 28 testou positivo para Covid-19 e vai para isolamento durante 72h 
+O utilizador 17 testou positivo para Covid-19 e vai ser internado 
+O paciente 19 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 19 foi atendido 
+O paciente 19 fez o teste 
+Chegou o utilizador 31 
+O utilizador 31 desistiu da fila 
+A pessoa 30 esperou 0.490000
+O utilizador 29 testou negativo e foi encaminhado para casa 
+A pessoa 19 esperou 1.200000
+Chegou o utilizador 32 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 32 foi atendido 
+O paciente 32 fez o teste 
+O utilizador 30 testou negativo e foi encaminhado para casa 
+O utilizador 19 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 33 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 33 foi atendido com prioridade 
+O paciente 33 fez o teste 
+A pessoa 32 esperou 0.390000
+Chegou o utilizador 34 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 34 foi atendido com prioridade 
+O paciente 34 fez o teste 
+A pessoa 33 esperou 0.430000
+O utilizador 32 testou positivo para Covid-19 e vai para isolamento durante 72h 
+O paciente 23 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 23 foi atendido com prioridade 
+O paciente 23 fez o teste 
+Chegou o utilizador 35 
+O utilizador 35 desistiu da fila 
+O utilizador 33 testou negativo e foi encaminhado para casa 
+A pessoa 34 esperou 0.610000
+A pessoa 23 esperou 0.920000
+Chegou o utilizador 36 
+O utilizador 36 desistiu da fila 
+O utilizador 34 testou negativo e foi encaminhado para casa 
+O utilizador 23 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 37 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 37 foi atendido com prioridade 
+O paciente 37 fez o teste 
+Chegou o utilizador 38 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 38 foi atendido 
+O paciente 38 fez o teste 
+A pessoa 37 esperou 0.380000
+Chegou o utilizador 39 
+O utilizador 39 desistiu da fila 
+O utilizador 37 testou negativo e foi encaminhado para casa 
+A pessoa 38 esperou 0.620000
+O paciente 28 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente 28 foi atendido 
+O paciente 28 fez o teste 
+Chegou o utilizador 40 
+O utilizador 40 desistiu da fila 
+O utilizador 38 testou negativo e foi encaminhado para casa 
+O paciente 29 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 29 foi atendido com prioridade 
+O paciente 29 fez o teste 
+A pessoa 28 esperou 0.340000
+Chegou o utilizador 41 
+O utilizador 41 desistiu da fila 
+O utilizador 28 testou negativo e foi encaminhado para casa 
+A pessoa 29 esperou 1.060000
+Chegou o utilizador 42 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 42 foi atendido com prioridade 
+O paciente 42 fez o teste 
+O utilizador 29 testou negativo e foi encaminhado para casa 
+Chegou o utilizador 43 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente 43 foi atendido com prioridade 
+O paciente 43 fez o teste 
+A pessoa 42 esperou 0.360000
+O paciente 32 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 32 foi atendido 
+O paciente 32 fez o teste 
+Chegou o utilizador 44 
+O utilizador 44 desistiu da fila 
+A pessoa 43 esperou 0.430000
+O utilizador 42 testou negativo e foi encaminhado para casa 
+A pessoa 32 esperou 0.860000
+Chegou o utilizador 45 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente 45 foi atendido com prioridade 
+O paciente 45 fez o teste 
+O utilizador 43 testou positivo para Covid-19 e vai ser internado 
+O utilizador 32 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o utilizador 46 
+O utilizador 46 desistiu da fila 
+A pessoa 45 esperou 0.350000
+Chegou o utilizador 47 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente 47 foi atendido 
+O paciente 47 fez o teste 
+O utilizador 45 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 0 
+O paciente com o número 0 desistiu da fila 
+Chegou o paciente com o número 1 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 1 foi atendido com prioridade 
+O paciente com o número 1 fez o teste 
+Chegou o paciente com o número 2 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 2 foi atendido 
+O paciente com o número 2 fez o teste 
+A paciente com o número 1 esperou 0.420000
+Chegou o paciente com o número 3 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 3 foi atendido com prioridade 
+O paciente com o número 3 fez o teste 
+A paciente com o número 2 esperou 0.420000
+O paciente com o número 1 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 4 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 4 foi atendido com prioridade 
+O paciente com o número 4 fez o teste 
+A paciente com o número 3 esperou 0.430000
+O paciente com o número 2 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 5 
+O paciente com o número 5 desistiu da fila 
+A paciente com o número 4 esperou 1.180000
+O paciente com o número 3 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 6 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 6 foi atendido com prioridade 
+O paciente com o número 6 fez o teste 
+O paciente com o número 4 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 7 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 7 foi atendido com prioridade 
+O paciente com o número 7 fez o teste 
+A paciente com o número 6 esperou 0.430000
+Chegou o paciente com o número 8 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 8 foi atendido 
+O paciente com o número 8 fez o teste 
+A paciente com o número 7 esperou 0.410000
+O paciente com o número 6 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 9 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 9 foi atendido com prioridade 
+O paciente com o número 9 fez o teste 
+A paciente com o número 8 esperou 0.410000
+O paciente com o número 7 testou negativo e foi encaminhado para casa 
+A paciente com o número 9 esperou 0.730000
+Chegou o paciente com o número 10 
+O paciente com o número 10 desistiu da fila 
+O paciente com o número 8 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 11 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 11 foi atendido 
+O paciente com o número 11 fez o teste 
+O paciente com o número 9 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 12 
+O paciente com o número 12 desistiu da fila 
+A paciente com o número 11 esperou 0.500000
+O paciente com o número 1 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 1 foi atendido com prioridade 
+O paciente com o número 1 fez o teste 
+Chegou o paciente com o número 13 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 13 foi atendido 
+O paciente com o número 13 fez o teste 
+O paciente com o número 11 testou negativo e foi encaminhado para casa 
+O paciente com o número 2 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 2 foi atendido 
+O paciente com o número 2 fez o teste 
+A paciente com o número 1 esperou 0.380000
+Chegou o paciente com o número 14 
+O paciente com o número 14 desistiu da fila 
+A paciente com o número 13 esperou 0.570000
+O paciente com o número 1 testou negativo e foi encaminhado para casa 
+A paciente com o número 2 esperou 1.620000
+Chegou o paciente com o número 15 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 15 foi atendido com prioridade 
+O paciente com o número 15 fez o teste 
+O paciente com o número 13 testou negativo e foi encaminhado para casa 
+O paciente com o número 2 testou negativo e foi encaminhado para casa 
+A paciente com o número 15 esperou 1.460000
+Chegou o paciente com o número 16 
+O paciente com o número 16 desistiu da fila 
+O paciente com o número 15 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 17 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 17 foi atendido com prioridade 
+O paciente com o número 17 fez o teste 
+O paciente com o número 6 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 6 foi atendido com prioridade 
+O paciente com o número 6 fez o teste 
+Chegou o paciente com o número 18 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 18 foi atendido com prioridade 
+O paciente com o número 18 fez o teste 
+A paciente com o número 17 esperou 0.230000
+O paciente com o número 7 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 7 foi atendido com prioridade 
+O paciente com o número 7 fez o teste 
+A paciente com o número 6 esperou 0.380000
+A paciente com o número 18 esperou 0.610000
+Chegou o paciente com o número 19 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 19 foi atendido com prioridade 
+O paciente com o número 19 fez o teste 
+O paciente com o número 17 testou negativo e foi encaminhado para casa 
+A paciente com o número 7 esperou 0.390000
+O paciente com o número 6 testou positivo para Covid-19 e vai ser internado 
+O paciente com o número 18 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 20 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 20 foi atendido com prioridade 
+O paciente com o número 20 fez o teste 
+A paciente com o número 19 esperou 0.380000
+O paciente com o número 7 testou negativo e foi encaminhado para casa 
+O paciente com o número 9 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 9 foi atendido com prioridade 
+O paciente com o número 9 fez o teste 
+Chegou o paciente com o número 21 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 21 foi atendido com prioridade 
+O paciente com o número 21 fez o teste 
+O paciente com o número 19 testou negativo e foi encaminhado para casa 
+A paciente com o número 20 esperou 0.460000
+A paciente com o número 9 esperou 0.830000
+Chegou o paciente com o número 22 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 22 foi atendido com prioridade 
+O paciente com o número 22 fez o teste 
+O paciente com o número 20 testou negativo e foi encaminhado para casa 
+A paciente com o número 21 esperou 0.320000
+O paciente com o número 9 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 23 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 23 foi atendido 
+O paciente com o número 23 fez o teste 
+A paciente com o número 22 esperou 0.400000
+O paciente com o número 21 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 24 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 24 foi atendido com prioridade 
+O paciente com o número 24 fez o teste 
+A paciente com o número 23 esperou 0.440000
+O paciente com o número 22 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 25 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 25 foi atendido 
+O paciente com o número 25 fez o teste 
+O paciente com o número 23 testou positivo para Covid-19 e vai para isolamento durante 72h 
+A paciente com o número 24 esperou 0.660000
+Chegou o paciente com o número 26 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 26 foi atendido 
+O paciente com o número 26 fez o teste 
+A paciente com o número 25 esperou 0.440000
+O paciente com o número 24 testou negativo e foi encaminhado para casa 
+O paciente com o número 15 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 15 foi atendido com prioridade 
+O paciente com o número 15 fez o teste 
+Chegou o paciente com o número 27 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 27 foi atendido com prioridade 
+O paciente com o número 27 fez o teste 
+O paciente com o número 25 testou negativo e foi encaminhado para casa 
+A paciente com o número 26 esperou 0.310000
+A paciente com o número 15 esperou 0.610000
+Chegou o paciente com o número 28 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 28 foi atendido com prioridade 
+O paciente com o número 28 fez o teste 
+A paciente com o número 27 esperou 0.390000
+O paciente com o número 26 testou negativo e foi encaminhado para casa 
+O paciente com o número 15 testou negativo e foi encaminhado para casa 
+O paciente com o número 17 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 17 foi atendido com prioridade 
+O paciente com o número 17 fez o teste 
+Chegou o paciente com o número 29 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 29 foi atendido 
+O paciente com o número 29 fez o teste 
+O paciente com o número 27 testou positivo para Covid-19 e vai ser internado 
+A paciente com o número 28 esperou 0.710000
+A paciente com o número 17 esperou 1.030000
+O paciente com o número 18 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 18 foi atendido com prioridade 
+O paciente com o número 18 fez o teste 
+Chegou o paciente com o número 30 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 30 foi atendido com prioridade 
+O paciente com o número 30 fez o teste 
+A paciente com o número 29 esperou 0.450000
+O paciente com o número 28 testou negativo e foi encaminhado para casa 
+A paciente com o número 18 esperou 0.940000
+O paciente com o número 19 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 19 foi atendido com prioridade 
+O paciente com o número 19 fez o teste 
+O paciente com o número 17 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 31 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 31 foi atendido com prioridade 
+O paciente com o número 31 fez o teste 
+A paciente com o número 30 esperou 0.220000
+O paciente com o número 29 testou negativo e foi encaminhado para casa 
+A paciente com o número 19 esperou 0.560000
+O paciente com o número 18 testou negativo e foi encaminhado para casa 
+O paciente com o número 20 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 20 foi atendido com prioridade 
+O paciente com o número 20 fez o teste 
+A paciente com o número 31 esperou 0.230000
+Chegou o paciente com o número 32 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 32 foi atendido com prioridade 
+O paciente com o número 32 fez o teste 
+O paciente com o número 30 testou negativo e foi encaminhado para casa 
+O paciente com o número 19 testou negativo e foi encaminhado para casa 
+O paciente com o número 21 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 21 foi atendido com prioridade 
+O paciente com o número 21 fez o teste 
+A paciente com o número 20 esperou 0.350000
+O paciente com o número 31 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 33 
+O paciente com o número 33 desistiu da fila 
+A paciente com o número 32 esperou 0.230000
+O paciente com o número 20 testou negativo e foi encaminhado para casa 
+A paciente com o número 21 esperou 1.170000
+Chegou o paciente com o número 34 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 34 foi atendido com prioridade 
+O paciente com o número 34 fez o teste 
+O paciente com o número 32 testou negativo e foi encaminhado para casa 
+O paciente com o número 21 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 35 
+O paciente com o número 35 desistiu da fila 
+A paciente com o número 34 esperou 0.470000
+O paciente com o número 24 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 24 foi atendido com prioridade 
+O paciente com o número 24 fez o teste 
+Chegou o paciente com o número 36 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 36 foi atendido com prioridade 
+O paciente com o número 36 fez o teste 
+O paciente com o número 34 testou negativo e foi encaminhado para casa 
+O paciente com o número 25 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 25 foi atendido 
+O paciente com o número 25 fez o teste 
+A paciente com o número 24 esperou 0.370000
+Chegou o paciente com o número 37 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 37 foi atendido com prioridade 
+O paciente com o número 37 fez o teste 
+A paciente com o número 36 esperou 0.250000
+A paciente com o número 25 esperou 0.460000
+O paciente com o número 24 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 38 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 38 foi atendido 
+O paciente com o número 38 fez o teste 
+A paciente com o número 37 esperou 0.410000
+O paciente com o número 36 testou positivo para Covid-19 e vai ser internado 
+O paciente com o número 25 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 39 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 39 foi atendido 
+O paciente com o número 39 fez o teste 
+O paciente com o número 37 testou negativo e foi encaminhado para casa 
+A paciente com o número 38 esperou 0.600000
+Chegou o paciente com o número 40 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 40 foi atendido com prioridade 
+O paciente com o número 40 fez o teste 
+A paciente com o número 39 esperou 0.370000
+O paciente com o número 38 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 41 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 41 foi atendido com prioridade 
+O paciente com o número 41 fez o teste 
+O paciente com o número 39 testou negativo e foi encaminhado para casa 
+A paciente com o número 40 esperou 0.510000
+O paciente com o número 30 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 30 foi atendido com prioridade 
+O paciente com o número 30 fez o teste 
+Chegou o paciente com o número 42 
+O paciente com o número 42 desistiu da fila 
+A paciente com o número 41 esperou 0.440000
+O paciente com o número 40 testou negativo e foi encaminhado para casa 
+O paciente com o número 31 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 31 foi atendido com prioridade 
+O paciente com o número 31 fez o teste 
+A paciente com o número 30 esperou 0.370000
+Chegou o paciente com o número 43 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 43 foi atendido 
+O paciente com o número 43 fez o teste 
+O paciente com o número 41 testou negativo e foi encaminhado para casa 
+A paciente com o número 31 esperou 0.700000
+O paciente com o número 30 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 44 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 44 foi atendido com prioridade 
+O paciente com o número 44 fez o teste 
+A paciente com o número 43 esperou 0.210000
+O paciente com o número 31 testou positivo para Covid-19 e vai ser internado 
+Chegou o paciente com o número 45 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 45 foi atendido 
+O paciente com o número 45 fez o teste 
+A paciente com o número 44 esperou 0.360000
+O paciente com o número 43 testou negativo e foi encaminhado para casa 
+O paciente com o número 34 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 34 foi atendido com prioridade 
+O paciente com o número 34 fez o teste 
+Chegou o paciente com o número 46 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 46 foi atendido com prioridade 
+O paciente com o número 46 fez o teste 
+O paciente com o número 44 testou negativo e foi encaminhado para casa 
+A paciente com o número 45 esperou 0.460000
+A paciente com o número 34 esperou 0.880000
+Chegou o paciente com o número 47 
+O paciente com o número 47 desistiu da fila 
+A paciente com o número 46 esperou 0.330000
+O paciente com o número 45 testou negativo e foi encaminhado para casa 
+O paciente com o número 34 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 48 
+O paciente com o número 48 desistiu da fila 
+O paciente com o número 46 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 49 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 49 foi atendido com prioridade 
+O paciente com o número 49 fez o teste 
+Chegou o paciente com o número 50 
+O paciente com o número 50 desistiu da fila 
+A paciente com o número 49 esperou 0.470000
+O paciente com o número 39 vai voltar a fazer outro teste 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 39 foi atendido 
+O paciente com o número 39 fez o teste 
+Chegou o paciente com o número 51 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 51 foi atendido com prioridade 
+O paciente com o número 51 fez o teste 
+O paciente com o número 49 testou negativo e foi encaminhado para casa 
+O paciente com o número 40 vai voltar a fazer outro teste 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 40 foi atendido com prioridade 
+O paciente com o número 40 fez o teste 
+A paciente com o número 39 esperou 0.420000
+Chegou o paciente com o número 52 
+Pessoa com risco está na fila de espera, no centro 1.
+O paciente com o número 52 foi atendido com prioridade 
+O paciente com o número 52 fez o teste 
+A paciente com o número 51 esperou 0.280000
+A paciente com o número 40 esperou 0.570000
+O paciente com o número 39 testou positivo para Covid-19 e vai para isolamento durante 72h 
+Chegou o paciente com o número 53 
+Pessoa normal está na fila de espera, no centro 0.
+O paciente com o número 53 foi atendido 
+O paciente com o número 53 fez o teste 
+O paciente com o número 51 testou negativo e foi encaminhado para casa 
+A paciente com o número 52 esperou 0.570000
+O paciente com o número 40 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 54 
+Pessoa normal está na fila de espera, no centro 1.
+O paciente com o número 54 foi atendido 
+O paciente com o número 54 fez o teste 
+A paciente com o número 53 esperou 0.400000
+O paciente com o número 52 testou negativo e foi encaminhado para casa 
+Chegou o paciente com o número 55 
+Pessoa com risco está na fila de espera, no centro 0.
+O paciente com o número 55 foi atendido com prioridade 
+O paciente com o número 55 fez o teste 
+O paciente com o número 53 testou negativo e foi encaminhado para casa 
+A paciente com o número 54 esperou 0.630000

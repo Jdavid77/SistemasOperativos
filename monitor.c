@@ -15,26 +15,9 @@ int escreve_monitor_ficheiro(char texto[]){
                         fclose(fp); //fecha o ficheiro
         }     
 }
-int le(){
-        #define MAXSIZE 512
 
-        FILE *apontador; //cria apontador para abrir o ficheiro
-        apontador = fopen("ficheiro_teste.txt", "r"); // abre o ficheiro para leitura
-        char linha[MAXSIZE];
-        if(apontador == NULL)
-                printf("Erro ao abrir o ficheiro");
-        else{
-                while(!feof(apontador)){ // enquanto não chegar ao fim do ficheiro
 
-                        fgets(linha, MAXSIZE , apontador); // lê apenas uma linha do ficheiro
-                        printf(linha); // dá o print dessa mesma linha
-                }
-                fclose(apontador); // fecha o ficheiro
-        }
-
-}
-
-//mostra a informacao no monitor
+//-----------------------mostra a informacao no monitor-----------------------------
 void mostraInformacao(){
     char textoMonitor[TamLinha];
 
@@ -42,35 +25,48 @@ void mostraInformacao(){
     escreve_monitor_ficheiro("#####################################\n");
     escreve_monitor_ficheiro("########## Centro de Teste ##########\n");
     escreve_monitor_ficheiro("#####################################\n");
-    sprintf(textoMonitor,"Número de casos em estudo: %i\n" ,casosEmEstudo);
+    //sprintf(textoMonitor,"Número de casos em estudo: %i\n" ,casosEmEstudo); nao usar a variavel global mas sim passar atraves do simulador
     escreve_monitor_ficheiro(textoMonitor);
-    sprintf(textoMonitor,"Número de casos positivos: %i\n" ,casosPositivos);
+    //sprintf(textoMonitor,"Número de casos positivos: %i\n" ,casosPositivos);  nao usar a variavel global mas sim passar atraves do simulador
     escreve_monitor_ficheiro(textoMonitor);
-    sprintf(textoMonitor,"Número de desistências: %i\n" ,desistenciasTotais);
+    //sprintf(textoMonitor,"Número de desistências: %i\n" ,desistenciasTotais);   nao usar a variavel global mas sim passar atraves do simulador
     escreve_monitor_ficheiro(textoMonitor);
     
+    
+    //tempos médios 1/2 CHECK
+
+    //numero de teste feitos 1/2 check
+
+
     //quantidade de internados
-    //tempos médios
+
     //quantidade de atendidos em cada fila
-    //numero de pessoas de risco no centro ##falta comunicar##
-    //numero de pessoas normais no centro ##falta comunicar##
+
+    //numero de pessoas de risco no centro #
+    
+    //numero de pessoas normais no centro 
+
     
 
         
 }
 
-//leitura das mensagens
+//------------------------leitura das mensagens---------------------------------
 void LerMensagemSimulador(int sockfd){
     char buffer[TamLinha]; //cria um buffer com tamanho 1024
     read(sockfd,buffer,TamLinha); //le a mensagem do socket e guarda
-    printf(buffer);
+    
+    if(buffer){
+        printf(buffer);
+    }
+    else{
+        printf("erro!");
+    }
+    
 }
 
 
-
-
-
-//Cria o servidor 
+//-----------------------Cria o servidor -------------------------------
 void criaServidor () {
     //sockfd -> criacao para a primeira comunicacao
     //novoSocket -> criacao para a segunda comunicacao
@@ -119,8 +115,7 @@ void criaServidor () {
     close(novoSocket);
 }
 
-/*                      Main                         */
-/*###################################################*/
+/* -----------------------Main ---------------------------*/
 int main(int argc, char const * argv[]){
     printf ( "########### Bem vindo ########### \n" );              //Menu
     printf ( "       Comecar simulacao          \n" );                  //Menu
@@ -145,4 +140,3 @@ int main(int argc, char const * argv[]){
     return 0;
 }
 
-/*Adicionar funçoes que imprima a informaçao de tempo medio de estepera;pessoas na fila;pessoas que ja desistiram etc*/
