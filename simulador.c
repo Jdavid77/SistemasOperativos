@@ -9,6 +9,7 @@ int maximo_casos_em_estudo;
 int num_pessoas_normal;
 int num_pessoas_simulacao;
 double temposimulacao;
+int num_maximo_internados;
 
 //Probalidades
 int prob_desistiu_Risco;
@@ -30,13 +31,15 @@ char mensagem[100];
 //semaforos
 sem_t semafila;              //semaforo da fila do centro 1
 sem_t semaAtendimento;       //tranca o atendimento do centro1
-sem_t semainternadosCentros; //numero de internados num centro
+sem_t semainternadosCentros0; //numero de internados num centro
+sem_t semainternadosCentros1;
 sem_t trincoEnviamensagem;
 sem_t trincoCriaPessoa;
 sem_t trincoTarefaPessoa;
 sem_t trincoFila;
 sem_t trincoPessoaNaFila;
 sem_t semamaximoCasosEstudo;
+sem_t trincoAtendimentoPrioritario;
 
 //tempo
 clock_t tempo_inicial_fila, tempo_final_fila;
@@ -71,7 +74,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
                 pessoasAtendidasCentro1++;
         }
         casosEmEstudo++;
-        sem_post(&semaAtendimento);
+        sem_post(&trincoAtendimentoPrioritario);
         sem_post(&semafila);
         sem_wait(&semamaximoCasosEstudo);
         usleep(100000);
@@ -183,8 +186,12 @@ void TestaPessoa(struct pessoa *paciente)
         //para a pessoa fazer o numero teste desejados
         if(paciente->num_testes != paciente->testesDesejados)
         {
-                usleep(100000);
-                trataPessoa(paciente);
+                usleep(1000000);
+                sprintf(texto, "o paciente %i vai voltar a fazer outro teste \n",paciente->id);
+                printf(texto);
+                escreve_ficheiro(texto);
+                trataPessoa(paciente); 
+
         }
 }
 
@@ -208,7 +215,7 @@ void trataPessoa(struct pessoa *paciente)
                 //{
                 if (paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                 {
-                        sem_wait(&semaAtendimento);
+                        sem_wait(&trincoAtendimentoPrioritario);
 
                         sprintf(texto, "Pessoa com risco está na fila de espera, no centro %i.\n", paciente->centroTeste);
                         AtendimentoPrioridade(paciente);
@@ -226,7 +233,7 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A pessoa %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
-
+                        usleep(100000);
                         TestaPessoa(paciente);
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
@@ -249,6 +256,7 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A pessoa %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
+                        usleep(100000);
                         TestaPessoa(paciente);
                 }
                 //}
@@ -323,9 +331,9 @@ void leConfigura()
                                 printf("Introduziu um valor incorreto na linha 1, o minimo de centros de teste é 2");
                                 erro = 1;
                         }
-                        else if (valores_configura[1] > 10)
+                        else if (valores_configura[1] < 2)
                         {
-                                printf("Introduziu um valor incorreto na linha 2, o maximo de pessoas que podem estar a ser testadas é 10");
+                                printf("Introduziu um valor incorreto na linha 2, o minimo de pessoas que podem estar a ser testadas é >= 2");
                                 erro = 1;
                         }
                         // else if (valores_configura[2] < 0)
@@ -345,7 +353,7 @@ void leConfigura()
                         }
                         else if (valores_configura[4] < 0)
                         {
-                                printf("Introduziu um valor negativo na linha 5, o numero de pessoas normais na fila tem que ser >= 0");
+                                printf("Introduziu um valor negativo na linha 5, o número máximo de internados num centro tem que ser >= 0");
                                 erro = 1;
                         }
                         else if (valores_configura[5] <= 0) //maximo por defenir
@@ -400,7 +408,7 @@ void leConfigura()
 
         idade_media_casos_positivos = valores_configura[2];
         maximo_casos_em_estudo= valores_configura[3];
-        num_pessoas_normal = valores_configura[4];
+        num_maximo_internados = valores_configura[4];
         num_pessoas_simulacao = valores_configura[5];
         prob_desistiu_Risco = valores_configura[6];
         prob_desistiu_Normal = valores_configura[7];
@@ -600,12 +608,14 @@ void inicializa()
         //printf("entrou no inicializa");
         leConfigura();
         sem_init(&semafila, 0, 40);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
-        sem_init(&semaAtendimento, 0, 2);        //podemos atender ate duas pessoas de cada vez
-        sem_init(&semainternadosCentros, 0, 60); //so podemos ter 60 pesssoas internadas nos centros (total)
+        sem_init(&semaAtendimento, 0, num_pessoas_a_ser_testadas);        //podemos atender no minimo duas pessoas de cada vez
+        sem_init(&semainternadosCentros0, 0, num_maximo_internados); //so podemos ter 60 pesssoas internadas nos centros (total)
+        sem_init(&semainternadosCentros1, 0, num_maximo_internados);
         sem_init(&trincoCriaPessoa, 0, 1);
         sem_init(&trincoEnviamensagem, 0, 1);
         sem_init(&trincoTarefaPessoa, 0, 1);
         sem_init(&semamaximoCasosEstudo,0,maximo_casos_em_estudo);
+        sem_init(&trincoAtendimentoPrioritario,0,1);
         //sem_init(&trincoPessoaNaFila,0,1);
         
         criaCentroDeTeste(0);

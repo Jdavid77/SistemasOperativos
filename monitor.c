@@ -50,7 +50,12 @@ void mostraInformacao(){
     escreve_monitor_ficheiro(textoMonitor);
     
     //quantidade de internados
-    //tempos médios 
+    //tempos médios
+    //quantidade de atendidos em cada fila
+    //numero de pessoas de risco no centro ##falta fazer##
+    //numero de pessoas normais no centro ##falta fazer##
+    
+
         
 }
 
