@@ -24,6 +24,7 @@ int pessoasAtendidasCentro1 = 0;
 int pessoasAtendidasCentro0 = 0;
 
 
+
 struct pessoa  
 {
     int id;
@@ -38,6 +39,7 @@ struct pessoa
     bool desistiuFila;
     bool isolamento;
     int centroTeste;
+    int testesDesejados;
 
 };
 
