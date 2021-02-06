@@ -14,7 +14,8 @@ bool acabou = false;
 
 
 /* Escrever no ficheiro E no monitor */
-int escreve_monitor_ficheiro(char texto[]){
+int escreve_monitor_ficheiro(char texto[])
+{
                 FILE *fp;
                 fp = fopen("monitor.txt","a"); //Abre o ficheiro no modo de write para escrever no fim
                 if(fp == NULL){ // Verifica se o ficheiro existe
@@ -29,7 +30,8 @@ int escreve_monitor_ficheiro(char texto[]){
 
 
 //------------------------leitura das mensagens---------------------------------
-void LerMensagemSimulador(int sockfd){
+void LerMensagemSimulador(int sockfd)
+{
     char buffer[TamLinha]; //cria um buffer com tamanho 1024
     read(sockfd,buffer,TamLinha); //le a mensagem do socket e guarda
     
@@ -42,10 +44,13 @@ void LerMensagemSimulador(int sockfd){
     
 }
 
-void trataInformacao(char mensagem[]){
-
+void trataInformacao(char mensagem[])
+{
+    char texto [500];
     //manda a mensagem para o buffer
-    char buffer[TamLinha];
+    char buffer[sizeof(mensagem)];
+    //sprintf(texto, "tamanho mensagem %i", sizeof(mensagem));
+    //printf(texto);
     strcpy(buffer,mensagem);
     int i = 0;
     int j;
@@ -59,7 +64,7 @@ void trataInformacao(char mensagem[]){
         {
             token = strtok(NULL,buffer);
             j++;
-
+            //printf("Tempo");
             if(j==1)
             {
                 tempoMedioEsperaFila= atof(token);
@@ -69,12 +74,13 @@ void trataInformacao(char mensagem[]){
     }
     else if(buffer[0] == 'E')
     {
+        //numTestesFeitos++;
         j = 0;
         while (token != NULL)
         {
             token = strtok(NULL,buffer);
             j++;
-
+            //printf("Testes");
             if(j==1)
             {
                 numTestesFeitos= atoi(token);
@@ -89,7 +95,7 @@ void trataInformacao(char mensagem[]){
         {
             token = strtok(NULL,buffer);
             j++;
-
+            //printf("Internados");
             if(j==1)
             {
                 quantidadeDeInternados = atoi(token);
@@ -99,100 +105,42 @@ void trataInformacao(char mensagem[]){
     }
     else if(buffer[0] == 'P')
     {
+        //casosPOsitivos++;
         j = 0;
         while (token != NULL)
         {
             token = strtok(NULL,buffer);
             j++;
-
+            //printf("CasosPositivos");
             if(j==1)
             {
                 casosPOsitivos= atoi(token);
                 break;
             }
-        }   
+        }  
     }
     else if(buffer[0] == 'D')
     {
+        //desistenciasTotais++;
         j = 0;
         while (token != NULL)
         {
             token = strtok(NULL,buffer);
             j++;
-
+            //printf("Desistencias");
             if(j==1)
             {
                 desistenciasTotais= atoi(token);
                 break;
             }
-        }   
+        } 
     }
     //quando recebe o X é para acabar 
     else if (buffer[0] == 'X')
     {
         acabou = true;
-        printf("A simulacão acabou!\n");
+        printf("\nA simulacão acabou!\n");
     }
-
-    else if(buffer[0] == 'R' && buffer[1]=='0')
-    {
-        j = 0;
-        while (token != NULL)
-        {
-            token = strtok(NULL,buffer);
-            j++;
-
-            if(j==1)
-            {
-                pessoasRiscoCentro0= atoi(token);
-                break;
-            }
-        }   
-    }
-    else if(buffer[0] == 'R' && buffer[1]=='1')
-    {
-        j = 0;
-        while (token != NULL)
-        {
-            token = strtok(NULL,buffer);
-            j++;
-
-            if(j==1)
-            {
-                pessoasRiscoCentro1= atoi(token);
-                break;
-            }
-        }   
-    }
-    else if(buffer[0] == 'N' && buffer[1]=='0')
-    {
-        j = 0;
-        while (token != NULL)
-        {
-            token = strtok(NULL,buffer);
-            j++;
-
-            if(j==1)
-            {
-                pessoasNormaisCentro0= atoi(token);
-                break;
-            }
-        }   
-    }
-    else if(buffer[0] == 'N' && buffer[1]=='1')
-    {
-        j = 0;
-        while (token != NULL)
-        {
-            token = strtok(NULL,buffer);
-            j++;
-            if(j==1)
-            {
-                pessoasNormaisCentro1= atoi(token);
-                break;
-            }
-        }   
-    } 
     else if(buffer[0] == 'C' && buffer[1]=='E')
     {
         j = 0;
@@ -200,6 +148,7 @@ void trataInformacao(char mensagem[]){
         {
             token = strtok(NULL,buffer);
             j++;
+            //printf("Estudo");
             if(j==1)
             {
                 casosEmEstudo= atoi(token);
@@ -207,7 +156,6 @@ void trataInformacao(char mensagem[]){
             }
         }   
     }
-
 }
 
 
@@ -237,18 +185,6 @@ void mostraInformacao(){
     //quantidade de internados I-%i 
     sprintf(textoMonitor,"Número de pessoas internadas: %i\n" ,quantidadeDeInternados); 
     escreve_monitor_ficheiro(textoMonitor);
-    //numero de pessoas de risco no centro 0 -> R0-%i 
-    sprintf(textoMonitor,"Número de pessoas de risco no centro 0: %i\n" ,pessoasRiscoCentro0); 
-    escreve_monitor_ficheiro(textoMonitor);
-    // no centro 1 -> R1-%i(ler ate ao - )
-    sprintf(textoMonitor,"Número de pessoas de risco no centro 1: %i\n" ,pessoasRiscoCentro1); 
-    escreve_monitor_ficheiro(textoMonitor);
-    //numero de pessoas normais no centro 0 -> N0-%i  
-    sprintf(textoMonitor,"Número de pessoas normais no centro 0: %i\n" ,pessoasRiscoCentro0); 
-    escreve_monitor_ficheiro(textoMonitor);
-    //no centro 1 -> N1-%i
-    sprintf(textoMonitor,"Número de pessoas normais no centro 1: %i\n" ,pessoasRiscoCentro1); 
-    escreve_monitor_ficheiro(textoMonitor);
     escreve_monitor_ficheiro("-------------------------------------\n");
 }
 
@@ -256,7 +192,9 @@ void mostraInformacao(){
 
 
 
-void ReceberMensagens(int sockfd){
+void ReceberMensagens(int sockfd)
+{
+    //printf("Recebendo mensagem");
     char buffer[TamLinha];
     int leitura = 0;
     //enquanto nao acabar a simulação nao terminar
@@ -343,13 +281,14 @@ int main(int argc, char const * argv[]){
     bool termina = false; 
     while (!termina) 
     {
-        if(acabou)
+        if(acabou == true)
         {
+            printf("\n ACABOU#####\n");
             termina = true;
+            break;
         }
         
         criaServidor();  //Cria o servidor   
-
     }
     
     return 0;
