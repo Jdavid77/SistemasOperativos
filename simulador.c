@@ -47,6 +47,7 @@ sem_t trincoTotalInternados;
 sem_t trincoCasosPositivos;
 sem_t trincoAtendimentos0;
 sem_t trincoAtendimentos1;
+sem_t trincoTotalTestes;
 //tempo
 clock_t tempo_inicial_fila, tempo_final_fila;
 
@@ -64,6 +65,7 @@ int id_pessoa = 0;
 int pessoasAtendidasCentro1 = 0;
 int pessoasAtendidasCentro0 = 0;
 float tempoMedioNaFila = 0;
+int Totaltestes = 0;
 //tarefa pessoa
 pthread_t id_tarefa_pessoa[400];
 
@@ -92,6 +94,11 @@ void AtendimentoPrioridade(struct pessoa *paciente)
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
         }
+        sem_wait(&trincoTotalTestes);
+        Totaltestes++;
+        sem_post(&trincoTotalTestes);
+        sprintf(mensagem, "E-%i",Totaltestes);
+        EnviarMensagens(mensagem,sockfd);
         sem_wait(&trincoCasosEmEstudo);
         casosEmEstudo++;
         sem_post(&trincoCasosEmEstudo);
@@ -121,7 +128,7 @@ void AtendimentoNormal(struct pessoa *paciente)
                 pessoasAtendidasCentro0++;
                 sem_post(&trincoAtendimentos0);
                 sprintf(mensagem, "E-%i", pessoasAtendidasCentro0);
-                EnviarMensagens(mensagem, sockfd);
+                //EnviarMensagens(mensagem, sockfd);
         }
         if (paciente->centroTeste == 1)
         {
@@ -130,8 +137,13 @@ void AtendimentoNormal(struct pessoa *paciente)
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
                 sprintf(mensagem, "E-%i", pessoasAtendidasCentro1);
-                EnviarMensagens(mensagem, sockfd);
+                //EnviarMensagens(mensagem, sockfd);
         }
+        sem_wait(&trincoTotalTestes);
+        Totaltestes++;
+        sem_post(&trincoTotalTestes);
+        sprintf(mensagem, "E-%i",Totaltestes);
+        EnviarMensagens(mensagem,sockfd);
         sem_wait(&trincoCasosEmEstudo);
         casosEmEstudo++;
         sem_post(&trincoCasosEmEstudo);
@@ -802,6 +814,7 @@ void inicializa()
         sem_init(&trincoDesistenciasTotais, 0,1);
         sem_init(&trincoTotalInternados,0,1);
         sem_init(&trincoCasosPositivos,0,1);
+        sem_init(&trincoTotalTestes,0,1);
         /**sem_init(&trincoPessoasNormaisFila0,0,1);
         sem_init(&trincoPessoasRiscoFila0,0,1);
         sem_init(&trincoPessoasNormaisFila1,0,1);
