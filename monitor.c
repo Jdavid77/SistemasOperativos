@@ -134,7 +134,7 @@ void trataInformacao(char mensagem[]){
         printf("A simulacão acabou!\n");
     }
 
-    else if(buffer[0] == 'R' && buffer[1]==0)
+    else if(buffer[0] == 'R' && buffer[1]=='0')
     {
         j = 0;
         while (token != NULL)
@@ -149,7 +149,7 @@ void trataInformacao(char mensagem[]){
             }
         }   
     }
-    else if(buffer[0] == 'R' && buffer[1]==1)
+    else if(buffer[0] == 'R' && buffer[1]=='1')
     {
         j = 0;
         while (token != NULL)
@@ -164,7 +164,7 @@ void trataInformacao(char mensagem[]){
             }
         }   
     }
-    else if(buffer[0] == 'N' && buffer[1]==0)
+    else if(buffer[0] == 'N' && buffer[1]=='0')
     {
         j = 0;
         while (token != NULL)
@@ -179,7 +179,7 @@ void trataInformacao(char mensagem[]){
             }
         }   
     }
-    else if(buffer[0] == 'N' && buffer[1]==1)
+    else if(buffer[0] == 'N' && buffer[1]=='1')
     {
         j = 0;
         while (token != NULL)
