@@ -24,13 +24,10 @@ char texto[500];
 
 char mensagem[100];
 
-//trincos
-//pthread_mutex_t trincoCriaPessoa;
-//pthread_mutex_init(&criarPessoa,NULL);
 
 //semaforos
 //sem_t semafila0;              //semaforo da fila do centro 0
-sem_t semafila;              //semaforo da fila do centro 1
+sem_t semafila;               //semaforo da fila do centro 1
 sem_t semaAtendimento;        //tranca o atendimento do centro1
 sem_t semainternadosCentros0; //numero de internados num centro
 sem_t semainternadosCentros1;
@@ -82,14 +79,14 @@ void AtendimentoPrioridade(struct pessoa *paciente)
 
         if (paciente->centroTeste == 0)
         {
-                //sem_post(&semafila0);
+
                 sem_wait(&trincoAtendimentos0);
                 pessoasAtendidasCentro0++;
                 sem_post(&trincoAtendimentos0);
         }
         if (paciente->centroTeste == 1)
         {
-                //sem_post(&semafila1);
+
                 sem_wait(&trincoAtendimentos1);
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
@@ -104,13 +101,10 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         sem_post(&trincoCasosEmEstudo);
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
-        
 
         sem_wait(&semamaximoCasosEstudo);
-
-        //TestaPessoa(paciente);
 }
-//atende uma pessoa normal (sao prints)
+//atende uma pessoa normal
 void AtendimentoNormal(struct pessoa *paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
@@ -118,12 +112,11 @@ void AtendimentoNormal(struct pessoa *paciente)
 
         sprintf(texto, "O paciente com o número %i foi atendido \n", paciente->id);
         escreve_ficheiro(texto);
-        sprintf(texto, "O paciente com o número %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
+        sprintf(texto, "O paciente com o número %i fez o teste \n", paciente->id);
         escreve_ficheiro(texto);
 
         if (paciente->centroTeste == 0)
         {
-                //sem_post(&semafila0);
                 sem_wait(&trincoAtendimentos0);
                 pessoasAtendidasCentro0++;
                 sem_post(&trincoAtendimentos0);
@@ -132,7 +125,7 @@ void AtendimentoNormal(struct pessoa *paciente)
         }
         if (paciente->centroTeste == 1)
         {
-                //sem_post(&semafila1);
+
                 sem_wait(&trincoAtendimentos1);
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
@@ -149,16 +142,12 @@ void AtendimentoNormal(struct pessoa *paciente)
         sem_post(&trincoCasosEmEstudo);
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
-        
 
         sem_wait(&semamaximoCasosEstudo);
-
-        //TestaPessoa(paciente);
 }
 
 void TestaPessoa(struct pessoa *paciente)
 {
-        //criar um semaforo que guarda o numero maximo de casos que podem estar em estudo de cada vez
         //da o resultado do teste da pessoa sendo que é um random
         int infetado_crianca = rand() % 101;
         int infetado_adulto = rand() % 101;
@@ -268,8 +257,6 @@ void trataPessoa(struct pessoa *paciente)
 {
         sem_wait(&semafila);
 
-        //clock_t tempo_inicial_fila, tempo_final_fila;
-
         //começa a contar o tempo dessa pessoa na fila
         tempo_inicial_fila = clock();
 
@@ -277,11 +264,10 @@ void trataPessoa(struct pessoa *paciente)
         //dentro desta funçao verificamos se o paciente tem prioridade, caso tenha entao este é logo atendido
         //caso nao tenha prioridade atendemos um paciente na fila (libertamos um espaço do semaforo)
         //smp que atendemos um paciente damos o output que este foi atendido/fez o teste (atençao de usar trincos aqi pois so podemos atender 1 pessoa de cada vez por centro)
-        //apos ser atendido temos que chamar uma funçao que trata do resultado do teste
+        //apos ser atendido temos que chamar uma funçao TestaPessoa que trata do resultado do teste
         if (paciente->desistiuFila == false) //se o paciente nao desistiu da fila
         {
-                //if(paciente->centroTeste == centro->id) //caso a pessoa esteja neste centro de teste
-                //{
+
                 if (paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                 {
                         sem_wait(&trincoAtendimentoPrioritario);
@@ -435,7 +421,7 @@ void trataPessoa(struct pessoa *paciente)
 void leConfigura()
 {
         int erro = 1;
-#define MAXSIZE 512
+        #define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
         int valores_configura[13];
@@ -671,7 +657,7 @@ struct pessoa criaPessoa()
         paciente.resultadoTeste = false;
 
         usleep(100000);
-        sprintf(texto, "Chegou o paciente com o número %i ao centro %i\n", paciente.id,paciente.centroTeste);
+        sprintf(texto, "Chegou o paciente com o número %i ao centro %i\n", paciente.id, paciente.centroTeste);
         printf(texto);
         escreve_ficheiro(texto);
         sem_post(&trincoCriaPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
@@ -686,28 +672,24 @@ struct centroDeTeste criaCentroDeTeste(int idCentro)
         centro.capacidadeMaxima = 100;
         centro.id = idCentro;
         centro.capacidaMaximaInternamento = 60;
-        //centro.tempoMedioInternamento tem de ser calculada a media (pelo tempo de entrada e saida do paciente)
         centro.tempoMaximoInternamento = 40;
         centro.tempoMaximoIsolamento = 30;
-        //centro.tempoMedioIsolamento é calculado
+        
 };
 
 //Tarefa Pessoa
 void Pessoa(void *ptr)
 {
-        //printf("entrou na PESSOA");
-        //pthread_mutex_lock(&trincoCriaPessoa); //criar um pessoa de cada vez
+        
         sem_wait(&trincoTarefaPessoa);
-        //printf ("criou o semaforo na PESSOA");
         struct pessoa person = criaPessoa();
-        //printf("teste2 \n");
         sem_post(&trincoTarefaPessoa);
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
         //sem_wait(&semafila0);
         usleep(1000000);
         trataPessoa(&person);
-        //pthread_mutex_unlock(&trincoCriaPessoa);
+        
 }
 
 //Socket
@@ -759,7 +741,7 @@ void EnviarMensagens(char *t, int sockfd)
         //write(sockfd, mensagem, strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
 
         int var;
-        
+
         if (strcpy(mensagem, t) != 0)
         {
                 var = strlen(mensagem) + 1;
@@ -784,8 +766,7 @@ void simula(int sockfd)
         for (int i = 0; i < num_pessoas_simulacao; i++)
         {
                 pthread_create(&id_tarefa_pessoa[i], NULL, Pessoa, NULL);
-                //sprintf(texto,"pessoa %i" );
-                //escreve_ficheiro(texto);
+
         }
 
         for (int i = 0; i < num_pessoas_simulacao; i++)
@@ -800,8 +781,7 @@ void inicializa()
 {
         //printf("entrou no inicializa");
         leConfigura();
-        //sem_init(&semafila0, 0, num_maximo_pessoas_fila);            //inicializa a fila do centro0 para ser partilhada entre threads(pessoas) com 40 lugares
-        sem_init(&semafila, 0, num_maximo_pessoas_fila);            //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semafila, 0, num_maximo_pessoas_fila);             //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
         sem_init(&semaAtendimento, 0, num_pessoas_a_ser_testadas);   //podemos atender no minimo duas pessoas de cada vez
         sem_init(&semainternadosCentros0, 0, num_maximo_internados); //so podemos ter 60 pesssoas internadas nos centros (total)
         sem_init(&semainternadosCentros1, 0, num_maximo_internados);
@@ -828,18 +808,8 @@ void inicializa()
 
 int main(int argc, char const *argv[])
 {
-
-        //if (pthread_mutex_init(&trincoCriaPessoa, NULL) != 0){
-        //printf("A inicialização do trinco falhou!");
-        //return 1;
-        //}
-
         sockfd = criarSocket();
         simula(sockfd);
-
-        //char mensagemSocket [] = {"hey it works\n"};
-        //EnviarMensagens(mensagemSocket,sockfd);
-        //escreve_ficheiro(mensagemSocket);
         close(sockfd);
         return 1;
 }
