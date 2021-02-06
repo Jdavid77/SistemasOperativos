@@ -90,8 +90,6 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         casosEmEstudo++;
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
-        sem_post(&trincoAtendimentoPrioritario);
-
         sem_wait(&semamaximoCasosEstudo);
 
         //TestaPessoa(paciente);
@@ -101,7 +99,6 @@ void AtendimentoNormal(struct pessoa *paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
-
         sprintf(texto, "O paciente com o número %i foi atendido \n", paciente->id);
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente com o número %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
@@ -125,10 +122,7 @@ void AtendimentoNormal(struct pessoa *paciente)
         casosEmEstudo++;
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
-        sem_post(&semaAtendimento);
-
         sem_wait(&semamaximoCasosEstudo);
-
         //TestaPessoa(paciente);
 }
 
@@ -254,20 +248,19 @@ void trataPessoa(struct pessoa *paciente)
                 //{
                 if (paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                 {
-                        sem_wait(&trincoAtendimentoPrioritario);
+                        
 
                         sprintf(texto, "Pessoa com risco está na fila de espera, no centro %i.\n", paciente->centroTeste);
                         printf(texto);
                         escreve_ficheiro(texto);
+                        sem_wait(&trincoAtendimentoPrioritario);
                         AtendimentoPrioridade(paciente);
+                        sem_post(&trincoAtendimentoPrioritario);
                         tempo_final_fila = clock();
-
                         //tempo na fila
                         float tempoNaFila;
-
                         tempoNaFila = ((float)(tempo_final_fila - tempo_inicial_fila) / CLOCKS_PER_SEC) * 10000;
                         tempoMedioNaFila += tempoNaFila / (pessoasAtendidasCentro1 + pessoasAtendidasCentro0);
-
                         //############################
                         //passa o tempo na fila para ser calculado o tempo medio no monitor
                         sprintf(mensagem, "T-%f", tempoMedioNaFila);
@@ -276,7 +269,6 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A paciente com o número %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
-
                         if (paciente->centroTeste == 0)
                         {
                                 sem_wait(&semafila0);
@@ -298,11 +290,13 @@ void trataPessoa(struct pessoa *paciente)
                 else //caso nao seja paciente de risco (nao tem prioridade)
                 {
 
-                        sem_wait(&semaAtendimento);
+                        
                         sprintf(texto, "Pessoa normal está na fila de espera, no centro %i.\n", paciente->centroTeste);
                         printf(texto);
                         escreve_ficheiro(texto);
+                        sem_wait(&semaAtendimento);
                         AtendimentoNormal(paciente); //atende a pessoa e faz o seu teste
+                        sem_post(&semaAtendimento);
                         tempo_final_fila = clock();
 
                         //tempo na fila
@@ -611,8 +605,7 @@ struct pessoa criaPessoa()
         paciente.num_testes = 0;
         paciente.isolamento = false;
         paciente.resultadoTeste = false;
-
-        usleep(100000);
+        //usleep(100000);
         sprintf(texto, "Chegou o paciente com o número %i \n", paciente.id);
         printf(texto);
         escreve_ficheiro(texto);
