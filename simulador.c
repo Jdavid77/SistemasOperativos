@@ -49,10 +49,20 @@ clock_t tempo_inicial_fila, tempo_final_fila;
 int sockfd = 0;
 
 //variaveis globais
-int num_pessoas_normais_fila = 0;
-int num_pessoas_risco_fila = 0;
+int num_pessoas_normais_fila_centro0 = 0;
+int num_pessoas_risco_fila_centro0 = 0;
+int num_pessoas_normais_fila_centro1 = 0;
+int num_pessoas_risco_fila_centro1 = 0;
 int total_internados = 0;
-
+int lugarFila = 0;
+int horasIsolamento[] = {72, 120, 48};
+int casosPositivos = 0;     //pessoas que ja testaram positivo
+int casosEmEstudo = 0;      //quantidade de testes que estao a ser processados (a espera do resultado)
+int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
+int id_pessoa = 0;
+int pessoasAtendidasCentro1 = 0;
+int pessoasAtendidasCentro0 = 0;
+float tempoMedioNaFila = 0;
 //tarefa pessoa
 pthread_t id_tarefa_pessoa[400];
 
@@ -78,12 +88,12 @@ void AtendimentoPrioridade(struct pessoa *paciente)
                 pessoasAtendidasCentro1++;
         }
         casosEmEstudo++;
-        sprintf(mensagem,"%i",casosEmEstudo);
-        EnviarMensagens(mensagem,sockfd);
+        sprintf(mensagem, "CE-%i", casosEmEstudo);
+        EnviarMensagens(mensagem, sockfd);
         sem_post(&trincoAtendimentoPrioritario);
-        
+
         sem_wait(&semamaximoCasosEstudo);
-        usleep(100000);
+
         //TestaPessoa(paciente);
 }
 //atende uma pessoa normal (sao prints)
@@ -101,24 +111,24 @@ void AtendimentoNormal(struct pessoa *paciente)
         {
                 sem_post(&semafila0);
                 pessoasAtendidasCentro0++;
-                sprintf(mensagem,"%i",pessoasAtendidasCentro0);
-                EnviarMensagens(mensagem,sockfd);
+                sprintf(mensagem, "E-%i", pessoasAtendidasCentro0);
+                EnviarMensagens(mensagem, sockfd);
         }
         if (paciente->centroTeste == 1)
         {
                 sem_post(&semafila1);
                 pessoasAtendidasCentro1++;
-                sprintf(mensagem,"%i",pessoasAtendidasCentro1);
-                EnviarMensagens(mensagem,sockfd);
+                sprintf(mensagem, "E-%i", pessoasAtendidasCentro1);
+                EnviarMensagens(mensagem, sockfd);
         }
 
         casosEmEstudo++;
-        sprintf(mensagem,"%i",casosEmEstudo);
-        EnviarMensagens(mensagem,sockfd);
+        sprintf(mensagem, "CE-%i", casosEmEstudo);
+        EnviarMensagens(mensagem, sockfd);
         sem_post(&semaAtendimento);
-        
+
         sem_wait(&semamaximoCasosEstudo);
-        usleep(100000);
+
         //TestaPessoa(paciente);
 }
 
@@ -172,16 +182,14 @@ void TestaPessoa(struct pessoa *paciente)
                 sprintf(texto, "O paciente com o número %i testou negativo e foi encaminhado para casa \n", paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
-                
-                
         }
         if (paciente->resultadoTeste) //caso teste positivo
         {
                 paciente->num_testes++;
-                
+
                 casosPositivos++;
-                sprintf(mensagem,"%i",casosPositivos);
-                EnviarMensagens(mensagem,sockfd);
+                sprintf(mensagem, "P-%i", casosPositivos);
+                EnviarMensagens(mensagem, sockfd);
 
                 if (paciente->prioridade == 1) //caso tenha prioridade (for um caso de risco)
                 {
@@ -189,9 +197,9 @@ void TestaPessoa(struct pessoa *paciente)
                         printf(texto);
                         escreve_ficheiro(texto);
                         total_internados++;
-                        sprintf(mensagem,"%i",total_internados);
-                        EnviarMensagens(mensagem,sockfd);
-                        if(paciente->centroTeste == 0)
+                        sprintf(mensagem, "I-%i", total_internados);
+                        EnviarMensagens(mensagem, sockfd);
+                        if (paciente->centroTeste == 0)
                         {
                                 sem_wait(&semainternadosCentros0); //ocupa um lugar no internamento
                         }
@@ -199,7 +207,7 @@ void TestaPessoa(struct pessoa *paciente)
                         {
                                 sem_wait(&semainternadosCentros1); //ocupa um lugar no internamento
                         }
-                        
+
                         //casosEmEstudo--;
                 }
                 if (paciente->prioridade == 0) //caso nao tenha prioridade
@@ -211,18 +219,18 @@ void TestaPessoa(struct pessoa *paciente)
                 }
         }
         casosEmEstudo--;
-        sprintf(mensagem,"%i",casosEmEstudo);
-        EnviarMensagens(mensagem,sockfd);
+        sprintf(mensagem, "CE-%i", casosEmEstudo);
+        EnviarMensagens(mensagem, sockfd);
         sem_post(&semamaximoCasosEstudo);
-        
+
         //para a pessoa fazer o numero teste desejados
-        if(paciente->num_testes != paciente->testesDesejados)
+        if (paciente->num_testes != paciente->testesDesejados)
         {
                 usleep(1000000);
-                sprintf(texto, "O paciente com o número %i vai voltar a fazer outro teste \n",paciente->id);
+                sprintf(texto, "O paciente com o número %i vai voltar a fazer outro teste \n", paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
-                trataPessoa(paciente); 
+                trataPessoa(paciente);
         }
 }
 
@@ -256,20 +264,35 @@ void trataPessoa(struct pessoa *paciente)
 
                         //tempo na fila
                         float tempoNaFila;
+
                         tempoNaFila = ((float)(tempo_final_fila - tempo_inicial_fila) / CLOCKS_PER_SEC) * 10000;
+                        tempoMedioNaFila += tempoNaFila / (pessoasAtendidasCentro1 + pessoasAtendidasCentro0);
 
                         //############################
                         //passa o tempo na fila para ser calculado o tempo medio no monitor
-                        sprintf(mensagem, "%f",tempoNaFila);
+                        sprintf(mensagem, "T-%f", tempoMedioNaFila);
                         //envia para o monitor
                         EnviarMensagens(mensagem, sockfd);
                         sprintf(texto, "A paciente com o número %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
-                        num_pessoas_risco_fila--;
-                        sprintf(mensagem,"%i",num_pessoas_risco_fila);
-                        EnviarMensagens(mensagem,sockfd);
-                        usleep(100000);
+
+                        if (paciente->centroTeste == 0)
+                        {
+                                sem_wait(&semafila0);
+                                num_pessoas_risco_fila_centro0--;
+                                sprintf(mensagem, "R0-%i", num_pessoas_risco_fila_centro0);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+                        else if (paciente->centroTeste == 1)
+                        {
+                                sem_wait(&semafila1);
+                                num_pessoas_risco_fila_centro1--;
+                                sprintf(mensagem, "R1-%i", num_pessoas_risco_fila_centro1);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+
+                        usleep(1000000);
                         TestaPessoa(paciente);
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
@@ -285,19 +308,30 @@ void trataPessoa(struct pessoa *paciente)
                         //tempo na fila
                         float tempoNaFila;
                         tempoNaFila = ((float)(tempo_final_fila - tempo_inicial_fila) / CLOCKS_PER_SEC) * 10000;
-
-                       
+                        tempoMedioNaFila += tempoNaFila / (pessoasAtendidasCentro1 + pessoasAtendidasCentro0);
                         ////passa o tempo na fila para ser calculado o tempo medio no monitor
-                        sprintf(mensagem, "%f",tempoNaFila);
+                        sprintf(mensagem, "T-%f", tempoMedioNaFila);
                         //envia para o monitor
                         EnviarMensagens(mensagem, sockfd);
                         sprintf(texto, "A paciente com o número %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
-                        num_pessoas_normais_fila--;
-                        sprintf(mensagem,"%i",num_pessoas_normais_fila);
-                        EnviarMensagens(mensagem,sockfd);
-                        usleep(100000);
+
+                        if (paciente->centroTeste == 0)
+                        {
+                                sem_wait(&semafila0);
+                                num_pessoas_risco_fila_centro0--;
+                                sprintf(mensagem, "N0-%i", num_pessoas_normais_fila_centro0);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+                        else if (paciente->centroTeste == 1)
+                        {
+                                sem_wait(&semafila1);
+                                num_pessoas_risco_fila_centro1--;
+                                sprintf(mensagem, "N1-%i", num_pessoas_normais_fila_centro1);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+                        usleep(1000000);
                         TestaPessoa(paciente);
                 }
                 //}
@@ -305,43 +339,53 @@ void trataPessoa(struct pessoa *paciente)
         else //remove alguem da fila caso o paciente tenha desistido
         {
                 desistenciasTotais++;
-                sprintf(mensagem, "%i",desistenciasTotais);
-                EnviarMensagens(mensagem,sockfd);
-                
-                if(paciente->prioridade == 1)
+                sprintf(mensagem, "D-%i", desistenciasTotais);
+                EnviarMensagens(mensagem, sockfd);
+
+                if (paciente->prioridade == 1)
                 {
-                        num_pessoas_risco_fila--;
-                        sprintf(mensagem,"%i",num_pessoas_risco_fila);
-                        EnviarMensagens(mensagem,sockfd);
+                        if (paciente->centroTeste == 0)
+                        {
+                                sem_wait(&semafila0);
+                                num_pessoas_risco_fila_centro0--;
+                                sprintf(mensagem, "R0-%i", num_pessoas_risco_fila_centro0);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+                        else if (paciente->centroTeste == 1)
+                        {
+                                sem_wait(&semafila1);
+                                num_pessoas_risco_fila_centro1--;
+                                sprintf(mensagem, "R1-%i", num_pessoas_risco_fila_centro1);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
                 }
-                else
+                else if (paciente->prioridade == 0)
                 {
-                        num_pessoas_normais_fila--;
-                        sprintf(mensagem,"%i",num_pessoas_normais_fila);
-                        EnviarMensagens(mensagem,sockfd);
+                        if (paciente->centroTeste == 0)
+                        {
+                                sem_wait(&semafila0);
+                                num_pessoas_normais_fila_centro0--;
+                                sprintf(mensagem, "N0-%i", num_pessoas_normais_fila_centro0);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
+                        else if (paciente->centroTeste == 1)
+                        {
+                                sem_wait(&semafila1);
+                                num_pessoas_normais_fila_centro1--;
+                                sprintf(mensagem, "N1-%i", num_pessoas_normais_fila_centro1);
+                                EnviarMensagens(mensagem, sockfd);
+                        }
                 }
                 sprintf(texto, "O paciente com o número %i desistiu da fila \n", paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
-                if(paciente->centroTeste == 0)
-                {
-                        sem_post(&semafila0);
-                }
-                else
-                {
-                        sem_post(&semafila1);
-                }
         }
-
-        //tempo_final_fila = clock();
 }
-
-
 
 void leConfigura()
 {
         int erro = 1;
-        #define MAXSIZE 512
+#define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
         int valores_configura[13];
@@ -460,7 +504,7 @@ void leConfigura()
         num_centrosTeste = valores_configura[0];
         num_pessoas_a_ser_testadas = valores_configura[1];
         num_maximo_pessoas_fila = valores_configura[2];
-        maximo_casos_em_estudo= valores_configura[3];
+        maximo_casos_em_estudo = valores_configura[3];
         num_maximo_internados = valores_configura[4];
         num_pessoas_simulacao = valores_configura[5];
         prob_desistiu_Risco = valores_configura[6];
@@ -501,7 +545,7 @@ struct pessoa criaPessoa()
         paciente.centroTeste = (rand() % 2);
         paciente.idade = (rand() % 100) + 1;
         int ser_risco = rand() % 101;
-        paciente.testesDesejados = (rand() % 2)+1;
+        paciente.testesDesejados = (rand() % 2) + 1;
         //tratar da prioridade da pessoas, ex: ser atendida primeiro, passar à frente da fila etc
         if (ser_risco > prob_ser_de_risco)
         {
@@ -513,31 +557,55 @@ struct pessoa criaPessoa()
         }
         if (paciente.prioridade == 0) // caso nao tenha prioridade
         {
-                num_pessoas_normais_fila++;
-                sprintf(mensagem,"%i",num_pessoas_normais_fila);
-                EnviarMensagens(mensagem,sockfd);
+                if (paciente.centroTeste == 0)
+                {
+                        sem_wait(&semafila0);
+                        num_pessoas_normais_fila_centro0++;
+                        sprintf(mensagem, "N0-%i", num_pessoas_normais_fila_centro0);
+                        EnviarMensagens(mensagem, sockfd);
+                }
+                if (paciente.centroTeste == 1)
+                {
+                        sem_wait(&semafila1);
+                        num_pessoas_normais_fila_centro1++;
+                        sprintf(mensagem, "N1-%i", num_pessoas_normais_fila_centro1);
+                        EnviarMensagens(mensagem, sockfd);
+                }
+
                 if (desistiu > prob_desistiu_Normal)
-                {       
+                {
                         paciente.desistiuFila = false;
                 }
-                else if (desistiu <= prob_desistiu_Normal)
+                if (desistiu <= prob_desistiu_Normal)
                 {
                         paciente.desistiuFila = true;
                 }
         }
         if (paciente.prioridade == 1) //caso tenha prioridade
         {
-                num_pessoas_risco_fila++;
-                sprintf(mensagem,"%i",num_pessoas_risco_fila);
-                EnviarMensagens(mensagem,sockfd);
+
+                if (paciente.centroTeste == 0)
+                {
+                        sem_wait(&semafila0);
+                        num_pessoas_risco_fila_centro0++;
+                        sprintf(mensagem, "R0-%i", num_pessoas_risco_fila_centro0);
+                        EnviarMensagens(mensagem, sockfd);
+                }
+                if (paciente.centroTeste == 1)
+                {
+                        sem_wait(&semafila1);
+                        num_pessoas_risco_fila_centro1++;
+                        sprintf(mensagem, "R1-%i", num_pessoas_risco_fila_centro1);
+                        EnviarMensagens(mensagem, sockfd);
+                }
+
                 if (desistiu > prob_desistiu_Risco)
                 {
                         paciente.desistiuFila = false;
-                       
                 }
-                else if (desistiu <= prob_desistiu_Risco)
+                if (desistiu <= prob_desistiu_Risco)
                 {
-                        paciente.desistiuFila = true;                    
+                        paciente.desistiuFila = true;
                 }
         }
         paciente.num_testes = 0;
@@ -546,20 +614,8 @@ struct pessoa criaPessoa()
 
         usleep(100000);
         sprintf(texto, "Chegou o paciente com o número %i \n", paciente.id);
-        if(paciente.centroTeste == 0)
-        {
-                sem_wait(&semafila0);
-        }
-        else
-        {
-                sem_wait(&semafila1);
-        }
         printf(texto);
         escreve_ficheiro(texto);
-        //paciente.tempoDeInternamento TEM DE SER QUANDO A PESSOA É TESTADA
-        //paciente.tempoEntradaInternamento;
-        //paciente.tempoSaidaInternamento
-        //criar probabilidades para tratar dos booleanos
         sem_post(&trincoCriaPessoa); //destranca o trinco apos criar uma pessoa para poder criar a proxima
         return paciente;
 }
@@ -591,6 +647,7 @@ void Pessoa(void *ptr)
         //########### necessario colocar a pessoa na fila de espera
         //fila(&person);
         //sem_wait(&semafila0);
+        usleep(1000000);
         trataPessoa(&person);
         //pthread_mutex_unlock(&trincoCriaPessoa);
 }
@@ -640,8 +697,21 @@ void EnviarMensagens(char *t, int sockfd)
         sem_wait(&trincoEnviamensagem);
         char mensagem[TamLinha];
         //copiar para dentro do buffer a mensagem
-        strcpy(mensagem, t);                       //recebe o array e mensagem
-        write(sockfd, mensagem, strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
+        //strcpy(mensagem, t);                       //recebe o array e mensagem
+        //write(sockfd, mensagem, strlen(mensagem)); //clienteSOcket, mensagem, tamanho do array mensagem
+
+        int var;
+        
+        if (strcpy(mensagem, t) != 0)
+        {
+                var = strlen(mensagem) + 1;
+                if (write(sockfd, mensagem, var) != var)
+                {
+                        printf("Erro cliente no write! \n");
+                }
+        }
+
+        usleep(2000);
 
         //###########abre o trinco ###########
         sem_post(&trincoEnviamensagem);
@@ -650,7 +720,7 @@ void EnviarMensagens(char *t, int sockfd)
 void simula(int sockfd)
 {
 
-        //srand(time(NULL));
+        srand(time(NULL));
         inicializa();
         //cria as tarefas pessoa
         for (int i = 0; i < num_pessoas_simulacao; i++)
@@ -664,23 +734,26 @@ void simula(int sockfd)
         {
                 pthread_join(id_tarefa_pessoa[i], NULL);
         }
+
+        //acabou a simulação
+        EnviarMensagens("X", sockfd);
 }
 void inicializa()
 {
         //printf("entrou no inicializa");
         leConfigura();
-        sem_init(&semafila0, 0, num_maximo_pessoas_fila);              //inicializa a fila do centro0 para ser partilhada entre threads(pessoas) com 40 lugares
-        sem_init(&semafila1, 0, num_maximo_pessoas_fila);              //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
-        sem_init(&semaAtendimento, 0, num_pessoas_a_ser_testadas);        //podemos atender no minimo duas pessoas de cada vez
+        sem_init(&semafila0, 0, num_maximo_pessoas_fila);            //inicializa a fila do centro0 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semafila1, 0, num_maximo_pessoas_fila);            //inicializa a fila do centro1 para ser partilhada entre threads(pessoas) com 40 lugares
+        sem_init(&semaAtendimento, 0, num_pessoas_a_ser_testadas);   //podemos atender no minimo duas pessoas de cada vez
         sem_init(&semainternadosCentros0, 0, num_maximo_internados); //so podemos ter 60 pesssoas internadas nos centros (total)
         sem_init(&semainternadosCentros1, 0, num_maximo_internados);
         sem_init(&trincoCriaPessoa, 0, 1);
         sem_init(&trincoEnviamensagem, 0, 1);
         sem_init(&trincoTarefaPessoa, 0, 1);
-        sem_init(&semamaximoCasosEstudo,0,maximo_casos_em_estudo);
-        sem_init(&trincoAtendimentoPrioritario,0,1);
+        sem_init(&semamaximoCasosEstudo, 0, maximo_casos_em_estudo);
+        sem_init(&trincoAtendimentoPrioritario, 0, 1);
         //sem_init(&trincoPessoaNaFila,0,1);
-        
+
         criaCentroDeTeste(0);
         criaCentroDeTeste(1);
 }

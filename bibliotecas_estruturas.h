@@ -13,15 +13,7 @@
 #define TamLinha 1024       //tamanho maximo do buffer
 #define UNIXSTR_PATH  "/tmp/SistemasOperativos"
 
-//variaveis globais
-int lugarFila = 0;
-int horasIsolamento[] = {72,120,48};
-int casosPositivos = 0; //pessoas que ja testaram positivo
-int casosEmEstudo = 0; //quantidade de testes que estao a ser processados (a espera do resultado)
-int desistenciasTotais = 0; //quantidade de pessoas que desistiram da fila
-int id_pessoa = 0;
-int pessoasAtendidasCentro1 = 0;
-int pessoasAtendidasCentro0 = 0;
+
 
 
 

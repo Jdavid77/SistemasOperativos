@@ -1,7 +1,18 @@
 #include "bibliotecas_estruturas.h"
+int casosEmEstudo = 0;
+int casosPOsitivos = 0;
+int desistenciasTotais = 0;
+float tempoMedioEsperaFila = 0;
+int numTestesFeitos = 0;
+int quantidadeDeInternados = 0;
+int pessoasRiscoCentro0 = 0;
+int pessoasRiscoCentro1 = 0;
+int pessoasNormaisCentro0 = 0;
+int pessoasNormaisCentro1 = 0;
+
+bool acabou = false;
 
 
-int fimSimulacao = 0;
 /* Escrever no ficheiro E no monitor */
 int escreve_monitor_ficheiro(char texto[]){
                 FILE *fp;
@@ -17,40 +28,6 @@ int escreve_monitor_ficheiro(char texto[]){
 }
 
 
-//-----------------------mostra a informacao no monitor-----------------------------
-void mostraInformacao(){
-    char textoMonitor[TamLinha];
-
-    //centro de Teste
-    escreve_monitor_ficheiro("#####################################\n");
-    escreve_monitor_ficheiro("########## Centro de Teste ##########\n");
-    escreve_monitor_ficheiro("#####################################\n");
-    //sprintf(textoMonitor,"Número de casos em estudo: %i\n" ,casosEmEstudo); nao usar a variavel global mas sim passar atraves do simulador
-    escreve_monitor_ficheiro(textoMonitor);
-    //sprintf(textoMonitor,"Número de casos positivos: %i\n" ,casosPositivos);  nao usar a variavel global mas sim passar atraves do simulador
-    escreve_monitor_ficheiro(textoMonitor);
-    //sprintf(textoMonitor,"Número de desistências: %i\n" ,desistenciasTotais);   nao usar a variavel global mas sim passar atraves do simulador
-    escreve_monitor_ficheiro(textoMonitor);
-    
-    
-    //tempos médios 1/2 CHECK
-
-    //numero de teste feitos 1/2 check
-
-
-    //quantidade de internados
-
-    //quantidade de atendidos em cada fila
-
-    //numero de pessoas de risco no centro #
-    
-    //numero de pessoas normais no centro 
-
-    
-
-        
-}
-
 //------------------------leitura das mensagens---------------------------------
 void LerMensagemSimulador(int sockfd){
     char buffer[TamLinha]; //cria um buffer com tamanho 1024
@@ -64,6 +41,248 @@ void LerMensagemSimulador(int sockfd){
     }
     
 }
+
+void trataInformacao(char mensagem[]){
+
+    //manda a mensagem para o buffer
+    char buffer[100];
+    strcpy(buffer,mensagem);
+    int i = 0;
+    int j;
+    //utilizar um token "=" para dividir as frases, do numero que queremos guardar
+    char *token = strtok(buffer, "-"); 
+   
+    if(buffer[0] == 'T')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                tempoMedioEsperaFila= atof(token);
+                break;
+            }
+        }     
+    }
+    else if(buffer[0] == 'E')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                numTestesFeitos= atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'I')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                quantidadeDeInternados = atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'P')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                casosPOsitivos= atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'D')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                desistenciasTotais= atoi(token);
+                break;
+            }
+        }   
+    }
+    //quando recebe o X é para acabar 
+    else if (buffer[0] == 'X')
+    {
+        acabou = true;
+        printf("A simulacão acabou!\n");
+    }
+
+    else if(buffer[0] == 'R' && buffer[1]==0)
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                pessoasRiscoCentro0= atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'R' && buffer[1]==1)
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                pessoasRiscoCentro1= atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'N' && buffer[1]==0)
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+
+            if(j==1)
+            {
+                pessoasNormaisCentro0= atoi(token);
+                break;
+            }
+        }   
+    }
+    else if(buffer[0] == 'N' && buffer[1]==1)
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+            if(j==1)
+            {
+                pessoasNormaisCentro1= atoi(token);
+                break;
+            }
+        }   
+    } 
+    else if(buffer[0] == 'C' && buffer[1]=='E')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL,buffer);
+            j++;
+            if(j==1)
+            {
+                casosEmEstudo= atoi(token);
+                break;
+            }
+        }   
+    }
+
+}
+
+
+//-----------------------mostra a informacao no monitor-----------------------------
+void mostraInformacao(){
+    char textoMonitor[TamLinha];
+
+    //centro de Teste
+    escreve_monitor_ficheiro("-------------------------------------\n");
+    escreve_monitor_ficheiro("------------ INFORMAÇÕES ------------\n");
+    escreve_monitor_ficheiro("-------------------------------------\n");
+    //CE-%i
+    sprintf(textoMonitor,"Número de casos em estudo: %i\n" ,casosEmEstudo); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //P-%i
+    sprintf(textoMonitor,"Número de casos positivos: %i\n" ,casosPOsitivos); 
+    escreve_monitor_ficheiro(textoMonitor);
+    // D-%i
+    sprintf(textoMonitor,"Número de desistências: %i\n" ,desistenciasTotais); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //tempos médios T-%f 
+    sprintf(textoMonitor,"Tempo médio das filas de espera: %f\n" ,tempoMedioEsperaFila); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //numero de teste feitos E-%i 
+    sprintf(textoMonitor,"Número de testes de covid-19 feitos: %i\n" ,numTestesFeitos); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //quantidade de internados I-%i 
+    sprintf(textoMonitor,"Número de pessoas internadas: %i\n" ,quantidadeDeInternados); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //numero de pessoas de risco no centro 0 -> R0-%i 
+    sprintf(textoMonitor,"Número de pessoas de risco no centro 0: %i\n" ,pessoasRiscoCentro0); 
+    escreve_monitor_ficheiro(textoMonitor);
+    // no centro 1 -> R1-%i(ler ate ao - )
+    sprintf(textoMonitor,"Número de pessoas de risco no centro 1: %i\n" ,pessoasRiscoCentro1); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //numero de pessoas normais no centro 0 -> N0-%i  
+    sprintf(textoMonitor,"Número de pessoas normais no centro 0: %i\n" ,pessoasRiscoCentro0); 
+    escreve_monitor_ficheiro(textoMonitor);
+    //no centro 1 -> N1-%i
+    sprintf(textoMonitor,"Número de pessoas normais no centro 1: %i\n" ,pessoasRiscoCentro1); 
+    escreve_monitor_ficheiro(textoMonitor);
+    escreve_monitor_ficheiro("-------------------------------------\n");
+}
+
+
+
+
+
+void ReceberMensagens(int sockfd){
+    char buffer[TamLinha];
+    int leitura = 0;
+    //enquanto nao acabar a simulação nao terminar
+    while (!acabou)
+    {
+        //le a mensagem do socket
+        leitura = read(sockfd,buffer,TamLinha);
+        if(leitura==0) //verifica se chegou ao fim
+        {
+            break;
+        }
+        else if (leitura<0) //erro
+        {
+            printf("erro ao ler o socket\n");
+        }
+        else
+        {
+            trataInformacao(buffer);
+        }
+        mostraInformacao();
+    }
+    
+}
+
+
+
 
 
 //-----------------------Cria o servidor -------------------------------
@@ -109,7 +328,7 @@ void criaServidor () {
         printf ("Erro na criação do processo filho! \n");         //Erro na criacao do processo filho
     }else if (pid == 0) {                                       //Processo filho irá tratar das sucessivas leituras e fecha o socket do processo pai
         close(sockfd);
-        LerMensagemSimulador(novoSocket);                       //lê e imprime a mensagem do simulador 
+        ReceberMensagens(novoSocket);                       //lê e imprime a mensagem do simulador 
     }
 
     close(novoSocket);
@@ -117,24 +336,21 @@ void criaServidor () {
 
 /* -----------------------Main ---------------------------*/
 int main(int argc, char const * argv[]){
-    printf ( "########### Bem vindo ########### \n" );              //Menu
-    printf ( "       Comecar simulacao          \n" );                  //Menu
-    printf ( "################################# \n" );              //Menu
+    printf ( "---------- Bem vindo ----------\n" );              //Menu
+    printf ( "       Começar simulação       \n" );                  //Menu
+    printf ( "-------------------------------\n" );              //Menu
 
-    
-    
-
-    int opcao = 0; //opcao escolhida pelo utilzador 
     bool termina = false; 
     while (!termina) 
     {
-        //while (opcao !=1)
-        //{
-            //printf("Escolha uma opção: \n");
-            //scanf("%d",&opcao);
-        //}
-        criaServidor();  //Cria o servidor
-        mostraInformacao();  
+        if(acabou)
+        {
+            termina = true;
+        }
+        
+        criaServidor();  //Cria o servidor   
+        
+        
     }
     
     return 0;
