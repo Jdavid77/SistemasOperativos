@@ -71,7 +71,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
 {
         //escreve na consola e tambem no ficheiro que atendeu uma pessoa com prioridade
         //escrevendo o paciente ID faz o teste
-
+        sem_wait(&trincoAtendimentoPrioritario);
         sprintf(texto, "O paciente com o número %i foi atendido com prioridade \n", paciente->id);
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente com o número %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
@@ -91,7 +91,7 @@ void AtendimentoPrioridade(struct pessoa *paciente)
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
         sem_wait(&semamaximoCasosEstudo);
-
+        sem_post(&trincoAtendimentoPrioritario);
         //TestaPessoa(paciente);
 }
 //atende uma pessoa normal (sao prints)
@@ -99,6 +99,7 @@ void AtendimentoNormal(struct pessoa *paciente)
 {
         /*escreve na consola e tambem no ficheiro que atendeu uma pessoa
         escrevendo o paciente ID faz o teste */
+        sem_wait(&semaAtendimento);
         sprintf(texto, "O paciente com o número %i foi atendido \n", paciente->id);
         escreve_ficheiro(texto);
         sprintf(texto, "O paciente com o número %i fez o teste \n", paciente->id); //o resultado do teste sera posto no centro nao?
@@ -123,6 +124,7 @@ void AtendimentoNormal(struct pessoa *paciente)
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
         sem_wait(&semamaximoCasosEstudo);
+        sem_post(&semaAtendimento);
         //TestaPessoa(paciente);
 }
 
@@ -133,7 +135,6 @@ void TestaPessoa(struct pessoa *paciente)
         int infetado_crianca = rand() % 101;
         int infetado_adulto = rand() % 101;
         int infetado_idoso = rand() % 101;
-
         if (paciente->idade < 18) //caso seja uma criança
         {
                 //verifica atraves da probabilidade se a pessoa esta infetada ou nao
@@ -180,7 +181,6 @@ void TestaPessoa(struct pessoa *paciente)
         if (paciente->resultadoTeste) //caso teste positivo
         {
                 paciente->num_testes++;
-
                 casosPositivos++;
                 sprintf(mensagem, "P-%i", casosPositivos);
                 EnviarMensagens(mensagem, sockfd);
@@ -201,8 +201,6 @@ void TestaPessoa(struct pessoa *paciente)
                         {
                                 sem_wait(&semainternadosCentros1); //ocupa um lugar no internamento
                         }
-
-                        //casosEmEstudo--;
                 }
                 if (paciente->prioridade == 0) //caso nao tenha prioridade
                 {
@@ -216,7 +214,6 @@ void TestaPessoa(struct pessoa *paciente)
         sprintf(mensagem, "CE-%i", casosEmEstudo);
         EnviarMensagens(mensagem, sockfd);
         sem_post(&semamaximoCasosEstudo);
-
         //para a pessoa fazer o numero teste desejados
         if (paciente->num_testes != paciente->testesDesejados)
         {
@@ -231,12 +228,9 @@ void TestaPessoa(struct pessoa *paciente)
 //pessoa realiza o teste
 void trataPessoa(struct pessoa *paciente)
 {
-
         //clock_t tempo_inicial_fila, tempo_final_fila;
-
         //começa a contar o tempo dessa pessoa na fila
         tempo_inicial_fila = clock();
-
         //usar semaforos para tratar da fila(uma fila é um semaforo)
         //dentro desta funçao verificamos se o paciente tem prioridade, caso tenha entao este é logo atendido
         //caso nao tenha prioridade atendemos um paciente na fila (libertamos um espaço do semaforo)
@@ -244,18 +238,12 @@ void trataPessoa(struct pessoa *paciente)
         //apos ser atendido temos que chamar uma funçao que trata do resultado do teste
         if (paciente->desistiuFila == false) //se o paciente nao desistiu da fila
         {
-                //if(paciente->centroTeste == centro->id) //caso a pessoa esteja neste centro de teste
-                //{
                 if (paciente->prioridade == 1) //se o paciente tiver prioridade(for caso de risco) é logo atenddido
                 {
-                        
-
                         sprintf(texto, "Pessoa com risco está na fila de espera, no centro %i.\n", paciente->centroTeste);
                         printf(texto);
                         escreve_ficheiro(texto);
-                        sem_wait(&trincoAtendimentoPrioritario);
                         AtendimentoPrioridade(paciente);
-                        sem_post(&trincoAtendimentoPrioritario);
                         tempo_final_fila = clock();
                         //tempo na fila
                         float tempoNaFila;
@@ -289,16 +277,11 @@ void trataPessoa(struct pessoa *paciente)
                 }
                 else //caso nao seja paciente de risco (nao tem prioridade)
                 {
-
-                        
                         sprintf(texto, "Pessoa normal está na fila de espera, no centro %i.\n", paciente->centroTeste);
                         printf(texto);
                         escreve_ficheiro(texto);
-                        sem_wait(&semaAtendimento);
                         AtendimentoNormal(paciente); //atende a pessoa e faz o seu teste
-                        sem_post(&semaAtendimento);
                         tempo_final_fila = clock();
-
                         //tempo na fila
                         float tempoNaFila;
                         tempoNaFila = ((float)(tempo_final_fila - tempo_inicial_fila) / CLOCKS_PER_SEC) * 10000;
@@ -310,7 +293,6 @@ void trataPessoa(struct pessoa *paciente)
                         sprintf(texto, "A paciente com o número %i esperou %f\n", paciente->id, tempoNaFila);
                         printf(texto);
                         escreve_ficheiro(texto);
-
                         if (paciente->centroTeste == 0)
                         {
                                 sem_wait(&semafila0);
@@ -328,14 +310,12 @@ void trataPessoa(struct pessoa *paciente)
                         usleep(1000000);
                         TestaPessoa(paciente);
                 }
-                //}
         }
         else //remove alguem da fila caso o paciente tenha desistido
         {
                 desistenciasTotais++;
                 sprintf(mensagem, "D-%i", desistenciasTotais);
                 EnviarMensagens(mensagem, sockfd);
-
                 if (paciente->prioridade == 1)
                 {
                         if (paciente->centroTeste == 0)
@@ -605,7 +585,7 @@ struct pessoa criaPessoa()
         paciente.num_testes = 0;
         paciente.isolamento = false;
         paciente.resultadoTeste = false;
-        //usleep(100000);
+        usleep(100000);
         sprintf(texto, "Chegou o paciente com o número %i \n", paciente.id);
         printf(texto);
         escreve_ficheiro(texto);
@@ -617,7 +597,6 @@ struct pessoa criaPessoa()
 struct centroDeTeste criaCentroDeTeste(int idCentro)
 {
         struct centroDeTeste centro;
-
         centro.capacidadeMaxima = 100;
         centro.id = idCentro;
         centro.capacidaMaximaInternamento = 60;
@@ -712,7 +691,6 @@ void EnviarMensagens(char *t, int sockfd)
 
 void simula(int sockfd)
 {
-
         srand(time(NULL));
         inicializa();
         //cria as tarefas pessoa
@@ -729,7 +707,7 @@ void simula(int sockfd)
         }
 
         //acabou a simulação
-        EnviarMensagens("X", sockfd);
+        EnviarMensagens("X-", sockfd);
 }
 void inicializa()
 {

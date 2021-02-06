@@ -40,3 +40,17 @@ Número de pessoas de risco no centro 1: 0
 Número de pessoas normais no centro 0: 2
 Número de pessoas normais no centro 1: 0
 -------------------------------------
+-------------------------------------
+------------ INFORMAÇÕES ------------
+-------------------------------------
+Número de casos em estudo: 0
+Número de casos positivos: 0
+Número de desistências: 0
+Tempo médio das filas de espera: 0.000000
+Número de testes de covid-19 feitos: 0
+Número de pessoas internadas: 0
+Número de pessoas de risco no centro 0: 1
+Número de pessoas de risco no centro 1: 0
+Número de pessoas normais no centro 0: 1
+Número de pessoas normais no centro 1: 0
+-------------------------------------
