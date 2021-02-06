@@ -45,7 +45,7 @@ void LerMensagemSimulador(int sockfd){
 void trataInformacao(char mensagem[]){
 
     //manda a mensagem para o buffer
-    char buffer[100];
+    char buffer[TamLinha];
     strcpy(buffer,mensagem);
     int i = 0;
     int j;
@@ -349,8 +349,7 @@ int main(int argc, char const * argv[]){
         }
         
         criaServidor();  //Cria o servidor   
-        
-        
+
     }
     
     return 0;
