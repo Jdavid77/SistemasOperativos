@@ -7,8 +7,9 @@ int numTestesFeitos = 0;
 int quantidadeDeInternados = 0;
 int pessoasRiscoCentro0 = 0;
 int pessoasRiscoCentro1 = 0;
-int pessoasNormaisCentro0 = 0;
-int pessoasNormaisCentro1 = 0;
+int pessoasAtendidasCentro0 = 0;
+int pessoasAtendidasCentro1 = 0;
+int voltouTestar = 0;
 
 bool acabou = false;
 
@@ -154,6 +155,52 @@ void trataInformacao(char mensagem[])
             }
         }
     }
+    else if (buffer[0] == 'R')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL, buffer);
+            j++;
+            //printf("Estudo");
+            if (j == 1)
+            {
+                voltouTestar = atoi(token);
+                break;
+            }
+        }
+    }
+    else if (buffer[0] == 'K')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL, buffer);
+            j++;
+            //printf("Estudo");
+            if (j == 1)
+            {
+                pessoasAtendidasCentro0 = atoi(token);
+                break;
+            }
+        }
+    }
+    else if (buffer[0] == 'L')
+    {
+        j = 0;
+        while (token != NULL)
+        {
+            token = strtok(NULL, buffer);
+            j++;
+            //printf("Estudo");
+            if (j == 1)
+            {
+                pessoasAtendidasCentro1 = atoi(token);
+                break;
+            }
+        }
+    }
+
 }
 
 //-----------------------mostra a informacao no monitor-----------------------------
@@ -183,6 +230,15 @@ void mostraInformacao()
         escreve_monitor_ficheiro(textoMonitor);
         //quantidade de internados I-%i
         sprintf(textoMonitor, "Número de pessoas internadas: %i\n", quantidadeDeInternados);
+        escreve_monitor_ficheiro(textoMonitor);
+        //testes repetidos R-%i
+        sprintf(textoMonitor, "Número de pessoas que repetiram os testes: %i\n", voltouTestar);
+        escreve_monitor_ficheiro(textoMonitor);
+        //pessoas atendidas centro 0 K-%i
+        sprintf(textoMonitor, "Número de pessoas atendidas no centro 0: %i\n", pessoasAtendidasCentro0);
+        escreve_monitor_ficheiro(textoMonitor);
+        //pessoas atendidas centro 1 L-%i
+        sprintf(textoMonitor, "Número de pessoas atendidas no centro 1: %i\n", pessoasAtendidasCentro1);
         escreve_monitor_ficheiro(textoMonitor);
     }
     else

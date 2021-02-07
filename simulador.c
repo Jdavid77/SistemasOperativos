@@ -45,6 +45,7 @@ sem_t trincoCasosPositivos;
 sem_t trincoAtendimentos0;
 sem_t trincoAtendimentos1;
 sem_t trincoTotalTestes;
+sem_t trincoVoltouTestar;
 //tempo
 clock_t tempo_inicial_fila, tempo_final_fila;
 
@@ -63,6 +64,7 @@ int pessoasAtendidasCentro1 = 0;
 int pessoasAtendidasCentro0 = 0;
 float tempoMedioNaFila = 0;
 int Totaltestes = 0;
+int VoltouTestar = 0;
 //tarefa pessoa
 pthread_t id_tarefa_pessoa[400];
 
@@ -83,6 +85,8 @@ void AtendimentoPrioridade(struct pessoa *paciente)
                 sem_wait(&trincoAtendimentos0);
                 pessoasAtendidasCentro0++;
                 sem_post(&trincoAtendimentos0);
+                sprintf(mensagem,"K-%i",pessoasAtendidasCentro0);
+                EnviarMensagens(mensagem,sockfd);
         }
         if (paciente->centroTeste == 1)
         {
@@ -90,6 +94,8 @@ void AtendimentoPrioridade(struct pessoa *paciente)
                 sem_wait(&trincoAtendimentos1);
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
+                sprintf(mensagem,"L-%i",pessoasAtendidasCentro1);
+                EnviarMensagens(mensagem,sockfd);
         }
         sem_wait(&trincoTotalTestes);
         Totaltestes++;
@@ -120,8 +126,8 @@ void AtendimentoNormal(struct pessoa *paciente)
                 sem_wait(&trincoAtendimentos0);
                 pessoasAtendidasCentro0++;
                 sem_post(&trincoAtendimentos0);
-                sprintf(mensagem, "E-%i", pessoasAtendidasCentro0);
-                //EnviarMensagens(mensagem, sockfd);
+                sprintf(mensagem, "K-%i", pessoasAtendidasCentro0);
+                EnviarMensagens(mensagem, sockfd);
         }
         if (paciente->centroTeste == 1)
         {
@@ -129,8 +135,8 @@ void AtendimentoNormal(struct pessoa *paciente)
                 sem_wait(&trincoAtendimentos1);
                 pessoasAtendidasCentro1++;
                 sem_post(&trincoAtendimentos1);
-                sprintf(mensagem, "E-%i", pessoasAtendidasCentro1);
-                //EnviarMensagens(mensagem, sockfd);
+                sprintf(mensagem, "L-%i", pessoasAtendidasCentro1);
+                EnviarMensagens(mensagem, sockfd);
         }
         sem_wait(&trincoTotalTestes);
         Totaltestes++;
@@ -248,6 +254,11 @@ void TestaPessoa(struct pessoa *paciente)
                 sprintf(texto, "O paciente com o número %i vai voltar a fazer outro teste \n", paciente->id);
                 printf(texto);
                 escreve_ficheiro(texto);
+                sem_wait(&trincoVoltouTestar);
+                VoltouTestar++;
+                sem_post(&trincoVoltouTestar);
+                sprintf(mensagem,"R-%i",VoltouTestar);
+                EnviarMensagens(mensagem,sockfd);
                 trataPessoa(paciente);
         }
 }
@@ -424,7 +435,7 @@ void leConfigura()
         #define MAXSIZE 512
         char linha[MAXSIZE];
         char configura[] = "server.config";
-        int valores_configura[13];
+        int valores_configura[11];
         while (erro == 1)
         {
                 erro = 0;
@@ -460,12 +471,13 @@ void leConfigura()
                                 valores_configura[j] = atoi(token); //passa o valor para o array
                                 j++;
                         } //adicionar os casos erro (verifica configura.txt)
+                        /*
                         if (valores_configura[0] < 2)
                         {
                                 printf("Introduziu um valor incorreto na linha 1, o minimo de centros de teste é 2");
                                 erro = 1;
-                        }
-                        else if (valores_configura[1] < 2)
+                        }*/
+                        if (valores_configura[0] < 2)
                         {
                                 printf("Introduziu um valor incorreto na linha 2, o minimo de pessoas que podem estar a ser testadas é >= 2");
                                 erro = 1;
@@ -475,52 +487,52 @@ void leConfigura()
                         //         printf("Introduziu um valor negativo na linha 3, o numero medio de testes por pessoa tem que ser maior que 0");
                         //         erro = 1;
                         // }
-                        else if (valores_configura[2] < 0)
+                        else if (valores_configura[1] < 0)
                         {
                                 printf("Introduziu um valor negativo na linha 3, o máximo de pessoas na fila de espera tem de se maior que 0");
                                 erro = 1;
                         }
-                        else if (valores_configura[3] < 0)
+                        else if (valores_configura[2] < 0)
                         {
                                 printf("Introduziu um valor negativo na linha 4, o número maximo de casos em estudo tem que ser >= 0");
                                 erro = 1;
                         }
-                        else if (valores_configura[4] < 0)
+                        else if (valores_configura[3] < 0)
                         {
                                 printf("Introduziu um valor negativo na linha 5, o número máximo de internados num centro tem que ser >= 0");
                                 erro = 1;
                         }
-                        else if (valores_configura[5] <= 0) //maximo por defenir
+                        else if (valores_configura[4] <= 0) //maximo por defenir
                         {
                                 printf("Introduziu um valor invalido na linha 6, por favor volte a tentar");
                                 erro = 1;
                         }
-                        else if (valores_configura[6] < 0 || valores_configura[6] > 100)
+                        else if (valores_configura[5] < 0 || valores_configura[5] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 7, a probablidade tem que variar entre 0 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[7] < 0 || valores_configura[7] > 100)
+                        else if (valores_configura[6] < 0 || valores_configura[6] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 8, a probablidade tem que variar entre 0 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[8] < 1 || valores_configura[8] > 100)
+                        else if (valores_configura[7] < 1 || valores_configura[7] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 9, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[9] < 1 || valores_configura[9] > 100)
+                        else if (valores_configura[8] < 1 || valores_configura[8] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 10, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[10] < 1 || valores_configura[10] > 100)
+                        else if (valores_configura[9] < 1 || valores_configura[9] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 11, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
                         }
-                        else if (valores_configura[11] < 1 || valores_configura[11] > 100)
+                        else if (valores_configura[10] < 1 || valores_configura[10] > 100)
                         {
                                 printf("Introduziu um valor incorreto na linha 12, a probablidade tem que variar entre 1 e 100");
                                 erro = 1;
@@ -537,19 +549,19 @@ void leConfigura()
                 }
                 fclose(ficheiro_configura); //fecha o ficheiro
         }
-        num_centrosTeste = valores_configura[0];
-        num_pessoas_a_ser_testadas = valores_configura[1];
-        num_maximo_pessoas_fila = valores_configura[2];
-        maximo_casos_em_estudo = valores_configura[3];
-        num_maximo_internados = valores_configura[4];
-        num_pessoas_simulacao = valores_configura[5];
-        prob_desistiu_Risco = valores_configura[6];
-        prob_desistiu_Normal = valores_configura[7];
-        prob_criancas_efetados = valores_configura[8];
-        prob_adultos_efetados = valores_configura[9];
-        prob_idosos_efetados = valores_configura[10];
-        prob_ser_de_risco = valores_configura[11];
-        temposimulacao = valores_configura[12];
+        
+        num_pessoas_a_ser_testadas = valores_configura[0];
+        num_maximo_pessoas_fila = valores_configura[1];
+        maximo_casos_em_estudo = valores_configura[2];
+        num_maximo_internados = valores_configura[3];
+        num_pessoas_simulacao = valores_configura[4];
+        prob_desistiu_Risco = valores_configura[5];
+        prob_desistiu_Normal = valores_configura[6];
+        prob_criancas_efetados = valores_configura[7];
+        prob_adultos_efetados = valores_configura[8];
+        prob_idosos_efetados = valores_configura[9];
+        prob_ser_de_risco = valores_configura[10];
+        
 }
 
 int escreve_ficheiro(char texto2[])
@@ -795,6 +807,7 @@ void inicializa()
         sem_init(&trincoTotalInternados,0,1);
         sem_init(&trincoCasosPositivos,0,1);
         sem_init(&trincoTotalTestes,0,1);
+        sem_init(&trincoVoltouTestar,0,1);
         /**sem_init(&trincoPessoasNormaisFila0,0,1);
         sem_init(&trincoPessoasRiscoFila0,0,1);
         sem_init(&trincoPessoasNormaisFila1,0,1);
