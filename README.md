@@ -14,3 +14,4 @@ Será mostrado no simulador, informações necessárias para acompanhar o progra
 
 E no monitor é apresentado informações gerais do estado da simulação, como o tempo médio de espera, o total de casos positivos, entre outras.
 
+Nota: 16.20/20
